@@ -15,17 +15,17 @@ CREATE TABLE employee (
     employee_id SERIAL,
     username VARCHAR(50) NOT NULL UNIQUE,
     password_hash VARCHAR(200) NOT NULL,
-    role VARCHAR(50) NOT NULL,
     firstname VARCHAR(25) NOT NULL,
     lastname VARCHAR(25) NOT NULL,
     CONSTRAINT PK_employee PRIMARY KEY (employee_id)
 );
+
 CREATE TABLE standard_cake (
     standard_cake_id SERIAL,
     cake_name VARCHAR(25) NOT NULL UNIQUE,
     description VARCHAR(500) NOT NULL,
-    price INTEGER(10) NOT NULL,
-    available BOOLEAN NOT NULL,
+    price NUMERIC(8, 2) NOT NULL,
+    is_available BOOLEAN NOT NULL,
     CONSTRAINT PK_standard_cake PRIMARY KEY (standard_cake_id)
 );
 

@@ -4,7 +4,7 @@
         <img src="" alt="">
         <h3 class="cake-price">{{ cake.price }}</h3>
         <p class="description">{{ cake.description }}</p>
-        <button>Add to Cart</button>
+        <button v-if="enableAdd">Add to Cart</button>
 
     </div>
 </template>

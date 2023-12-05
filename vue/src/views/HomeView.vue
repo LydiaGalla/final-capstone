@@ -7,14 +7,21 @@
   </div>
   <div id="login" class="text-center">
       
-    <img id="HomeCake" src= "public\Sadcat.jpeg" alt="Picture of Cake">
+    <img id="HomeCake" src= "\Sadcat.jpeg" alt="Picture of Cake">
   </div>
 
-<div class="container">
+<div class="container"> dfs
 
-	<h1 class="HomePageHeadLinks" id="HomeLinks"><strong><router-link v-bind:to="{ name: 'StandardCakeView' }">Order one of our Tragic Standard Cakes </router-link> <span>&</span><span> <router-link v-bind:to="{ name: 'CustomCakeView' }">Order your own Custom Tragic Cake </router-link></span></strong></h1>
-      
+	<h1 class="HomePageHeadLinks" id="StanHomeLink"><strong>Order one of our Tragic Standard Cakes</strong></h1>
+  
 
+  <div class="stan-cake-list">
+    <div v-for="(product, index) in products" :key="index" class="stan-cake-card">
+      <img :src="product.image" alt="Product Image" class="stan-cakes-image" />
+      <h3 class="stan-cake-name">{{ stancake.name }}</h3>
+      <p class="stan-cake-description">{{ product.description }}</p>
+    </div>
+  </div>
 </div>
 </template>
 
@@ -29,13 +36,9 @@ export default {
 
 
 };
-
-
 </script>
 
 <style>
-
-
 a:link {
   text-decoration: none;
   color: rgb(224, 166, 99);
@@ -59,7 +62,7 @@ a:active {
   color: rgb(224, 166, 99);
   }
 
-  h3 {
+h3 {
     color:  rgb(10, 36, 168);
   }
 

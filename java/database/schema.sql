@@ -9,6 +9,7 @@ CREATE TABLE customer (
 	email VARCHAR(50) NOT NULL,
 	phone VARCHAR(20) NOT NULL,
 	CONSTRAINT PK_customer PRIMARY KEY (customer_id)
+
 );
 
 CREATE TABLE employee (
@@ -29,15 +30,55 @@ CREATE TABLE standard_cake (
     CONSTRAINT PK_standard_cake PRIMARY KEY (standard_cake_id)
 );
 
+CREATE TABLE cake_flavors (
+    flavor_id SERIAL,
+    flavor_name VARCHAR(25) NOT NULL,
+    is_available BOOLEAN NOT NULL,
+    CONSTRAINT PK_cake_flavor PRIMARY KEY (flavor_id)
+);
+
+CREATE TABLE cake_frostings (
+    frosting_id SERIAL,
+    frosting_name VARCHAR(25) NOT NULL,
+    is_available BOOLEAN NOT NULL,
+    CONSTRAINT PK_cake_frostings PRIMARY KEY (frosting_id)
+);
+
+CREATE TABLE cake_fillings (
+    filling_id SERIAL,
+    filling_name VARCHAR(25) NOT NULL,
+    is_available BOOLEAN NOT NULL,
+    CONSTRAINT PK_cake_fillings PRIMARY KEY (filling_id)
+);
+
+CREATE TABLE cake_sizes (
+    size_id SERIAL,
+    size_name VARCHAR(25) NOT NULL,
+    is_available BOOLEAN NOT NULL,
+    CONSTRAINT PK_cake_sizes PRIMARY KEY (size_id)
+);
+
+CREATE TABLE cake_style (
+    style_id SERIAL,
+    style_name VARCHAR(25) NOT NULL,
+    is_available BOOLEAN NOT NULL,
+    CONSTRAINT PK_cake_style PRIMARY KEY (style_id)
+);
+
 CREATE TABLE custom_cake (
     custom_cake_id SERIAL,
-    cake_style VARCHAR(25) NOT NULL,
-    cake_size VARCHAR(25) NOT NULL,
-    cake_flavor VARCHAR(25) NOT NULL,
-    frosting_flavor VARCHAR(25) NOT NULL,
-    filling_flavor VARCHAR(25) NOT NULL,
+    cake_flavor_id INT,
+    cake_frosting_id INT,
+    cake_filling_id INT,
+    cake_size_id INT,
+    cake_style_id INT,
     extras VARCHAR(50) NOT NULL,
-    CONSTRAINT PK_custom_cake PRIMARY KEY (custom_cake_id)
+    CONSTRAINT PK_custom_cake PRIMARY KEY (custom_cake_id),
+    FOREIGN KEY (cake_flavor_id) REFERENCES cake_flavors(flavor_id),
+    FOREIGN KEY (cake_frosting_id) REFERENCES cake_frostings(frosting_id),
+    FOREIGN KEY (cake_filling_id) REFERENCES cake_fillings(filling_id),
+    FOREIGN KEY (cake_size_id) REFERENCES cake_sizes(size_id),
+    FOREIGN KEY (cake_style_id) REFERENCES cake_style(style_id)
 );
 
 CREATE TABLE cake_order (

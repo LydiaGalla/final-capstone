@@ -2,6 +2,7 @@
   <div id="login" class="text-center">
       <h1 id="welcomeTo">Welcome To Tragic Cakes!</h1>
       <h3>Fill with stuffs</h3>
+      <std-cakes-list></std-cakes-list>
     <img id="HomeCake" src= "public\Sadcat.jpeg" alt="Picture of Cake">
   </div>
 
@@ -15,7 +16,12 @@
 
 
 <script>
+import StdCakesList from '@/components/StdCakesList.vue'
 export default {
+
+  components: {
+    StdCakesList
+  }
 
 
 };

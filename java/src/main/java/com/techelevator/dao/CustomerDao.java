@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface CustomerDao {
 
-    List<StandardCake> getCakeName();
+    List<StandardCake> getAllStandardCakes();
 
 
 

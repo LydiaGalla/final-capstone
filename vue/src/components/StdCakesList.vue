@@ -23,3 +23,12 @@ export default {
 }
 
 </script>
+
+<style>
+.standard-cakes-list {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+</style>

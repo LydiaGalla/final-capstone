@@ -1,8 +1,12 @@
 <template>
-  <div id="login" class="text-center">
-      <h1 id="welcomeTo">Welcome To Tragic Cakes!</h1>
+  <div id="home">
+    <h1 id="welcomeTo">Welcome To Tragic Cakes!</h1>
       <h3>Fill with stuffs</h3>
       <std-cakes-list></std-cakes-list>
+
+  </div>
+  <div id="login" class="text-center">
+      
     <img id="HomeCake" src= "public\Sadcat.jpeg" alt="Picture of Cake">
   </div>
 
@@ -58,5 +62,12 @@ a:active {
   h3 {
     color:  rgb(10, 36, 168);
   }
+
+#welcomeTo {
+  text-decoration: underline;
+  font-size: 300%;
+  }
+
+
 
 </style>

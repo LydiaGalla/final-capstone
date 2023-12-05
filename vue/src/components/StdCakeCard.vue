@@ -1,10 +1,10 @@
 <template>
     <div class="card">
         <h2 class="cake-name">{{ cake.name }}</h2>
-        <img src="" alt="">
+        <img v-if="cake.name" v-bind:src="cake.image + 'Cake.jpg'">
         <h3 class="cake-price">{{ cake.price }}</h3>
         <p class="description">{{ cake.description }}</p>
-        <button v-if="enableAdd">Add to Cart</button>
+        <button>Add to Cart</button>
 
     </div>
 </template>
@@ -23,22 +23,33 @@ export default {
 
 <style>
 .card {
-  border: 2px solid black;
-  border-radius: 10px;
-  width: 250px;
-  height: 550px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  text-align: center;
+  width: 300px;
+  height: 400px;
   margin: 20px;
+  padding: 20px;
 }
 
-.card.read {
-  background-color: lightgray;
+.card .cake-name {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
 }
 
-.card .book-title {
-  font-size: 1.5rem;
+.card .cake-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
 }
 
-.card .book-author {
+.card .cake-price {
   font-size: 1rem;
 }
+
+.card .cake-description {
+    color: #555;
+}
+
 </style>

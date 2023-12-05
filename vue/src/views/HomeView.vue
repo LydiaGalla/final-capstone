@@ -22,7 +22,12 @@
 
 
 <script>
+import StdCakesList from '@/components/StdCakesList.vue'
 export default {
+
+  components: {
+    StdCakesList
+  }
 
 
 };

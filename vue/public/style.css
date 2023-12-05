@@ -1,0 +1,10 @@
+body{
+    background: rgb(238, 226, 175);
+  }
+  img {
+    border-radius: 8px;
+  }
+  img {
+    display: inline-block;
+    margin: 25px 10px; 
+    } 

@@ -16,33 +16,5 @@ public class JdbcCustomerDao implements CustomerDao{
         return null;
     }
 
-    @Override
-    public List<CustomCake> getCakeStyle() {
-        return null;
-    }
 
-    @Override
-    public List<CustomCake> getCakeSize() {
-        return null;
-    }
-
-    @Override
-    public List<CustomCake> getCakeFlavor() {
-        return null;
-    }
-
-    @Override
-    public List<CustomCake> getFrostingFlavor() {
-        return null;
-    }
-
-    @Override
-    public List<CustomCake> getFillingFLavor() {
-        return null;
-    }
-
-    @Override
-    public List<CustomCake> getExtras() {
-        return null;
-    }
 }

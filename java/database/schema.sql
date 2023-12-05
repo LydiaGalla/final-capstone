@@ -42,6 +42,7 @@ CREATE TABLE custom_cake (
 
 CREATE TABLE cake_order (
     order_id SERIAL,
+    customer_id INTEGER,
     standard_cake_id INTEGER,
     custom_cake_id INTEGER,
     due_date DATE NOT NULL,
@@ -54,6 +55,7 @@ CREATE TABLE cake_order (
     (standard_cake_id IS NOT NULL AND custom_cake_id IS NULL) OR
     (standard_cake_id IS NULL AND custom_cake_id IS NOT NULL)
     )
+    CONSTRAINT FK_cake_order_customer FOREIGN KEY (customer_id) REFERENCES customer(customer_id)
 );
 
 

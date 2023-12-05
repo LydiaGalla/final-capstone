@@ -2,11 +2,55 @@
   <div id="login" class="text-center">
       <h1 id="welcomeTo">Welcome To Tragic Cakes!</h1>
       <h3>Fill with stuffs</h3>
-    <img id="HomeCake" src= "" alt="Picture of Cake"> </div>
-  </template>
+    <img id="HomeCake" src= "public\Sadcat.jpeg" alt="Picture of Cake">
+  </div>
+
+<div class="container">
+
+	<h1 class="HomePageHeadLinks" id="HomeLinks"><strong><router-link v-bind:to="{ name: 'StandardCakeView' }">Order one of our Tragic Standard Cakes </router-link> <span>&</span><span> <router-link v-bind:to="{ name: 'CustomCakeView' }">Order your own Custom Tragic Cake </router-link></span></strong></h1>
+      
+
+</div>
+</template>
 
 
 <script>
 export default {
+
+
 };
+
+
 </script>
+
+<style>
+
+
+a:link {
+  text-decoration: none;
+  color: rgb(224, 166, 99);
+  }
+
+
+a:visited {
+  text-decoration: none;
+  color: rgb(224, 166, 99);
+  }
+
+
+a:hover {
+  text-decoration: none;
+  color: rgb(26, 80, 80);
+  }
+
+
+a:active {
+  text-decoration: none;
+  color: rgb(224, 166, 99);
+  }
+
+  h3 {
+    color:  rgb(10, 36, 168);
+  }
+
+</style>

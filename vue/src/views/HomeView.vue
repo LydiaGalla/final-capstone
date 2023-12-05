@@ -9,6 +9,7 @@
 
 	<h1 class="HomePageHeadLinks" id="StanHomeLink"><strong>Order one of our Tragic Standard Cakes</strong></h1>
   
+
   <div class="stan-cake-list">
     <div v-for="(product, index) in products" :key="index" class="stan-cake-card">
       <img :src="product.image" alt="Product Image" class="stan-cakes-image" />
@@ -16,7 +17,6 @@
       <p class="stan-cake-description">{{ product.description }}</p>
     </div>
   </div>
-
 </div>
 </template>
 
@@ -31,13 +31,9 @@ export default {
 
 
 };
-
-
 </script>
 
 <style>
-
-
 a:link {
   text-decoration: none;
   color: rgb(224, 166, 99);
@@ -99,6 +95,4 @@ h3 {
 .stan-cake-description {
   color: #555;
 }
-
-
 </style>

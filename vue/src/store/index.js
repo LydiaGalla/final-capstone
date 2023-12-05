@@ -9,7 +9,7 @@ export function createStore(currentToken, currentUser) {
 
       cakes: [
         {
-          name: "Dead Cat",
+          name: "Dead Pet",
           description: "“Sorry your cat died. LOL” Round Chocolate Cake with Custard Filling and Cream Cheese Frosting. Decorated with Red Buttercream Napping Cat, sorry that’ll be its last snooze.",
           price: 50
         },

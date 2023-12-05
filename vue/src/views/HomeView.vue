@@ -1,8 +1,13 @@
 <template>
-  <div id="HomePage" class="text-center">
-      <h1 id="welcomeTo">Welcome To Tragic Cakes!</h1>
+  <div id="home">
+    <h1 id="welcomeTo">Welcome To Tragic Cakes!</h1>
       <h3>Fill with stuffs</h3>
-    <img id="HomeCake" src= "/Sadcat.jpeg" alt="Picture of Cake">
+      <std-cakes-list></std-cakes-list>
+
+  </div>
+  <div id="login" class="text-center">
+      
+    <img id="HomeCake" src= "\Sadcat.jpeg" alt="Picture of Cake">
   </div>
 
 <div class="container"> dfs
@@ -62,37 +67,10 @@ h3 {
   }
 
 #welcomeTo {
-    text-decoration: underline;
-    font-size: 300%;
+  text-decoration: underline;
+  font-size: 300%;
   }
-.stan-cake-list {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;
-}
 
-.stan-cake-card {
-  text-align: center;
-  margin: 20px;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-}
 
-.stan-cakes-image {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 10px;
-}
 
-.stan-cake-name {
-  font-size: 1.2em;
-  margin-bottom: 5px;
-}
-
-.stan-cake-description {
-  color: #555;
-}
 </style>

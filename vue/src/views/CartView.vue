@@ -4,8 +4,8 @@
         <nav>
             <router-link>Cake Details View</router-link>
         </nav>
-        <nav>
-            <router-link>Customer Info Form View</router-link>
+        <nav class="actions">
+            <router-link :to="{ name: 'customer-info-form' }">Order Information</router-link>
         </nav>
     </div>
 </template>

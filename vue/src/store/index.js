@@ -5,7 +5,20 @@ export function createStore(currentToken, currentUser) {
   let store = _createStore({
     state: {
       token: currentToken || '',
-      user: currentUser || {}
+      user: currentUser || {},
+
+      cakes: [
+        {
+          name: "Dead Cat",
+          description: "“Sorry your cat died. LOL” Round Chocolate Cake with Custard Filling and Cream Cheese Frosting. Decorated with Red Buttercream Napping Cat, sorry that’ll be its last snooze.",
+          price: 50
+        },
+        {
+          name: "Ex Friend",
+          description: "“You’re Dead to Us” Round Chocolate Cake with Vanilla Buttercream and Chocolate Ganache coating. Topped with a bloody knife, perfect for that back stabber.",
+          price: 50
+        }
+      ]
     },
     mutations: {
       SET_AUTH_TOKEN(state, token) {

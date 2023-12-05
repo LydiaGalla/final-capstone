@@ -15,17 +15,17 @@ CREATE TABLE employee (
     employee_id SERIAL,
     username VARCHAR(50) NOT NULL UNIQUE,
     password_hash VARCHAR(200) NOT NULL,
-    role VARCHAR(50) NOT NULL,
     firstname VARCHAR(25) NOT NULL,
     lastname VARCHAR(25) NOT NULL,
     CONSTRAINT PK_employee PRIMARY KEY (employee_id)
 );
+
 CREATE TABLE standard_cake (
     standard_cake_id SERIAL,
     cake_name VARCHAR(25) NOT NULL UNIQUE,
     description VARCHAR(500) NOT NULL,
-    price INTEGER(10) NOT NULL,
-    available BOOLEAN NOT NULL,
+    price NUMERIC(8, 2) NOT NULL,
+    is_available BOOLEAN NOT NULL,
     CONSTRAINT PK_standard_cake PRIMARY KEY (standard_cake_id)
 );
 
@@ -42,6 +42,7 @@ CREATE TABLE custom_cake (
 
 CREATE TABLE cake_order (
     order_id SERIAL,
+    customer_id INTEGER,
     standard_cake_id INTEGER,
     custom_cake_id INTEGER,
     due_date DATE NOT NULL,
@@ -54,6 +55,7 @@ CREATE TABLE cake_order (
     (standard_cake_id IS NOT NULL AND custom_cake_id IS NULL) OR
     (standard_cake_id IS NULL AND custom_cake_id IS NOT NULL)
     )
+    CONSTRAINT FK_cake_order_customer FOREIGN KEY (customer_id) REFERENCES customer(customer_id)
 );
 
 

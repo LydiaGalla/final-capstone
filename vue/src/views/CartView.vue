@@ -1,5 +1,6 @@
 <template>
-    <div>
+    <div id="cart">
+        
         <cart></cart>
         <nav>
             <router-link>Cake Details View</router-link>

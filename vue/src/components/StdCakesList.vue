@@ -27,7 +27,8 @@ export default {
 <style>
 .standard-cakes-list {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
+    align-items: center;
     flex-wrap: wrap;
 }
 

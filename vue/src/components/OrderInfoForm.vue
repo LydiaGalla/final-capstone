@@ -1,20 +1,33 @@
 <template>
-    <h1>Hi</h1>
-    <form class="order-info-form">
-        <button class="btn-submit" type="submit">Submit</button>
-    </form>
+    <div>
+        <form class="customer-info-form">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" v-model="firstName">
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" v-model="lastName">
+            <label for="phoneNumber">Phone Number: </label>
+            <input type="text" id="phoneNumber" v-model="phoneNumber">
+            <button type="submit" class="is-primary">Place Order</button>
+        </form>
+    </div>
 </template>
 
 <script>
-
-
 export default {
     data() {
         return {
-            cake: {}
+            cake: {},
+            firstName: '',
+            lastName: '',
+            phoneNumber: ''
         }
     },
     methods: {
         
     }
-}</script>
+}
+</script>
+
+<style>
+</style>
+

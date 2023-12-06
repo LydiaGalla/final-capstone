@@ -17,7 +17,7 @@ public class StandardCakeController {
     public StandardCakeController(StandardCakeDao standardCakeDao) {
         this.standardCakeDao = standardCakeDao;
     }
-    
+
     @GetMapping("/api/customer/standardcake")
     public List<StandardCake> getAllStandardCakes() {
         return standardCakeDao.getAllStandardCakes();

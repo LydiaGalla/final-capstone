@@ -1,18 +1,18 @@
 <template>
     <div>
-        <cake-details></cake-details>\
-        <nav>
+        <order-summary></order-summary>
+        <!-- <nav>
             <router-link>Choose Text</router-link>
-        </nav>
+        </nav> -->
     </div>
 </template>
 
 <script>
-import CakeDetails from '../components/CakeDetails.vue';
+import OrderSummary from '../components/OrderSummary.vue';
 
 export default {
     components: {
-        CakeDetails
+        OrderSummary
     },
 
     computed: {

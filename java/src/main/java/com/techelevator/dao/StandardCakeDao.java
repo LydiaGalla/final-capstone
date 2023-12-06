@@ -8,5 +8,5 @@ public interface StandardCakeDao {
 
     List<StandardCake> getAllStandardCakes();
 
-
+    void updateStandardCakeAvailability(int standardCakeId, boolean isAvailable);
 }

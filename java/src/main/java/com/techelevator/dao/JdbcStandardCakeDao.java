@@ -33,8 +33,15 @@ public class JdbcStandardCakeDao implements StandardCakeDao {
 
         }
 
-        return null;
+        return standardCakes;
     }
+
+    @Override
+    public void updateStandardCakeAvailability(int standardCakeId, boolean isAvailable) {
+        String sql = "UPDATE standard_cake SET is_available = ? WHERE standard_cake_id = ?;";
+        jdbcTemplate.update(sql, isAvailable, standardCakeId);
+    }
+
 
     private StandardCake mapToRowStandardCake(SqlRowSet results){
         StandardCake standardCake = new StandardCake();

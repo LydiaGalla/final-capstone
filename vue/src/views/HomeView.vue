@@ -1,21 +1,24 @@
 <template>
   <div id="home">
-    <h1 id="welcomeTo">Welcome To Tragic Cakes!</h1>
+    <img id="welcome" src="Welcome.png" alt="Welcome">
       <std-cakes-list></std-cakes-list>
-
   </div>
 
+  <div id="footer">
+    <h3>Hours</h3>
+    <p>Sunday : 7:00am - 12:00pm</p>
+    <p>Monday - Saturday : 7:00am - 3:00pm</p>
+  </div>
 </template>
 
 
 <script>
-import StdCakesList from '@/components/StdCakesList.vue'
+import StdCakesList from '../components/StdCakesList.vue';
 export default {
 
   components: {
     StdCakesList
   }
-
 
 };
 </script>
@@ -23,29 +26,27 @@ export default {
 <style>
 a:link {
   text-decoration: none;
-  color: rgb(224, 166, 99);
+  color: #583b66;
   }
-
 
 a:visited {
   text-decoration: none;
-  color: rgb(224, 166, 99);
+  color: #583b66;
   }
-
 
 a:hover {
-  text-decoration: none;
-  color: rgb(26, 80, 80);
+  text-decoration: underline;
+  color: #ffffff;
   }
-
 
 a:active {
   text-decoration: none;
-  color: rgb(224, 166, 99);
+  color: #583b66;
   }
 
 h3 {
-    color:  rgb(10, 36, 168);
+    font-size: x-large;
+    color:  #583b66;
   }
 
 #welcomeTo {
@@ -54,6 +55,12 @@ h3 {
   font-size: 300%;
   }
 
+#welcome {
+  
+}
 
+#footer {
+  text-align: center;
+}
 
 </style>

@@ -9,11 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class JdbcCustomerDao implements CustomerDao{
+public class JdbcStandardCakeDao implements StandardCakeDao {
 
     private final JdbcTemplate jdbcTemplate;
 
-    public JdbcCustomerDao(JdbcTemplate jdbcTemplate) {
+    public JdbcStandardCakeDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 

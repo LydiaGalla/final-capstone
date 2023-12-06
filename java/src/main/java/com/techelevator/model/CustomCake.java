@@ -4,17 +4,19 @@ public class CustomCake {
 
     private int customCakeId;
 
-    private String cakeStyle;
+    private int cakeSizeId;
 
-    private String cakeSize;
+    private int cakeFlavorId;
 
-    private String cakeFlavor;
+    private int cakeFrostingId;
 
-    private String frostingFlavor;
+    private int cakeFillingId;
 
-    private String fillingFlavor;
+    private int cakeStyleId;
 
     private String extras;
+
+    private int priceId;
 
     public int getCustomCakeId() {
         return customCakeId;
@@ -24,44 +26,44 @@ public class CustomCake {
         this.customCakeId = customCakeId;
     }
 
-    public String getCakeStyle() {
-        return cakeStyle;
+    public int getCakeSizeId() {
+        return cakeSizeId;
     }
 
-    public void setCakeStyle(String cakeStyle) {
-        this.cakeStyle = cakeStyle;
+    public void setCakeSizeId(int cakeSizeId) {
+        this.cakeSizeId = cakeSizeId;
     }
 
-    public String getCakeSize() {
-        return cakeSize;
+    public int getCakeFlavorId() {
+        return cakeFlavorId;
     }
 
-    public void setCakeSize(String cakeSize) {
-        this.cakeSize = cakeSize;
+    public void setCakeFlavorId(int cakeFlavorId) {
+        this.cakeFlavorId = cakeFlavorId;
     }
 
-    public String getCakeFlavor() {
-        return cakeFlavor;
+    public int getCakeFrostingId() {
+        return cakeFrostingId;
     }
 
-    public void setCakeFlavor(String cakeFlavor) {
-        this.cakeFlavor = cakeFlavor;
+    public void setCakeFrostingId(int cakeFrostingId) {
+        this.cakeFrostingId = cakeFrostingId;
     }
 
-    public String getFrostingFlavor() {
-        return frostingFlavor;
+    public int getCakeFillingId() {
+        return cakeFillingId;
     }
 
-    public void setFrostingFlavor(String frostingFlavor) {
-        this.frostingFlavor = frostingFlavor;
+    public void setCakeFillingId(int cakeFillingId) {
+        this.cakeFillingId = cakeFillingId;
     }
 
-    public String getFillingFlavor() {
-        return fillingFlavor;
+    public int getCakeStyleId() {
+        return cakeStyleId;
     }
 
-    public void setFillingFlavor(String fillingFlavor) {
-        this.fillingFlavor = fillingFlavor;
+    public void setCakeStyleId(int cakeStyleId) {
+        this.cakeStyleId = cakeStyleId;
     }
 
     public String getExtras() {
@@ -72,17 +74,26 @@ public class CustomCake {
         this.extras = extras;
     }
 
+    public int getPriceId() {
+        return priceId;
+    }
+
+    public void setPriceId(int priceId) {
+        this.priceId = priceId;
+    }
+
     public CustomCake() {
 
     }
 
-    public CustomCake(int customCakeId, String cakeStyle, String cakeSize, String cakeFlavor, String frostingFlavor, String fillingFlavor, String extras) {
+    public CustomCake(int customCakeId, int cakeSizeId, int cakeFlavorId, int cakeFrostingId, int cakeFillingId, int cakeStyleId, String extras, int priceId) {
         this.customCakeId = customCakeId;
-        this.cakeStyle = cakeStyle;
-        this.cakeSize = cakeSize;
-        this.cakeFlavor = cakeFlavor;
-        this.frostingFlavor = frostingFlavor;
-        this.fillingFlavor = fillingFlavor;
+        this.cakeSizeId = cakeSizeId;
+        this.cakeFlavorId = cakeFlavorId;
+        this.cakeFrostingId = cakeFrostingId;
+        this.cakeFillingId = cakeFillingId;
+        this.cakeStyleId = cakeStyleId;
         this.extras = extras;
+        this.priceId = priceId;
     }
 }

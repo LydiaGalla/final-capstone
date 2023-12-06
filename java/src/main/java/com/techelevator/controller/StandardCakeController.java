@@ -17,12 +17,12 @@ public class StandardCakeController {
         this.standardCakeDao = standardCakeDao;
     }
 
-    @GetMapping("/api/customer/standardcake")
+    @GetMapping("/standardcake")
     public List<StandardCake> getAllStandardCakes() {
         return standardCakeDao.getAllStandardCakes();
     }
 
-    @PutMapping("/api/customer/standardcake/{standardCakeId}")
+    @PutMapping("/standardcake/{standardCakeId}")
     public ResponseEntity<String> updateStandardCakeAvailability(@PathVariable int standardCakeId, @RequestParam boolean isAvailable){
         standardCakeDao.updateStandardCakeAvailability(standardCakeId, isAvailable);
         return ResponseEntity.ok("Standard cake availability updated successfully");

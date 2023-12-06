@@ -1,12 +1,14 @@
 <template>
-    <div id="cart">
+    <div>
+
+        <!-- figure out -->
         
-        <cart></cart>
-        <nav>
+        <!-- <nav>
             <router-link>Cake Details View</router-link>
-        </nav>
+        </nav> -->
+        <cart></cart>
         <nav class="actions">
-            <router-link :to="{ name: 'customer-info-form' }">Order Information</router-link>
+            <router-link :to="{ name: 'order-info-form' }">Order Information</router-link>
         </nav>
     </div>
 </template>

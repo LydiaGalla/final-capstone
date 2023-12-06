@@ -3,9 +3,9 @@ import { useStore } from 'vuex'
 
 // Import components
 import HomeView from '../views/HomeView.vue';
-import CakeDetailsView from '../views/CakeDetailsView.vue';
-import CartView from '../views/CartView.vue';
-import CustomerInfoFormView from '../views/CustomerInfoFormView.vue';
+import OrderSummaryView from '../views/OrderSummaryView.vue';
+import CartView from '@/views/CartView.vue';
+import OrderInfoFormView from '../views/OrderInfoFormView.vue';
 import LoginView from '../views/LoginView.vue';
 import LogoutView from '../views/LogoutView.vue';
 import RegisterView from '../views/RegisterView.vue';
@@ -38,15 +38,15 @@ const routes = [
   },
 
   {
-    name: 'cake-details',
-    path: '/cakeDetails',
-    component: CakeDetailsView
+    name: 'order-summary',
+    path: '/orderSummary',
+    component: OrderSummaryView
   },
 
   {
-    name: 'customer-info-form',
-    path: '/customerInfoForm',
-    component: CustomerInfoFormView
+    name: 'order-info-form',
+    path: '/orderInfoForm',
+    component: OrderInfoFormView
   },
 
   {

@@ -12,7 +12,8 @@ export function createStore(currentToken, currentUser) {
           name: "Dead Pet",
           image: '/DeadPet',
           description: "“Sorry your cat died. LOL” Round Chocolate Cake with Custard Filling and Cream Cheese Frosting. Decorated with Red Buttercream Napping Cat, sorry that’ll be its last snooze.",
-          price: 35
+          price: 35,
+          inCart: false
         },
         {
           name: "Ex Friend",
@@ -87,6 +88,12 @@ export function createStore(currentToken, currentUser) {
         state.token = '';
         state.user = {};
         axios.defaults.headers.common = {};
+      },
+      SET_IN_CART(state, payload) {
+        payload.cake.inCart = payload.value;
+      },
+      SAVE_CAKE(state, cake) {
+        state.cakes.push(cake);
       }
     },
   });

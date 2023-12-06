@@ -1,13 +1,13 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.CakeFillings;
-import com.techelevator.model.CakeOrder;
+import com.techelevator.model.*;
 
 import java.util.List;
 
 public interface CustomCakeDao {
 
     List<CakeFillings> getAllCakeFillings();
+
 
     void updateCakeFillingsAvailability(int FillingId, boolean isAvailable);
 
@@ -19,8 +19,13 @@ public interface CustomCakeDao {
 
     void updateCakeStyleAvailability(int StyleId, boolean isAvailable);
 
+    List<CakeFlavors> getAllCakeFlavors();
 
+    List<CakeFrostings> getAllCakeFrostings();
 
+    List<CakeSizes> getAllCakeSizes();
+
+    List<CakeStyle> getAllCakeStyles();
 
 
 }

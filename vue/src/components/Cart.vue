@@ -1,18 +1,18 @@
 <template>
-    <div>
-        <h2>Cart</h2>
-        
-        <router-link>Cake Details
-            <std-cake-card></std-cake-card>
-        </router-link>
-
-    </div>
+    <h1>Hello</h1>
+    <order-summary></order-summary>
+    <order-info-form></order-info-form>
 </template>
 
 <script>
+import OrderSummary from './OrderSummary.vue';
+import OrderInfoForm from './OrderInfoForm.vue';
 
 export default {
-    props: ['cake']
+    components: {
+        OrderSummary,
+        OrderInfoForm
+    }
 }
 
 </script>

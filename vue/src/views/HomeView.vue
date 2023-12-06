@@ -1,13 +1,8 @@
 <template>
   <div id="home">
     <h1 id="welcomeTo">Welcome To Tragic Cakes!</h1>
-      <h3>Fill with stuffs</h3>
       <std-cakes-list></std-cakes-list>
 
-  </div>
-  <div id="login" class="text-center">
-      
-    <img id="HomeCake" src= "\Sadcat.jpeg" alt="Picture of Cake">
   </div>
 
 
@@ -15,7 +10,7 @@
 
 
 <script>
-import StdCakesList from '@/components/StdCakesList.vue'
+import StdCakesList from '../components/StdCakesList.vue'
 export default {
 
   components: {
@@ -56,6 +51,7 @@ h3 {
 
 #welcomeTo {
   text-decoration: underline;
+  text-align: center;
   font-size: 300%;
   }
 

@@ -4,18 +4,24 @@
         <img v-if="cake.name" v-bind:src="cake.image + 'Cake.jpg'">
         <h3 class="cake-price">{{ cake.price }}</h3>
         <p class="description">{{ cake.description }}</p>
-        <button>Add to Cart</button>
-
+        <button v-on:click="setInCart(true)">Add to Cart</button>
     </div>
 </template>
 
 <script>
 
 export default {
-    props: ['cake'],
-
+    props:  
+        ['cake']
+    ,
     methods: {
-
+        setInCart(value) {
+            this.$store.commit('SET_IN_CART', { cake: this.cake, value: value});
+        }
+    //     addToCart(cake) {
+    //         let addedCake = Object.assign({ inCart: true}, cake);
+    //         this.$store.commit('SAVE_CAKE', addedCake);
+    //     }
     }
 }
 

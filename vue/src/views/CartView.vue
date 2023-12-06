@@ -1,11 +1,5 @@
 <template>
     <div>
-
-        <!-- figure out -->
-        
-        <!-- <nav>
-            <router-link>Cake Details View</router-link>
-        </nav> -->
         <cart></cart>
         <nav class="actions">
             <router-link :to="{ name: 'order-info-form' }">Order Information</router-link>

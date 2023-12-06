@@ -1,9 +1,6 @@
 <template>
     <div>
         <order-summary></order-summary>
-        <!-- <nav>
-            <router-link>Choose Text</router-link>
-        </nav> -->
     </div>
 </template>
 

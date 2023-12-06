@@ -8,6 +8,17 @@ public interface CustomCakeDao {
 
     List<CakeFillings> getAllCakeFillings();
 
+
+    void updateCakeFillingsAvailability(int fillingId, boolean isAvailable);
+
+    void updateCakeFlavorsAvailability(int flavorId, boolean isAvailable);
+
+    void updateCakeFrostingsAvailability(int frostingId, boolean isAvailable);
+
+    void updateCakeSizeAvailability(int sizeId, boolean isAvailable);
+
+    void updateCakeStyleAvailability(int styleId, boolean isAvailable);
+
     List<CakeFlavors> getAllCakeFlavors();
 
     List<CakeFrostings> getAllCakeFrostings();
@@ -15,7 +26,6 @@ public interface CustomCakeDao {
     List<CakeSizes> getAllCakeSizes();
 
     List<CakeStyle> getAllCakeStyles();
-
 
 
 }

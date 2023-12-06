@@ -33,7 +33,7 @@ public class JdbcStandardCakeDao implements StandardCakeDao {
 
         }
 
-        return null;
+        return standardCakes;
     }
 
     private StandardCake mapToRowStandardCake(SqlRowSet results){

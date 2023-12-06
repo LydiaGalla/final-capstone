@@ -2,7 +2,7 @@
     <section>
         <h2>Standard Cakes</h2>
         <div class="std-cakes-list">
-            <std-cake-card v-for="cake in cakes" v-bind:cake="cake" v-bind:key="cake.name" v:bind:enable-add="true"/>
+            <std-cake-card v-for="cake in cakes" v-bind:cake="cake" v-bind:key="cake.name"/>
         </div>
     </section>
     
@@ -25,6 +25,9 @@ export default {
 </script>
 
 <style>
+h2 {
+    font-size: 30px;
+}
 .std-cakes-list {
     display: flex;
     justify-content: space-around;

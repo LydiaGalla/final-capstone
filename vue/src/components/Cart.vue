@@ -1,5 +1,4 @@
 <template>
-    <h1>Hello</h1>
     <order-summary></order-summary>
     <order-info-form></order-info-form>
 </template>

@@ -37,21 +37,35 @@ public class JdbcCustomCakeDao implements CustomCakeDao {
     }
 
     @Override
-    public List<CakeFlavors> getAllCakeFlavors() {
-        List<CakeFlavors> cakeFlavors = new ArrayList<>();
-
-        String sql = "SELECT * FROM cake_flavors ORDER BY flavor_name ASC;";
-
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
-
-        while (results.next()){
-
-            CakeFlavors cakeFlavor = mapToRowCakeFlavors(results);
-
-            cakeFlavors.add(cakeFlavor);
-        }
-        return cakeFlavors;
+    public void updateCakeFillingsAvailability(int fillingId, boolean isAvailable) {
+        String sql = "UPDATE cake_fillings SET is_available = ? WHERE filling_id = ?;";
+        jdbcTemplate.update(sql, isAvailable, fillingId);
     }
+
+    @Override
+    public void updateCakeFlavorsAvailability(int flavorId, boolean isAvailable) {
+        String sql = "UPDATE cake_flavors SET is_available = ? WHERE flavor_id = ?;";
+        jdbcTemplate.update(sql, isAvailable, flavorId);
+    }
+
+    @Override
+    public void updateCakeFrostingsAvailability(int frostingId, boolean isAvailable) {
+        String sql = "UPDATE cake_frostings SET is_available = ? WHERE frosting_id = ?;";
+        jdbcTemplate.update(sql, isAvailable, frostingId);
+    }
+
+    @Override
+    public void updateCakeSizeAvailability(int sizeId, boolean isAvailable) {
+        String sql = "UPDATE cake_sizes SET is_available = ? WHERE size_id = ?;";
+        jdbcTemplate.update(sql, isAvailable, sizeId);
+    }
+
+    @Override
+    public void updateCakeStyleAvailability(int styleId, boolean isAvailable) {
+        String sql = "UPDATE cake_style SET is_available = ? WHERE style_id = ?;";
+        jdbcTemplate.update(sql, isAvailable, styleId);
+    }
+
 
     @Override
     public List<CakeFrostings> getAllCakeFrostings() {
@@ -156,4 +170,19 @@ public class JdbcCustomCakeDao implements CustomCakeDao {
 
         return cakeStyle;
    }
+   public List<CakeFlavors> getAllCakeFlavors() {
+       List<CakeFlavors> cakeFlavors = new ArrayList<>();
+       String sql = "SELECT * FROM cake_flavors ORDER BY flavor_name ASC;";
+
+       SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+
+       while (results.next()) {
+
+           CakeFlavors cakeFlavor = mapToRowCakeFlavors(results);
+
+           cakeFlavors.add(cakeFlavor);
+       }
+       return cakeFlavors;
+   }
+
 }

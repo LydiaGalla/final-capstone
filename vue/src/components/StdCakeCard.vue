@@ -29,7 +29,7 @@ export default {
 
 <style>
 .card {
-  border: 1px solid #ccc;
+  border: 1px solid #583b66;
   border-radius: 8px;
   text-align: center;
   width: 300px;
@@ -55,7 +55,7 @@ export default {
 }
 
 .card .cake-description {
-    color: #555;
+    color: #583b66;
 }
 
 </style>

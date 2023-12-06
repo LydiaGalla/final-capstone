@@ -112,7 +112,7 @@ CREATE TABLE cake_order (
     custom_cake_id INTEGER,
     due_date DATE NOT NULL,
     due_time TIME NOT NULL,
-    writing VARCHAR (140) NOT NULL,
+    writing VARCHAR (140),
     status VARCHAR (20) NOT NULL,
     quantity INTEGER NOT NULL,
     total NUMERIC(8, 2) NOT NULL,

@@ -2,8 +2,7 @@ package com.techelevator.model;
 
 import java.math.BigDecimal;
 
-public class StandardCake {
-    private int standardCakeId;
+public class StandardCakeDto {
 
     private String cakeName;
 
@@ -12,14 +11,6 @@ public class StandardCake {
     private BigDecimal price;
 
     private boolean isAvailable;
-
-    public int getStandardCakeId() {
-        return standardCakeId;
-    }
-
-    public void setStandardCakeId(int standardCakeId) {
-        this.standardCakeId = standardCakeId;
-    }
 
     public String getCakeName() {
         return cakeName;
@@ -53,16 +44,13 @@ public class StandardCake {
         isAvailable = available;
     }
 
-    public StandardCake() {
-
+    @Override
+    public String toString() {
+        return "StandardCakeDto{" +
+                "cakeName='" + cakeName + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", isAvailable=" + isAvailable +
+                '}';
     }
-
-    public StandardCake(int standardCakeId, String cakeName, String description, BigDecimal price, boolean isAvailable) {
-        this.standardCakeId = standardCakeId;
-        this.cakeName = cakeName;
-        this.description = description;
-        this.price = price;
-        this.isAvailable = isAvailable;
-    }
-
 }

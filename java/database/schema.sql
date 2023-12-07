@@ -10,27 +10,6 @@ CREATE TABLE users (
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
 );
 
-CREATE TABLE customer (
-	customer_id SERIAL,
-	firstname VARCHAR(25) NOT NULL,
-	lastname VARCHAR(25) NOT NULL,
-	email VARCHAR(50) NOT NULL,
-	phone VARCHAR(20) NOT NULL,
-	CONSTRAINT PK_customer PRIMARY KEY (customer_id)
-
-);
-
-CREATE TABLE employee (
-    employee_id SERIAL,
-    username VARCHAR(50) NOT NULL UNIQUE,
-    password_hash VARCHAR(200) NOT NULL,
-    firstname VARCHAR(25) NOT NULL,
-    lastname VARCHAR(25) NOT NULL,
-    CONSTRAINT PK_employee PRIMARY KEY (employee_id)
-);
-
-
-
 CREATE TABLE cake_price (
     price_id SERIAL,
     cupcake_single NUMERIC(6, 2) NOT NULL,
@@ -105,23 +84,34 @@ CREATE TABLE custom_cake (
     FOREIGN KEY (price_id) REFERENCES cake_price(price_id)
 );
 
-CREATE TABLE cake_order (
+CREATE TABLE standard_cake_order (
     order_id SERIAL,
-    customer_id INTEGER,
-    standard_cake_id INTEGER,
-    custom_cake_id INTEGER,
+    standard_cake_id INT,
+    first_name VARCHAR(25) NOT NULL,
+    last_name VARCHAR(25) NOT NULL,
+    phone VARCHAR(20) NOT NULL,
     due_date DATE NOT NULL,
     due_time TIME NOT NULL,
     writing VARCHAR (140),
     status VARCHAR (20) NOT NULL,
-    quantity INTEGER NOT NULL,
     total NUMERIC(8, 2) NOT NULL,
     CONSTRAINT PK_cake_order PRIMARY KEY (order_id),
-    CONSTRAINT check_standard_custom_cake CHECK (
-    (standard_cake_id IS NOT NULL AND custom_cake_id IS NULL) OR
-    (standard_cake_id IS NULL AND custom_cake_id IS NOT NULL)
-    ),
-    CONSTRAINT FK_cake_order_customer FOREIGN KEY (customer_id) REFERENCES customer(customer_id)
+    FOREIGN KEY (standard_cake_id) REFERENCES standard_cake(standard_cake_id)
+);
+
+CREATE TABLE custom_cake_order (
+    order_id SERIAL,
+    custom_cake_id INT,
+    first_name VARCHAR(25) NOT NULL,
+    last_name VARCHAR(25) NOT NULL,
+    phone VARCHAR(20) NOT NULL,
+    due_date DATE NOT NULL,
+    due_time TIME NOT NULL,
+    writing VARCHAR (140),
+    status VARCHAR (20) NOT NULL,
+    total NUMERIC(8, 2) NOT NULL,
+    CONSTRAINT PK_cake_order PRIMARY KEY (order_id),
+    FOREIGN KEY (custom_cake_id) REFERENCES custom_cake(custom_cake_id)
 );
 
 

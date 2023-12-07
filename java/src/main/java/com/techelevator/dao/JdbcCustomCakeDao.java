@@ -1,6 +1,6 @@
 package com.techelevator.dao;
 
-import ch.qos.logback.core.util.COWArrayList;
+
 import com.techelevator.model.*;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -181,6 +181,60 @@ public class JdbcCustomCakeDao implements CustomCakeDao {
         return null;
     }
 
+    @Override
+    public CakeFillings createNewCakeFilling(CakeFillings fillingToCreate) {
+        String sql = "INSERT INTO cake_fillings (filling_name, is_available) VALUES (?,?) RETURNING filling_id;";
+
+        int fillingId = jdbcTemplate.queryForObject(sql, Integer.class,
+                fillingToCreate.getFillingName(),
+                fillingToCreate.isAvailable());
+
+        return getCakeFillingById(fillingId);
+    }
+
+    @Override
+    public CakeFlavors createNewCakeFlavor(CakeFlavors flavorToCreate) {
+        String sql = "INSERT INTO cake_flavors (flavor_name, is_available) VALUES (?,?) RETURNING flavor_id;";
+
+        int flavorId = jdbcTemplate.queryForObject(sql, Integer.class,
+                flavorToCreate.getFlavorName(),
+                flavorToCreate.isAvailable());
+
+        return getCakeFlavorById(flavorId);
+    }
+
+    @Override
+    public CakeFrostings createNewCakeFrosting(CakeFrostings frostingToCreate) {
+        String sql = "INSERT INTO cake_frostings (frosting_name, is_available) VALUES(?,?) RETURNING frosting_id;";
+
+        int frostingId = jdbcTemplate.queryForObject(sql, Integer.class,
+                frostingToCreate.getFrostingName(),
+                frostingToCreate.isAvailable());
+
+        return getCakeFrostingById(frostingId);
+    }
+
+    @Override
+    public CakeSizes createNewCakeSize(CakeSizes sizeToCreate) {
+        String sql = "INSERT INTO cake_sizes (size_name, is_available) VALUES (?,?) RETURNING size_id;";
+
+        int sizeId = jdbcTemplate.queryForObject(sql, Integer.class,
+                sizeToCreate.getSizeName(),
+                sizeToCreate.isAvailable());
+
+        return getCakeSizeById(sizeId);
+    }
+
+    @Override
+    public CakeStyle createNewCakeStyle(CakeStyle styleToCreate) {
+        String sql = "INSERT INTO cake_style (style_name, is_avaialable) VALUES (?,?) RETURNING style_id;";
+
+        int styleId = jdbcTemplate.queryForObject(sql, Integer.class,
+                styleToCreate.getStyleName(),
+                styleToCreate.isAvailable());
+
+        return getCakeStyleById(styleId);
+    }
 
 
     private CakeFillings mapToRowCakeFillings(SqlRowSet results){

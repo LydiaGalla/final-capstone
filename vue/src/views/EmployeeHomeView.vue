@@ -3,7 +3,7 @@
 <!-- Show all pending orders button or filter -- give an option to mark as: 
     complete, pending, ready, cancelled -- have it update in the view -->
     <div>
-        <h3> Employee Home </h3>
+        <h3> Employee Home - Orders </h3>
 
         <!-- navigation component for employees
         -- Orders -- Add Cake -- Edit inventory -->

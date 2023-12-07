@@ -9,6 +9,8 @@ import OrderInfoFormView from '../views/OrderInfoFormView.vue';
 import LoginView from '../views/LoginView.vue';
 import LogoutView from '../views/LogoutView.vue';
 import RegisterView from '../views/RegisterView.vue';
+import EmployeeHomeView from '../views/EmployeeHomeView.vue';
+import InventoryView from '../views/InventoryView.vue';
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -19,6 +21,27 @@ import RegisterView from '../views/RegisterView.vue';
  * If they have (or don't need to) they're allowed to go about their way.
  */
 const routes = [
+
+  {
+    path: '/employeehome/inventory',
+    name: 'inventory',
+    component: InventoryView,
+    meta: {
+      requiresAuth: false
+    }
+  },
+
+
+   { 
+    path: '/employeehome',
+    name: 'employee home',
+    component: EmployeeHomeView,
+    meta:{
+      requiresAuth: false
+    }
+  },
+  
+
   {
     path: '/',
     name: 'home',

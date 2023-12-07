@@ -35,6 +35,35 @@ public class JdbcOrderDao implements OrderDao{
         return cakeOrders;
     }
 
+    @Override
+    public CakeOrder getCakeOrderById(int id) {
+        String sql ="SELECT * FROM cake_order WHERE order_id = ?;";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
+
+        if (results.next()){
+            return mapToRowCakeOrder(results);
+        }
+        return null;
+    }
+
+    @Override
+    public CakeOrder createNewCakeOrder(CakeOrder cakeToOrder) {
+        String sql = "INSERT INTO cake_order (customer_id, standard_cake_id, custom_cake_id, due_date, due_time, writing, status, quantity, total) VALUES (?,?,?,?,?,?,?,?,?,?) RETURNING order_id;";
+
+        int orderId = jdbcTemplate.queryForObject(sql, Integer.class,
+                cakeToOrder.getCustomerId(),
+                cakeToOrder.getStandardCakeId(),
+                cakeToOrder.getCustomCakeId(),
+                cakeToOrder.getDueDate(),
+                cakeToOrder.getDueTime(),
+                cakeToOrder.getWriting(),
+                cakeToOrder.getStatus(),
+                cakeToOrder.getQuantity(),
+                cakeToOrder.getTotal());
+        return getCakeOrderById(orderId);
+    }
+
     private CakeOrder mapToRowCakeOrder(SqlRowSet results){
         CakeOrder cakeOrder = new CakeOrder();
 

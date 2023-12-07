@@ -2,10 +2,10 @@
     <div class="card">
         <h2 class="cake-name">{{ cake.name }}</h2>
         <img v-if="cake.name" v-bind:src="cake.image + 'Cake.jpg'">
-        <h3 class="cake-price">{{ cake.price }}</h3>
+        <h3 class="cake-price"> $ {{ cake.price }}</h3>
         <p class="description">{{ cake.description }}</p>
-        <router-link :to="{ name: 'cart'}">
-            <button class="addToCart" v-on:click="setInCart(true)" v-bind:disabled="cake.inCart">Add to Cart</button>
+        <router-link :to="{ name: 'cart'}" style="position: absolute; bottom: 10px; margin-left: -25px;">
+            <button class="addToCart" v-on:click="setInCart(true)" v-bind:disabled="cake.inCart" >Add to Cart</button>
         </router-link>
     </div>
 </template>
@@ -27,13 +27,12 @@ export default {
 
 <style>
 .card {
-  border: 1px solid #583b66;
-  border-radius: 8px;
   text-align: center;
   width: 300px;
-  height: 400px;
+  height: 420px;
   margin: 20px;
   padding: 20px;
+  border-radius: 10px;
 }
 
 .card .cake-name {
@@ -49,11 +48,25 @@ export default {
 }
 
 .card .cake-price {
-  font-size: 1rem;
+  font-family: 'Teko', sans-serif;
+  font-size: 1.5rem;
 }
 
 .card .cake-description {
+    color: black;
+}
+.card .cake-name {
+    font-family: 'Teko', sans-serif;
+    font-size: 2rem;
     color: #583b66;
 }
+
+.addToCart {
+    background-color: #d1b8dd;
+    border: none;
+    font-family: 'Teko', sans-serif;
+    width: 50x;
+}
+
 
 </style>

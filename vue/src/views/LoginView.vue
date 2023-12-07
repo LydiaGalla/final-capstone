@@ -1,7 +1,7 @@
 <template>
   <div id="login">
     <form v-on:submit.prevent="login">
-      <h1 >Please Sign In</h1>
+      <img src="Please_Sign_In_Text.png" alt="Please Sign In">
       <div role="alert" v-if="invalidCredentials">
         Invalid username and password!
       </div>

@@ -5,7 +5,7 @@
         <h3 class="cake-price"> $ {{ cake.price }}</h3>
         <p class="description">{{ cake.description }}</p>
         <router-link :to="{ name: 'cart'}" style="position: absolute; bottom: 10px; margin-left: -25px;">
-            <button class="addToCart" v-on:click="setInCart(true)" v-bind:disabled="cake.inCart" >Add to Cart</button>
+            <button class="addToCart" v-on:click="setInCart(true)" v-bind:disabled="cake.inCart">Add to Cart</button>
         </router-link>
     </div>
 </template>
@@ -64,9 +64,15 @@ export default {
 .addToCart {
     background-color: #d1b8dd;
     border: none;
+    border-radius: 20px;
     font-family: 'Teko', sans-serif;
     width: 50x;
+    
 }
 
+.addToCart:hover {
+    background-color: #583b66;
+    color: white;
+}
 
 </style>

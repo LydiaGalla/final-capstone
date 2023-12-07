@@ -4,8 +4,8 @@
         <img v-if="cake.name" v-bind:src="cake.image + 'Cake.jpg'">
         <h3 class="cake-price"> $ {{ cake.price }}</h3>
         <p class="description">{{ cake.description }}</p>
-        <router-link :to="{ name: 'cart'}">
-            <button class="addToCart" v-on:click="setInCart(true)" v-bind:disabled="cake.inCart">Add to Cart</button>
+        <router-link :to="{ name: 'cart'}" style="position: absolute; bottom: 10px; margin-left: -25px;">
+            <button class="addToCart" v-on:click="setInCart(true)" v-bind:disabled="cake.inCart" >Add to Cart</button>
         </router-link>
     </div>
 </template>
@@ -32,6 +32,7 @@ export default {
   height: 420px;
   margin: 20px;
   padding: 20px;
+  border-radius: 10px;
 }
 
 .card .cake-name {
@@ -64,7 +65,8 @@ export default {
     background-color: #d1b8dd;
     border: none;
     font-family: 'Teko', sans-serif;
-
+    width: 50x;
 }
+
 
 </style>

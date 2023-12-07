@@ -40,10 +40,5 @@ p {
     flex-wrap: wrap;
 }
 
-#home-image {
-    max-width: 100%;
-    max-height: auto;
-    opacity: 1;
-}
 
 </style>

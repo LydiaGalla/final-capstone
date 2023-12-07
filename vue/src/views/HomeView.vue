@@ -87,4 +87,10 @@ h3 {
   text-align: center;
 }
 
+#home-image {
+    max-width: 100%;
+    max-height: auto;
+    opacity: 1;
+}
+
 </style>

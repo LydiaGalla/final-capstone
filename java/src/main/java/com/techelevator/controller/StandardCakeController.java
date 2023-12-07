@@ -9,6 +9,7 @@ import com.techelevator.model.StandardCakeDto;
 import com.techelevator.model.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -45,9 +46,11 @@ public class StandardCakeController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/standardcake/create")
+    @PreAuthorize("isAuthenticated()")
     public StandardCake createNewStandardCake(@RequestBody StandardCakeDto standardCakeDto, Principal principal){
         String username = principal.getName();
         User loggedInUser = userDao.getUserByUsername(username);
+
 
         StandardCake standardCakeToCreate = new StandardCake();
 

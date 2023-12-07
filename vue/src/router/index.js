@@ -11,6 +11,7 @@ import LogoutView from '../views/LogoutView.vue';
 import RegisterView from '../views/RegisterView.vue';
 import EmployeeHomeView from '../views/EmployeeHomeView.vue';
 import InventoryView from '../views/InventoryView.vue';
+import EditInventoryView from '../views/EditInventoryView.vue';
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -21,6 +22,15 @@ import InventoryView from '../views/InventoryView.vue';
  * If they have (or don't need to) they're allowed to go about their way.
  */
 const routes = [
+
+  {
+    path: '/employeehome/editinventory',
+    name: 'edit inventory',
+    component: EditInventoryView,
+    meta: {
+      requiresAuth: false
+    }
+  },
 
   {
     path: '/employeehome/inventory',

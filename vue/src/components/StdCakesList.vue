@@ -26,7 +26,8 @@ export default {
 
 <style>
 h2 {
-    font-size: 30px;
+    font-family: 'Teko', sans-serif;
+    font-size: 2rem;
 }
 .std-cakes-list {
     display: flex;

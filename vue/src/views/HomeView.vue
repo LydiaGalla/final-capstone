@@ -1,7 +1,17 @@
 <template>
   <div id="home">
     <img id="logo" src="Tragic_Cakes_Logo.png" alt="Tragic Cakes: We bake tragedies, not sins.">
+    <div>
+    <img id="home-image" src="HomePageImg_3.jpg" alt="Home Page Image of Cake">
+
+        <h2>Remedies for your Tragedies</h2>
+        <p>
+            At Tragic Cakes, we're prepared for the worst. We offer a variety of pre-made 
+            tragedies to sweeten up any sour situation, choose from any standard cake below.  
+        </p>
+
       <std-cakes-list></std-cakes-list>
+    </div>
   </div>
 
   <div>

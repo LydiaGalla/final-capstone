@@ -1,7 +1,7 @@
 <template>
     <img src="Checkout_Text.png" alt="Checkout">
     <div>
-        <form class="customer-info-form">
+        <form class="order-info-form">
 
             <label for="firstName">First Name:</label>
             <input type="text" id="firstName" v-model="firstName">

@@ -5,11 +5,19 @@
   </div>
 
   <div id="footer">
-    
-    <h3>Hours</h3>
+    <div>
+      <h3>Hours</h3>
         <p>Sunday : 7:00am - 12:00pm</p>
         <p>Monday - Saturday : 7:00am - 3:00pm</p>
-    <h3>Contact</h3>
+
+      <img src="Tiny_Cake_Logo.png" alt="Purple Cake Logo">  
+
+      <h3>Contact</h3>
+        <p>901 Pennsylvania Ave #3a</p>
+        <p>Pittsburgh, PA 15233</p>
+        <p>(877) 606-3203</p>
+    </div>
+    
   </div>
 </template>
 
@@ -59,6 +67,7 @@ h3 {
   }
 
 #footer {
+  column-count: 3;
   text-align: center;
 }
 

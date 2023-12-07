@@ -42,6 +42,35 @@ public class JdbcStandardCakeDao implements StandardCakeDao {
         jdbcTemplate.update(sql, isAvailable, standardCakeId);
     }
 
+    @Override
+    public StandardCake createNewStandardCake(StandardCake cakeToCreate) {
+        return null;
+    }
+
+    @Override
+    public StandardCake getStandardCakeById(int id) {
+        String sql ="SELECT * FROM standard_cake WHERE standard_cake_id = ?;";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
+
+        if (results.next()){
+                return mapToRowStandardCake(results);
+        }
+        return null;
+    }
+
+
+//    public StandardCake createNewStandardCake(StandardCake cakeToCreate){
+//        String sql ="INSERT INTO standard_cake (cake_name, description, price, is_available) VALUES (?,?,?,?) RETURNING standard_cake_id;";
+//
+//        int standardCakeId =jdbcTemplate.queryForObject(sql, Integer.class,
+//                cakeToCreate.getCakeName(),
+//                cakeToCreate.getDescription(),
+//                cakeToCreate.getPrice(),
+//                cakeToCreate.isAvailable());
+//
+//    }
+
 
     private StandardCake mapToRowStandardCake(SqlRowSet results){
         StandardCake standardCake = new StandardCake();

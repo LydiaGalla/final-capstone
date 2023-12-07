@@ -69,4 +69,24 @@ public class CustomCakeController {
         customCakeDao.updateCakeStyleAvailability(styleId, isAvailable);
         return ResponseEntity.ok("Style availability updated successfully");
     }
+    @GetMapping("/customcake/fillings/{id}")
+    public CakeFillings getCakeFillingById(@PathVariable int id){
+        return customCakeDao.getCakeFillingById(id);
+    }
+    @GetMapping("/customcake/flavors/{id}")
+    public CakeFlavors getCakeFlavorById(@PathVariable int id){
+        return customCakeDao.getCakeFlavorById(id);
+    }
+    @GetMapping("/customcake/frostings/{id}")
+    public CakeFrostings getFrostingById(@PathVariable int id){
+        return customCakeDao.getCakeFrostingById(id);
+    }
+    @GetMapping("/customcake/cakesize/{id}")
+    public CakeSizes getCakeSizeById(@PathVariable int id){
+        return customCakeDao.getCakeSizeById(id);
+    }
+    @GetMapping("/customcake/cakestyle/{id}")
+    public CakeStyle getCakeStyleById(int id){
+        return customCakeDao.getCakeStyleById(id);
+    }
 }

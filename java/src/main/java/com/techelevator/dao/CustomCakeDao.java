@@ -27,5 +27,17 @@ public interface CustomCakeDao {
 
     List<CakeStyle> getAllCakeStyles();
 
+    CakeFillings getCakeFillingById(int id);
+
+    CakeFlavors getCakeFlavorById(int id);
+
+    CakeFrostings getCakeFrostingById(int id);
+
+    CakeSizes getCakeSizeById(int id);
+
+    CakeStyle getCakeStyleById(int id);
+
+
+
 
 }

@@ -16,7 +16,7 @@
         <label for="password">Password</label>
         <input type="password" id="password" v-model="user.password" required />
       </div>
-      <button type="submit">Sign in</button>
+      <button id="submit" type="submit">Sign in</button>
       <p>
       <router-link v-bind:to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
     </form>
@@ -66,5 +66,17 @@ export default {
 }
 label {
   margin-right: 0.5rem;
+}
+
+#submit{
+    background-color: white;
+    border: none;
+    border-radius: 20px;
+    font-family: 'Teko', sans-serif;
+}
+
+#submit:hover {
+    background-color: #583b66;
+    color: white;
 }
 </style>

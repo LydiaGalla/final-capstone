@@ -4,6 +4,12 @@
       <std-cakes-list></std-cakes-list>
   </div>
 
+  <div>
+    <h2>
+      Customize Your Tragic Cake
+    </h2>
+  </div>
+
   <div id="footer">
     <div>
       <h3>Hours</h3>

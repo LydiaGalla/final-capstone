@@ -4,7 +4,9 @@
         <img v-if="cake.name" v-bind:src="cake.image + 'Cake.jpg'">
         <h3 class="cake-price">{{ cake.price }}</h3>
         <p class="description">{{ cake.description }}</p>
-        <button v-on:click="setInCart(true)" v-bind:disabled="cake.inCart">Add to Cart</button>
+        <router-link :to="{ name: 'cart'}">
+            <button class="addToCart" v-on:click="setInCart(true)" v-bind:disabled="cake.inCart">Add to Cart</button>
+        </router-link>
     </div>
 </template>
 

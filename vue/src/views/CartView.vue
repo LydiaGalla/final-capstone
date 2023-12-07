@@ -1,9 +1,9 @@
 <template>
     <div>
         <cart></cart>
-        <nav class="actions">
-            <router-link :to="{ name: 'order-info-form' }">Order Information</router-link>
-        </nav>
+        <div>
+            <router-link :to="{ name: 'order-info-form' }">Checkout</router-link>
+        </div>
     </div>
 </template>
 

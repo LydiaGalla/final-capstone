@@ -2,8 +2,8 @@
     <div>
         HI
         <!--TBD For Routerlink-->
-        <a>Orders |</a>
-        <a>Inventory</a>
+        <router-link v-bind:to="{ name: 'employee home'}"> Orders </router-link> &nbsp;|&nbsp;
+        <router-link v-bind:to="{ name: 'inventory'}"> Inventory </router-link>
 
     </div>  
 

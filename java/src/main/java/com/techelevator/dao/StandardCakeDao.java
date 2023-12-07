@@ -9,4 +9,10 @@ public interface StandardCakeDao {
     List<StandardCake> getAllStandardCakes();
 
     void updateStandardCakeAvailability(int standardCakeId, boolean isAvailable);
+
+    StandardCake createNewStandardCake(StandardCake cakeToCreate);
+
+    StandardCake getStandardCakeById(int id);
+
+
 }

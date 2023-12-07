@@ -28,4 +28,9 @@ public class StandardCakeController {
         return ResponseEntity.ok("Standard cake availability updated successfully");
     }
 
+    @GetMapping("/standardcake/{id}")
+    public StandardCake getStandardCakeById(@PathVariable int id){
+        return standardCakeDao.getStandardCakeById(id);
+    }
+
 }

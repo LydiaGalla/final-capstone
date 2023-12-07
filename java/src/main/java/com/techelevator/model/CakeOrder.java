@@ -124,4 +124,20 @@ public class CakeOrder {
         this.quantity = quantity;
         this.total = total;
     }
+
+    @Override
+    public String toString() {
+        return "CakeOrder{" +
+                "orderId=" + orderId +
+                ", customerId=" + customerId +
+                ", standardCakeId=" + standardCakeId +
+                ", customCakeId=" + customCakeId +
+                ", dueDate=" + dueDate +
+                ", dueTime=" + dueTime +
+                ", writing='" + writing + '\'' +
+                ", status='" + status + '\'' +
+                ", quantity=" + quantity +
+                ", total=" + total +
+                '}';
+    }
 }

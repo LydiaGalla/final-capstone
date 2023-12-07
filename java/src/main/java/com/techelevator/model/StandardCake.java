@@ -64,4 +64,15 @@ public class StandardCake {
         this.price = price;
         this.isAvailable = isAvailable;
     }
+
+    @Override
+    public String toString() {
+        return "StandardCake{" +
+                "standardCakeId=" + standardCakeId +
+                ", cakeName='" + cakeName + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", isAvailable=" + isAvailable +
+                '}';
+    }
 }

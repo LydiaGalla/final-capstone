@@ -121,6 +121,68 @@ public class JdbcCustomCakeDao implements CustomCakeDao {
         return cakeStyles;
     }
 
+    @Override
+    public CakeFillings getCakeFillingById(int id) {
+        String sql = "SELECT * FROM cake_fillings WHERE filling_id = ?;";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
+
+        if(results.next()){
+            return mapToRowCakeFillings(results);
+        }
+        return null;
+    }
+
+    @Override
+    public CakeFlavors getCakeFlavorById(int id) {
+        String sql = "SELECT * FROM cake_flavors WHERE flavor_id = ?;";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
+
+        if(results.next()){
+            return mapToRowCakeFlavors(results);
+        }
+        return null;
+    }
+
+    @Override
+    public CakeFrostings getCakeFrostingById(int id) {
+        String sql = "SELECT * FROM cake_frostings WHERE frosting_id = ?;";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
+
+        if(results.next()){
+            return mapToRowCakeFrostings(results);
+        }
+        return null;
+    }
+
+    @Override
+    public CakeSizes getCakeSizeById(int id) {
+        String sql = "SELECT * FROM cake_sizes WHERE size_id = ?;";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
+
+        if(results.next()){
+            return mapToRowCakeSizes(results);
+        }
+        return null;
+    }
+
+    @Override
+    public CakeStyle getCakeStyleById(int id) {
+        String sql = "SELECT * FROM cake_style WHERE style_id = ?;";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
+
+        if(results.next()){
+            return mapToRowCakeStyle(results);
+        }
+        return null;
+    }
+
+
+
     private CakeFillings mapToRowCakeFillings(SqlRowSet results){
         CakeFillings cakeFillings = new CakeFillings();
 

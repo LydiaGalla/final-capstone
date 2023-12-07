@@ -1,5 +1,5 @@
 <template>
-    <h1>Order Summary</h1>
+    <img src="Order_Summary_Text.png" alt="Order Summary">
     <div class="cake-container">
         <std-cake-card v-for="cake in cakes" v-bind:cake="cake" v-bind:key="cake.name"></std-cake-card>
     </div>

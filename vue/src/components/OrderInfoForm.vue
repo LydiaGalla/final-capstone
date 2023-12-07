@@ -1,4 +1,5 @@
 <template>
+    <img src="Checkout_Text.png" alt="Checkout">
     <div>
         <form class="customer-info-form">
 
@@ -42,7 +43,7 @@
             
             <br>
 
-            <button type="submit" class="is-primary">Place Order</button>
+            <button id="placeOrder" type="submit" class="is-primary">Place Order</button>
         </form>
     </div>
 </template>
@@ -79,5 +80,11 @@ export default {
 </script>
 
 <style>
+#placeOrder{
+    
+    font-family: 'Teko', sans-serif;
+    
+}
+
 </style>
 

@@ -1,20 +1,61 @@
 <template>
-    <order-summary></order-summary>
-    <form class="add-text-form">
-        <label for="addText">Add Writing to Cake (optional, $5 fee): </label>
-            <input type="text" id="addText" v-model="phoneNumber">
-    </form>
+    <img src="Order_Summary_Text.png" alt="Order Summary">
+    <div class="cake-container">
+        <std-cake-card v-for="cake in cakes" v-bind:cake="cake" v-bind:key="cake.name"></std-cake-card>
+    </div>
     <router-link :to="{ name: 'home'}">Continue Shopping</router-link>
 
+    <div>
+        <br>
+    </div>
+    <form v-on:submit.prevent="submitForm" class="add-text-form">
+        <label for="addText">Add Writing to Cake (optional, $5 fee): </label>
+        <input type="text" id="addedText" v-model="addedText">
+        <div>
+            <button>Checkout</button>
+        </div>
+
+    </form>
+    
+    <div >
+    </div>
 </template>
 
 <script>
-import OrderSummary from './OrderSummary.vue';
+import StdCakeCard from './StdCakeCard.vue';
+import StdCakeOrderService from '../services/StdCakeOrderService';
 
 export default {
+    
+    data() {
+        return {
+            addedText: ''
+        }
+    },
+    computed: {
+        cakes() {
+            return this.$store.state.cakes.filter((cake) => {
+                return cake.inCart === true;
+            })
+        }
+    },
     components: {
-        OrderSummary
+        StdCakeCard
+    },
+    methods: {
+        submitForm() {
+            this.$store.commit('SET_WRITING', this.addedText)
+            this.$router.push({ name: 'order-info-form' })
+        }
+        
     }
 }
 
 </script>
+
+<style>
+h1 {
+    text-align: center;
+    font-size: 300%;
+}
+</style>

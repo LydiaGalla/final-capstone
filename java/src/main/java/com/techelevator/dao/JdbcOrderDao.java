@@ -2,18 +2,21 @@ package com.techelevator.dao;
 
 import com.techelevator.model.CakeOrder;
 import com.techelevator.model.CustomCake;
+import com.techelevator.model.StandardCake;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 @Component
-public class JdbcOrderDao implements OrderDao{
+public class JdbcOrderDao implements OrderDao {
 
     private final JdbcTemplate jdbcTemplate;
+
 
     private final CustomCakeDao customCakeDao;
 
@@ -30,7 +33,7 @@ public class JdbcOrderDao implements OrderDao{
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
 
-        while (results.next()){
+        while (results.next()) {
 
             CakeOrder cakeOrder = mapToRowCakeOrder(results);
 
@@ -45,7 +48,7 @@ public class JdbcOrderDao implements OrderDao{
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
 
-        if (results.next()){
+        if (results.next()) {
             return mapToRowCakeOrder(results);
         }
         return null;
@@ -69,6 +72,12 @@ public class JdbcOrderDao implements OrderDao{
         return getCakeOrderById(orderId);
     }
 
+
+    @Override
+    public void updateStandardCakeOrderStatus(int orderId, String status) {
+
+    }
+
     @Override
     public CustomCake createNewCustomCake(CustomCake cakeToCreate) {
         String sql = "INSERT INTO custom_cake (cake_size_id, cake_flavor_id, cake_frosting_id, cake_filling_id, cake_style_id, extras, price_id) VALUES (?,?,?,?,?,?,?) RETURNING custom_cake_id;";
@@ -84,7 +93,6 @@ public class JdbcOrderDao implements OrderDao{
 
         return customCakeDao.getCustomCakeById(customCakeId);
     }
-
 
     private CakeOrder mapToRowCakeOrder(SqlRowSet results){
         CakeOrder cakeOrder = new CakeOrder();

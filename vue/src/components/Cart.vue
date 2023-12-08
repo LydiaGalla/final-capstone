@@ -8,11 +8,11 @@
     <div>
         <br>
     </div>
-    <form class="add-text-form">
+    <form v-on:submit.prevent="submitForm" class="add-text-form">
         <label for="addText">Add Writing to Cake (optional, $5 fee): </label>
-        <input type="text" id="addText" v-model="addText">
+        <input type="text" id="addedText" v-model="addedText">
         <div>
-            <router-link :to="{ name: 'order-info-form' }">Checkout</router-link>
+            <button>Checkout</button>
         </div>
 
     </form>
@@ -28,7 +28,9 @@ import StdCakeOrderService from '../services/StdCakeOrderService';
 export default {
     
     data() {
-        
+        return {
+            addedText: ''
+        }
     },
     computed: {
         cakes() {
@@ -41,6 +43,10 @@ export default {
         StdCakeCard
     },
     methods: {
+        submitForm() {
+            this.$store.commit('SET_WRITING', this.addedText)
+            this.$router.push({ name: 'order-info-form' })
+        }
         
     }
 }

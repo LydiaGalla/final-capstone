@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 export default {
-    
+
   addStandardCakeOrder(order) {
-    return axios.post('/standard-cake-orders', order);
+    return axios.post('/cakeorder/create', order);
 
   },
 

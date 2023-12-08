@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -61,7 +62,7 @@ public class JdbcOrderDao implements OrderDao{
                 cakeToOrder.getLastName(),
                 cakeToOrder.getPhone(),
                 cakeToOrder.getDueDate(),
-                cakeToOrder.getDueTime(),
+                LocalTime.of(8,0), // TODO: use cakeToOrder.getDueTime()
                 cakeToOrder.getWriting(),
                 cakeToOrder.getStatus(),
                 cakeToOrder.getTotal());

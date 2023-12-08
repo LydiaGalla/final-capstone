@@ -12,15 +12,15 @@
             <br>
 
             <label for="phoneNumber">Phone Number: </label>
-            <input type="text" id="phoneNumber" v-model="createOrder.phoneNumber">
+            <input type="text" id="phoneNumber" v-model="createOrder.phone">
             <br>
 
             <label for="pickupDate">Pickup Date: </label>
-            <input type="date" id="pickupDate" v-model="createOrder.pickupDate" :min="currentDatePlusTwoDays" :max="currentDatePlusMonth">
+            <input type="date" id="pickupDate" v-model="createOrder.dueDate" :min="currentDatePlusTwoDays" :max="currentDatePlusMonth">
             
             <br>
             <label for="pickupTime">Pickup Time: </label>
-            <select id="pickupTime" v-if="!isSunday" v-model="createOrder.pickupTime">
+            <select id="pickupTime" v-if="!isSunday" v-model="createOrder.dueTime">
                 <option>7:30 AM</option>
                 <option>8:00 AM</option>
                 <option>8:30 AM</option>
@@ -37,7 +37,7 @@
                 <option>2:00 PM</option>
                 <option>2:30 PM</option>
             </select>
-            <select id="pickupTime" v-if="isSunday" v-model="pickupTime">
+            <select id="pickupTime" v-if="isSunday" v-model="createOrder.dueTime">
                 <option>7:30 AM</option>
                 <option>8:00 AM</option>
                 <option>8:30 AM</option>
@@ -71,15 +71,14 @@ export default {
         return {
         //     
           createOrder: {
-            // name: this.cake.name,
-            // price: this.cake.price,
-            // writing: this.cake.writing,
-            // total: this.cake.total,
+            
+            writing: this.$store.state.writing,
             firstName: this.order.firstName,
             lastName: this.order.lastName,
-            phoneNumber: this.order.phoneNumber,
-            pickupDate: this.order.pickupDate,
-            pickupTime: this.order.pickupTime
+            phone: this.order.phoneNumber,
+            dueDate: this.order.dueDate,
+            dueTime: this.order.dueTime,
+            
           }
         };
     },
@@ -103,6 +102,11 @@ export default {
                 return true;
             }
             return false;
+        },
+        cakeInCart() {
+            console.log(this.$store.state.cakes.find(cake => cake.inCart === true))
+            return this.$store.state.cakes.find(cake => cake.inCart === true);
+        
         }
     },
     methods: {
@@ -112,39 +116,28 @@ export default {
             return;
           }
 
-          if (this.createOrder.id === 0) {
+          this.createOrder.standardCakeId = this.cakeInCart.standardCakeId,
+          this.createOrder.total = this.cakeInCart.price
+          this.createOrder.dueTime = null // TODO: fix this
             
             StdCakeOrderService
               .addStandardCakeOrder(this.createOrder)
               .then(response => {
                 if (response.status === 201) {
-                    this.$store.commit('SET_NOTIFICATION', { message: 'A new cake order was added.', type: 'success'});
-                    this.$router.push({ name: 'order-info-form', params: { id: this.createOrder.id } });
+                    this.$store.commit('CLEAR_CART')
+                    this.$router.push({ name: 'home' });
                 }
               })
               .catch(error => {
                 alert("Something went wrong.");
               });
-
-          } else {
-            //  StdCakeOrderService
-            //    .updateStandardCakeOrder(this.createOrder)
-            //    .then(response => {
-            //     if (response.status === 200) {
-            //         this.$store.commit('SET_NOTIFICATION', { message: `Standard Cake ${this.createOrder.id} was updated.`, type: 'success'});
-            //         this.$router.push({name: 'home', params: { id: this.createOrder.id } });
-            //     }
-            //    })
-            //    .catch(error => {
-            //      this.handleErrorResponse(error, 'updating');
-            //   });
-          }
         },
         cancelForm() {
             this.$router.back();
         },
         
         validateForm() {
+            return true;
             // TODO: write this method
         }
                 

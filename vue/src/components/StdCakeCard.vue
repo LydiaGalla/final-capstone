@@ -1,11 +1,11 @@
 <template>
     <div class="card">
-        <h2 class="cake-name">{{ cake.name }}</h2>
-        <img v-if="cake.name" v-bind:src="cake.image + 'Cake.jpg'">
+        <h2 class="cake-name">{{ cake.cakeName }}</h2>
+        <img v-if="cake.cakeName" v-bind:src="cake.cakeName.replace(' ', '') + 'Cake.jpg'">
         <h3 class="cake-price"> $ {{ cake.price }}</h3>
         <p class="description">{{ cake.description }}</p>
         <router-link :to="{ name: 'cart'}" style="position: absolute; bottom: 10px; margin-left: -25px;">
-            <button class="addToCart" v-on:click="setInCart(true)" v-bind:disabled="cake.inCart">Add to Cart</button>
+            <button class="addToCart" v-on:click="setInCart" v-bind:disabled="cake.inCart">Add to Cart</button>
         </router-link>
     </div>
 </template>
@@ -17,8 +17,13 @@ export default {
         ['cake']
     ,
     methods: {
-        setInCart(value) {
-            this.$store.commit('SET_IN_CART', { cake: this.cake, value: value});
+        setInCart() {
+            this.$store.commit('SET_IN_CART', { cake: this.cake, value: true});
+        }
+    },
+    computed: {
+        anyCakesInCart() {
+            return false
         }
     }
 }

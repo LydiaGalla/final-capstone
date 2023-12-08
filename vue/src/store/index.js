@@ -103,6 +103,14 @@ export function createStore(currentToken, currentUser) {
       },
       SET_CAKES(state, cakes) {
         state.cakes = cakes;
+      },
+      SET_WRITING(state, writing) {
+        state.writing = writing;
+      },
+      CLEAR_CART(state) {
+        state.cakes.forEach(cake => {
+          cake.inCart = false;
+        })
       }
       
     },

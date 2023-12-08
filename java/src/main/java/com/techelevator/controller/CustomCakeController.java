@@ -26,25 +26,25 @@ public class CustomCakeController {
 
     private final UserDao userDao;
 
-    private final CakeFillingDto cakeFillingDto;
+    private CakeFillingDto cakeFillingDto;
 
-    private final CakeFlavorDto cakeFlavorDto;
+    private CakeFlavorDto cakeFlavorDto;
 
-    private final CakeFrostingsDto cakeFrostingsDto;
+    private CakeFrostingsDto cakeFrostingsDto;
 
-    private final CakeSizeDto cakeSizeDto;
+    private CakeSizeDto cakeSizeDto;
 
-    private final CakeStyleDto cakeStyleDto;
+    private CakeStyleDto cakeStyleDto;
 
-    public CustomCakeController(JdbcTemplate jdbcTemplate, CustomCakeDao customCakeDao, UserDao userDao, CakeFillingDto cakeFillingDto, CakeFlavorDto cakeFlavorDto, CakeFrostingsDto cakeFrostingsDto, CakeSizeDto cakeSizeDto, CakeStyleDto cakeStyleDto) {
+    public CustomCakeController(JdbcTemplate jdbcTemplate, CustomCakeDao customCakeDao, UserDao userDao) {
         this.jdbcTemplate = jdbcTemplate;
         this.customCakeDao = customCakeDao;
         this.userDao = userDao;
-        this.cakeFillingDto = cakeFillingDto;
-        this.cakeFlavorDto = cakeFlavorDto;
-        this.cakeFrostingsDto = cakeFrostingsDto;
-        this.cakeSizeDto = cakeSizeDto;
-        this.cakeStyleDto = cakeStyleDto;
+//        this.cakeFillingDto = cakeFillingDto;
+//        this.cakeFlavorDto = cakeFlavorDto;
+//        this.cakeFrostingsDto = cakeFrostingsDto;
+//        this.cakeSizeDto = cakeSizeDto;
+//        this.cakeStyleDto = cakeStyleDto;
     }
 
     @GetMapping("/customcake/fillings")

@@ -1,7 +1,6 @@
 <template>
   <div id="home">
     <img id="logo" src="Tragic_Cakes_Logo.png" alt="Tragic Cakes: We bake tragedies, not sins.">
-      <std-cakes-list></std-cakes-list>
     <div>
     <img id="home-image" src="HomePageImg_3.jpg" alt="Home Page Image of Cake">
 
@@ -52,28 +51,8 @@ export default {
 
   components: {
     StdCakesList
-  },
-  data() {
-    return {
-      cakes: []
-    };
-  },
-  methods: {
-    getCakes() {
-      StdCakeService.list() 
-        .then(response => {
-          this.cakes = response.data;
-        })
-        .catch(error => {
-          // handle error
-        })
-      
-    }
-  },
-  created() {
-    this.getCakes();
   }
-
+  
 };
 </script>
 

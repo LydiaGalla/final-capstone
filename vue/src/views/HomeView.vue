@@ -14,10 +14,16 @@
     </div>
   </div>
 
-  <div>
+  <div id="custom-cake-info">
     <h2>
       Customize Your Tragic Cake
     </h2>
+    <p>
+      Build your own custom cake for any tragic event. 
+      Customize your terrible treats from the bottom up, choose everything from 
+      cake flavors, fillings, frostings, and decorations. 
+    </p>
+    <img id="custom_cake_img" src="HomePageImg_1.jpg" alt="Round Cake with Purple Flowers">
   </div>
 
   <div id="footer">
@@ -39,13 +45,14 @@
 
 
 <script>
+import StdCakeService from '../services/StdCakeService';
 import StdCakesList from '../components/StdCakesList.vue';
 export default {
 
   components: {
     StdCakesList
   }
-
+  
 };
 </script>
 
@@ -91,6 +98,14 @@ h3 {
     max-width: 100%;
     max-height: auto;
     opacity: 1;
+}
+
+#custom-cake-info {
+  column-count: 2;
+}
+
+#custom-cake-img {
+  max-width: 500px;
 }
 
 </style>

@@ -1,14 +1,20 @@
 package com.techelevator.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalTimeSerializer;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public class StandardCakeOrder {
+public class CakeOrderDto {
+    private Integer standardCakeId;
 
-    private int orderId;
-
-    private int standardCakeId;
+    private Integer customCakeId;
 
     private String firstName;
 
@@ -16,8 +22,10 @@ public class StandardCakeOrder {
 
     private String phone;
 
+    @JsonDeserialize(using = LocalDateDeserializer.class)
     private LocalDate dueDate;
 
+    @JsonDeserialize(using = LocalTimeDeserializer.class)
     private LocalTime dueTime;
 
     private String writing;
@@ -26,20 +34,20 @@ public class StandardCakeOrder {
 
     private BigDecimal total;
 
-    public int getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
-    }
-
-    public int getStandardCakeId() {
+    public Integer getStandardCakeId() {
         return standardCakeId;
     }
 
     public void setStandardCakeId(int standardCakeId) {
         this.standardCakeId = standardCakeId;
+    }
+
+    public Integer getCustomCakeId() {
+        return customCakeId;
+    }
+
+    public void setCustomCakeId(int customCakeId) {
+        this.customCakeId = customCakeId;
     }
 
     public String getFirstName() {
@@ -106,20 +114,19 @@ public class StandardCakeOrder {
         this.total = total;
     }
 
-    public StandardCakeOrder() {
-
-    }
-
-    public StandardCakeOrder(int orderId, int standardCakeId, String firstName, String lastName, String phone, LocalDate dueDate, LocalTime dueTime, String writing, String status, BigDecimal total) {
-        this.orderId = orderId;
-        this.standardCakeId = standardCakeId;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phone = phone;
-        this.dueDate = dueDate;
-        this.dueTime = dueTime;
-        this.writing = writing;
-        this.status = status;
-        this.total = total;
+    @Override
+    public String toString() {
+        return "CakeOrderDto{" +
+                "standardCakeId=" + standardCakeId +
+                ", customCakeId=" + customCakeId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", phone='" + phone + '\'' +
+                ", dueDate=" + dueDate +
+                ", dueTime=" + dueTime +
+                ", writing='" + writing + '\'' +
+                ", status='" + status + '\'' +
+                ", total=" + total +
+                '}';
     }
 }

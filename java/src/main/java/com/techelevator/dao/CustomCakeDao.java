@@ -47,6 +47,8 @@ public interface CustomCakeDao {
 
     CakeStyle createNewCakeStyle(CakeStyle styleToCreate);
 
+    CustomCake getCustomCakeById(int id);
+
 
 
 

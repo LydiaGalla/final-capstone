@@ -84,35 +84,23 @@ CREATE TABLE custom_cake (
     FOREIGN KEY (price_id) REFERENCES cake_price(price_id)
 );
 
-CREATE TABLE standard_cake_order (
+CREATE TABLE cake_order (
     order_id SERIAL,
-    standard_cake_id INT,
+    standard_cake_id INT DEFAULT NULL,
+    custom_cake_id INT DEFAULT NULL,
     first_name VARCHAR(25) NOT NULL,
     last_name VARCHAR(25) NOT NULL,
     phone VARCHAR(20) NOT NULL,
     due_date DATE NOT NULL,
     due_time TIME NOT NULL,
     writing VARCHAR (140),
-    status VARCHAR (20) NOT NULL,
+    status VARCHAR (20) DEFAULT 'Pending',
     total NUMERIC(8, 2) NOT NULL,
     CONSTRAINT PK_standard_cake_order PRIMARY KEY (order_id),
-    FOREIGN KEY (standard_cake_id) REFERENCES standard_cake(standard_cake_id)
-);
-
-CREATE TABLE custom_cake_order (
-    order_id SERIAL,
-    custom_cake_id INT,
-    first_name VARCHAR(25) NOT NULL,
-    last_name VARCHAR(25) NOT NULL,
-    phone VARCHAR(20) NOT NULL,
-    due_date DATE NOT NULL,
-    due_time TIME NOT NULL,
-    writing VARCHAR (140),
-    status VARCHAR (20) NOT NULL,
-    total NUMERIC(8, 2) NOT NULL,
-    CONSTRAINT PK_custom_cake_order PRIMARY KEY (order_id),
+    FOREIGN KEY (standard_cake_id) REFERENCES standard_cake(standard_cake_id),
     FOREIGN KEY (custom_cake_id) REFERENCES custom_cake(custom_cake_id)
 );
+
 
 
 COMMIT TRANSACTION;

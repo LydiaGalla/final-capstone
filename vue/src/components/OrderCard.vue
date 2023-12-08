@@ -8,7 +8,7 @@
         <p class="order-writing">Requested cake text: {{ order.writing }}</p>
         <p class="order-total">Total: ${{ order.total }}</p>
         <p class="order-status"> {{ order.status }}</p>
-        <button class="status-button"> Edit Status</button>
+        <button class="status"> Edit Status</button>
     </div>
 </template>
 
@@ -40,7 +40,7 @@ export default{
     color: red;
 }
 
-.status-button {
+.status {
     background-color: #d1b8dd;
     border: none;
     border-radius: 20px;
@@ -48,7 +48,7 @@ export default{
     width: 50x;
 }
 
-.status-button:hover {
+.status:hover {
     background-color: #583b66;
     color: white;
 }

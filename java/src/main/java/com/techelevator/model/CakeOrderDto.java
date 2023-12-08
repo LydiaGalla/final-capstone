@@ -1,13 +1,20 @@
 package com.techelevator.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalTimeSerializer;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class CakeOrderDto {
-    private int standardCakeId;
+    private Integer standardCakeId;
 
-    private int customCakeId;
+    private Integer customCakeId;
 
     private String firstName;
 
@@ -15,8 +22,10 @@ public class CakeOrderDto {
 
     private String phone;
 
+    @JsonDeserialize(using = LocalDateDeserializer.class)
     private LocalDate dueDate;
 
+    @JsonDeserialize(using = LocalTimeDeserializer.class)
     private LocalTime dueTime;
 
     private String writing;
@@ -25,7 +34,7 @@ public class CakeOrderDto {
 
     private BigDecimal total;
 
-    public int getStandardCakeId() {
+    public Integer getStandardCakeId() {
         return standardCakeId;
     }
 
@@ -33,7 +42,7 @@ public class CakeOrderDto {
         this.standardCakeId = standardCakeId;
     }
 
-    public int getCustomCakeId() {
+    public Integer getCustomCakeId() {
         return customCakeId;
     }
 

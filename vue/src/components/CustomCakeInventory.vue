@@ -1,13 +1,13 @@
 <template>
 <div>
-    <h4>Ingredients</h4>
+    <h3>Ingredients</h3>
     <table>
         <tr>
             <thead>
             <th>Cake Flavor</th>
             </thead>
         </tr>
-        <tr>Chocolate <input type="checkbox"></tr>
+        <tr>Chocolate <input type="button" value="Available"></tr>
     </table>
     <table>
         <tr>
@@ -15,7 +15,7 @@
             <th>Cake Frostings</th>
             </thead>
         </tr>
-        <tr>Chocolate <input type="checkbox"></tr>
+        <tr>Chocolate <input type="button" value="Available"></tr>
     </table>
     <table>
         <tr>
@@ -23,15 +23,11 @@
             <th>Cake Fillings</th>
             </thead>
         </tr>
-        <tr>Chocolate <input type="checkbox"></tr>
+        <tr>Chocolate <input type="button" value="Available"></tr>
     </table>
 
     <h5> Cake Size</h5>
     <h5> Cake Style</h5>
-
-    <h5> Cake Flavor</h5>
-    <h5> Cake Flavor</h5>
-    <h5> Cake Flavor</h5>
 
 </div>
 
@@ -42,6 +38,11 @@ export default{
     data(){
         return{
 
+        }
+    },
+    methods:{
+        changeAvailability(){
+            
         }
     }
 }

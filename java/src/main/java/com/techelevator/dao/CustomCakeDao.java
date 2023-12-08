@@ -37,6 +37,17 @@ public interface CustomCakeDao {
 
     CakeStyle getCakeStyleById(int id);
 
+    CakeFillings createNewCakeFilling(CakeFillings fillingToCreate);
+
+    CakeFlavors createNewCakeFlavor(CakeFlavors flavorToCreate);
+
+    CakeFrostings createNewCakeFrosting(CakeFrostings frostingToCreate);
+
+    CakeSizes createNewCakeSize(CakeSizes sizeToCreate);
+
+    CakeStyle createNewCakeStyle(CakeStyle styleToCreate);
+
+
 
 
 

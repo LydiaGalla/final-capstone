@@ -1,7 +1,30 @@
 <template>
   <div id="home">
     <img id="logo" src="Tragic_Cakes_Logo.png" alt="Tragic Cakes: We bake tragedies, not sins.">
-      <std-cakes-list v-bind:cakes="cakes"></std-cakes-list>
+      <std-cakes-list></std-cakes-list>
+    <div>
+    <img id="home-image" src="HomePageImg_3.jpg" alt="Home Page Image of Cake">
+
+        <h2>Remedies for your Tragedies</h2>
+        <p>
+            At Tragic Cakes, we're prepared for the worst. We offer a variety of pre-made 
+            tragedies to sweeten up any sour situation, choose from any standard cake below.  
+        </p>
+
+      <std-cakes-list></std-cakes-list>
+    </div>
+  </div>
+
+  <div id="custom-cake-info">
+    <h2>
+      Customize Your Tragic Cake
+    </h2>
+    <p>
+      Build your own custom cake for any tragic event. 
+      Customize your terrible treats from the bottom up, choose everything from 
+      cake flavors, fillings, frostings, and decorations. 
+    </p>
+    <img id="custom_cake_img" src="HomePageImg_1.jpg" alt="Round Cake with Purple Flowers">
   </div>
 
   <div id="footer">
@@ -90,6 +113,20 @@ h3 {
 #footer {
   column-count: 3;
   text-align: center;
+}
+
+#home-image {
+    max-width: 100%;
+    max-height: auto;
+    opacity: 1;
+}
+
+#custom-cake-info {
+  column-count: 2;
+}
+
+#custom-cake-img {
+  max-width: 500px;
 }
 
 </style>

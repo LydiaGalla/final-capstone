@@ -1,20 +1,20 @@
 package com.techelevator.model;
 
 import java.math.BigDecimal;
-import java.sql.Date;
-import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public class CakeOrder {
+public class StandardCakeOrder {
 
     private int orderId;
 
-    private int customerId;
-
     private int standardCakeId;
 
-    private int customCakeId;
+    private String firstName;
+
+    private String lastName;
+
+    private String phone;
 
     private LocalDate dueDate;
 
@@ -23,8 +23,6 @@ public class CakeOrder {
     private String writing;
 
     private String status;
-
-    private int quantity;
 
     private BigDecimal total;
 
@@ -36,14 +34,6 @@ public class CakeOrder {
         this.orderId = orderId;
     }
 
-    public int getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
-    }
-
     public int getStandardCakeId() {
         return standardCakeId;
     }
@@ -52,12 +42,28 @@ public class CakeOrder {
         this.standardCakeId = standardCakeId;
     }
 
-    public int getCustomCakeId() {
-        return customCakeId;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setCustomCakeId(int customCakeId) {
-        this.customCakeId = customCakeId;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public LocalDate getDueDate() {
@@ -92,14 +98,6 @@ public class CakeOrder {
         this.status = status;
     }
 
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
     public BigDecimal getTotal() {
         return total;
     }
@@ -108,36 +106,20 @@ public class CakeOrder {
         this.total = total;
     }
 
-    public CakeOrder() {
+    public StandardCakeOrder() {
 
     }
 
-    public CakeOrder(int orderId, int customerId, int standardCakeId, int customCakeId, LocalDate dueDate, LocalTime dueTime, String writing, String status, int quantity, BigDecimal total) {
+    public StandardCakeOrder(int orderId, int standardCakeId, String firstName, String lastName, String phone, LocalDate dueDate, LocalTime dueTime, String writing, String status, BigDecimal total) {
         this.orderId = orderId;
-        this.customerId = customerId;
         this.standardCakeId = standardCakeId;
-        this.customCakeId = customCakeId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phone = phone;
         this.dueDate = dueDate;
         this.dueTime = dueTime;
         this.writing = writing;
         this.status = status;
-        this.quantity = quantity;
         this.total = total;
-    }
-
-    @Override
-    public String toString() {
-        return "CakeOrder{" +
-                "orderId=" + orderId +
-                ", customerId=" + customerId +
-                ", standardCakeId=" + standardCakeId +
-                ", customCakeId=" + customCakeId +
-                ", dueDate=" + dueDate +
-                ", dueTime=" + dueTime +
-                ", writing='" + writing + '\'' +
-                ", status='" + status + '\'' +
-                ", quantity=" + quantity +
-                ", total=" + total +
-                '}';
     }
 }

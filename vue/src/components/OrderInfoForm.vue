@@ -154,9 +154,16 @@ export default {
 
 <style>
 #placeOrder, #cancel {
-    
+    background-color: white;
+    border: none;
+    border-radius: 20px;
     font-family: 'Teko', sans-serif;
-    
+    width: 50x;    
+}
+
+#placeOrder:hover {
+    background-color: #583b66;
+    color: white;
 }
 
 </style>

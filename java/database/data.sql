@@ -42,4 +42,5 @@ INSERT INTO standard_cake (cake_name, description, price, is_available)  VALUES 
 INSERT INTO standard_cake (cake_name, description, price, is_available)  VALUES ('Sued', 'Sorry You’re Getting Sued! Round Red Velvet Cake with Fluffy Cream Cheese Frosting and simple red lettering. Much less surprising than being served with court papers. (Size: Small)', 35.00, true);
 INSERT INTO standard_cake (cake_name, description, price, is_available)  VALUES ('Wreck', 'Sorry You’re a Terrible Driver! Rectangle White Sheet Cake with Fudge Filling and Vanilla Buttercream. It won’t pay for that ticket but it might ease the pain. (Size: Small)', 35.00, true);
 
+
 COMMIT TRANSACTION;

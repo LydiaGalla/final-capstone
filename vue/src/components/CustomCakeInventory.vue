@@ -123,6 +123,11 @@ export default{
         return{
 
         }
+    },
+    methods:{
+        changeAvailability(){
+            
+        }
     }
 }
 </script>

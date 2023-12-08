@@ -1,17 +1,17 @@
 package com.techelevator.model;
 
 import java.math.BigDecimal;
-import java.security.Principal;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.Date;
 
-public class CakeOrderDto {
+public class StandardCakeOrderDto {
+    private int standardCakeId;
 
     private String firstName;
 
     private String lastName;
+
+    private String phone;
 
     private LocalDate dueDate;
 
@@ -21,20 +21,14 @@ public class CakeOrderDto {
 
     private String status;
 
-    private int quantity;
-
     private BigDecimal total;
 
+    public int getStandardCakeId() {
+        return standardCakeId;
+    }
 
-    public CakeOrderDto(String firstName, String lastName, LocalDate dueDate, LocalTime dueTime, String writing, String status, int quantity, BigDecimal total) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.dueDate = dueDate;
-        this.dueTime = dueTime;
-        this.writing = writing;
-        this.status = status;
-        this.quantity = quantity;
-        this.total = total;
+    public void setStandardCakeId(int standardCakeId) {
+        this.standardCakeId = standardCakeId;
     }
 
     public String getFirstName() {
@@ -51,6 +45,14 @@ public class CakeOrderDto {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public LocalDate getDueDate() {
@@ -85,19 +87,26 @@ public class CakeOrderDto {
         this.status = status;
     }
 
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
     public BigDecimal getTotal() {
         return total;
     }
 
     public void setTotal(BigDecimal total) {
         this.total = total;
+    }
+
+    @Override
+    public String toString() {
+        return "StandardCakeOrderDto{" +
+                "standardCakeId=" + standardCakeId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", phone='" + phone + '\'' +
+                ", dueDate=" + dueDate +
+                ", dueTime=" + dueTime +
+                ", writing='" + writing + '\'' +
+                ", status='" + status + '\'' +
+                ", total=" + total +
+                '}';
     }
 }

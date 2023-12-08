@@ -1,20 +1,18 @@
 package com.techelevator.dao;
 
 
-import com.techelevator.model.CakeOrder;
 import com.techelevator.model.StandardCake;
+import com.techelevator.model.StandardCakeOrder;
 
 import java.util.List;
 
 public interface OrderDao {
 
-    List<CakeOrder> getAllCakeOrders();
+    List<StandardCakeOrder> getAllCakeOrders();
 
-    CakeOrder getCakeOrderById(int id);
+    StandardCakeOrder getCakeOrderById(int id);
 
-    CakeOrder createNewCakeOrder(CakeOrder cakeToOrder);
-
-
+    StandardCakeOrder createNewStandardCakeOrder(StandardCakeOrder cakeToOrder);
 
 
 }

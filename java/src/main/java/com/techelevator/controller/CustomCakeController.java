@@ -1,14 +1,18 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.CustomCakeDao;
+import com.techelevator.dao.UserDao;
 import com.techelevator.model.CakeFillings;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import com.techelevator.model.*;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -17,8 +21,26 @@ public class CustomCakeController {
 
     private final CustomCakeDao customCakeDao;
 
-    public CustomCakeController(CustomCakeDao customCakeDao) {
+    private final UserDao userDao;
+
+    private final CakeFillingDto cakeFillingDto;
+
+    private final CakeFlavorDto cakeFlavorDto;
+
+    private final CakeFrostingsDto cakeFrostingsDto;
+
+    private final CakeSizeDto cakeSizeDto;
+
+    private final CakeStyleDto cakeStyleDto;
+
+    public CustomCakeController(CustomCakeDao customCakeDao, UserDao userDao, CakeFillingDto cakeFillingDto, CakeFlavorDto cakeFlavorDto, CakeFrostingsDto cakeFrostingsDto, CakeSizeDto cakeSizeDto, CakeStyleDto cakeStyleDto) {
         this.customCakeDao = customCakeDao;
+        this.userDao = userDao;
+        this.cakeFillingDto = cakeFillingDto;
+        this.cakeFlavorDto = cakeFlavorDto;
+        this.cakeFrostingsDto = cakeFrostingsDto;
+        this.cakeSizeDto = cakeSizeDto;
+        this.cakeStyleDto = cakeStyleDto;
     }
 
     @GetMapping("/customcake/fillings")
@@ -89,4 +111,81 @@ public class CustomCakeController {
     public CakeStyle getCakeStyleById(int id){
         return customCakeDao.getCakeStyleById(id);
     }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/customcake/fillings/create")
+    @PreAuthorize("isAuthenticated()")
+    public CakeFillings createNewCakeFilling(@RequestBody CustomCakeDao customCakeDao, Principal principal){
+        String username = principal.getName();
+        User loggedInUser = userDao.getUserByUsername(username);
+
+        CakeFillings cakeFillingToCreate = new CakeFillings();
+
+        cakeFillingToCreate.setFillingName(cakeFillingDto.getFillingName());
+        cakeFillingToCreate.setAvailable(cakeFillingDto.isAvailable());
+
+        return customCakeDao.createNewCakeFilling(cakeFillingToCreate);
+    }
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/customcake/flavors/create")
+    @PreAuthorize("isAuthenticated()")
+    public CakeFlavors createNewCakeFlavor(@RequestBody CustomCakeDao customCakeDao, Principal principal){
+        String username = principal.getName();
+        User loggedInUser = userDao.getUserByUsername(username);
+
+        CakeFlavors flavorToCreate = new CakeFlavors();
+
+        flavorToCreate.setFlavorName(cakeFlavorDto.getFlavorName());
+        flavorToCreate.setAvailable(cakeFlavorDto.isAvailable());
+
+        return customCakeDao.createNewCakeFlavor(flavorToCreate);
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/customcake/frostings/create")
+    @PreAuthorize("isAuthenticated()")
+    public CakeFrostings createNewCakeFrosting(@RequestBody CustomCakeDao customCakeDao, Principal principal){
+        String username = principal.getName();
+        User loggedInUser = userDao.getUserByUsername(username);
+
+        CakeFrostings frostingToCreate = new CakeFrostings();
+
+        frostingToCreate.setFrostingName(cakeFrostingsDto.getFrostingName());
+        frostingToCreate.setAvailable(cakeFrostingsDto.isAvailable());
+
+        return customCakeDao.createNewCakeFrosting(frostingToCreate);
+
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/customcake/cakesize/create")
+    @PreAuthorize("isAuthenticated()")
+    public CakeSizes createNewCakeSize(@RequestParam CustomCakeDao customCakeDao, Principal principal){
+        String username = principal.getName();
+        User loggedInUser = userDao.getUserByUsername(username);
+
+        CakeSizes sizeToCreate = new CakeSizes();
+
+        sizeToCreate.setSizeName(cakeSizeDto.getSizeName());
+        sizeToCreate.setAvailable(cakeSizeDto.isAvailable());
+
+        return customCakeDao.createNewCakeSize(sizeToCreate);
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/customcake/cakestyle/create")
+    @PreAuthorize("isAuthenticated()")
+    public CakeStyle createNewCakeStyle(@RequestParam CustomCakeDao customCakeDao, Principal principal){
+        String username = principal.getName();
+        User loggedInUser = userDao.getUserByUsername(username);
+
+        CakeStyle styleToCreate = new CakeStyle();
+
+        styleToCreate.setStyleName(cakeStyleDto.getStyleName());
+        styleToCreate.setAvailable(cakeStyleDto.isAvailable());
+
+        return customCakeDao.createNewCakeStyle(styleToCreate);
+    }
+
+
 }

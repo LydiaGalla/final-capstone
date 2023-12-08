@@ -3,8 +3,6 @@ package com.techelevator.controller;
 import com.techelevator.dao.OrderDao;
 import com.techelevator.model.CakeOrder;
 import com.techelevator.model.CakeOrderDto;
-import com.techelevator.model.CakeStatusUpdateDto;
-import com.techelevator.model.StandardCakeOrderDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +14,6 @@ import java.util.List;
 public class OrderController {
     private final OrderDao orderDao;
 
-    private final CakeStatusUpdateDto cakeStatusUpdateDto;
 
 
     public OrderController(OrderDao orderDao) {
@@ -76,5 +73,5 @@ public class OrderController {
 
         return ResponseEntity.ok("Standard cake order status updated successfully");
     }
-    }
+
 }

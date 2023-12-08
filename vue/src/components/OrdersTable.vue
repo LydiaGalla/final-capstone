@@ -26,8 +26,8 @@
                     <td>11111</td>
                     <td>Chocolate cake, chocolate icing....</td>
                     <td>1/1/2024</td>
-                    <td id="status">Pending</td>
-                    <td><input type="button" value="Mark As Complete" id="Incomplete"/></td>
+                    <td>Pending</td>
+                    <td><input type="button" value="Mark As Complete"/></td>
                 </tr>
                 <tr>
                     <td>Lydia</td>

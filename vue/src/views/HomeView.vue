@@ -45,13 +45,14 @@
 
 
 <script>
+import StdCakeService from '../services/StdCakeService';
 import StdCakesList from '../components/StdCakesList.vue';
 export default {
 
   components: {
     StdCakesList
   }
-
+  
 };
 </script>
 

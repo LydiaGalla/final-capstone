@@ -8,9 +8,9 @@ public class CakeOrder {
 
     private int orderId;
 
-    private int standardCakeId;
+    private Integer standardCakeId;
 
-    private int customCakeId;
+    private Integer customCakeId;
 
     private String firstName;
 
@@ -36,19 +36,19 @@ public class CakeOrder {
         this.orderId = orderId;
     }
 
-    public int getStandardCakeId() {
+    public Integer getStandardCakeId() {
         return standardCakeId;
     }
 
-    public void setStandardCakeId(int standardCakeId) {
+    public void setStandardCakeId(Integer standardCakeId) {
         this.standardCakeId = standardCakeId;
     }
 
-    public int getCustomCakeId() {
+    public Integer getCustomCakeId() {
         return customCakeId;
     }
 
-    public void setCustomCakeId(int customCakeId) {
+    public void setCustomCakeId(Integer customCakeId) {
         this.customCakeId = customCakeId;
     }
 

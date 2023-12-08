@@ -12,8 +12,26 @@
 </template>
 
 <script>
+import StdCakeService from './services/StdCakeService';
+import StdCakeOrderService from './services/StdCakeOrderService';
 
 export default {
+  
+  methods: {
+    getCakes() {
+      StdCakeService.list()
+        .then(response => {
+          this.$store.commit('SET_CAKES', response.data);
+        })
+        .catch(error => {
+          // handle error ?
+        })
+    }
+    
+  },
+  created() {
+    this.getCakes();
+  }
 
 }
 

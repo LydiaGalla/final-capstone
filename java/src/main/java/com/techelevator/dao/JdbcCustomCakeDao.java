@@ -236,6 +236,11 @@ public class JdbcCustomCakeDao implements CustomCakeDao {
         return getCakeStyleById(styleId);
     }
 
+    @Override
+    public CustomCake getCustomCakeById(int id) {
+        return null;
+    }
+
 
     private CakeFillings mapToRowCakeFillings(SqlRowSet results){
         CakeFillings cakeFillings = new CakeFillings();

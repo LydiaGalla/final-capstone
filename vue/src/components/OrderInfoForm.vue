@@ -1,26 +1,26 @@
 <template>
     <img src="Checkout_Text.png" alt="Checkout">
     <div>
-        <form class="order-info-form">
+        <form v-on:submit.prevent="submitForm" class="order-info-form">
 
             <label for="firstName">First Name:</label>
-            <input type="text" id="firstName" v-model="firstName">
+            <input type="text" id="firstName" v-model="createOrder.firstName">
             <br>
 
             <label for="lastName">Last Name:</label>
-            <input type="text" id="lastName" v-model="lastName">
+            <input type="text" id="lastName" v-model="createOrder.lastName">
             <br>
 
             <label for="phoneNumber">Phone Number: </label>
-            <input type="text" id="phoneNumber" v-model="phoneNumber">
+            <input type="text" id="phoneNumber" v-model="createOrder.phone">
             <br>
 
             <label for="pickupDate">Pickup Date: </label>
-            <input type="date" id="pickupDate" v-model="pickupDate" :min="currentDatePlusTwoDays" :max="currentDatePlusMonth">
+            <input type="date" id="pickupDate" v-model="createOrder.dueDate" :min="currentDatePlusTwoDays" :max="currentDatePlusMonth">
             
             <br>
             <label for="pickupTime">Pickup Time: </label>
-            <select id="pickupTime" v-if="!isSunday" v-model="pickupTime">
+            <select id="pickupTime" v-if="!isSunday" v-model="createOrder.dueTime">
                 <option>7:30 AM</option>
                 <option>8:00 AM</option>
                 <option>8:30 AM</option>
@@ -37,7 +37,7 @@
                 <option>2:00 PM</option>
                 <option>2:30 PM</option>
             </select>
-            <select id="pickupTime" v-if="isSunday" v-model="pickupTime">
+            <select id="pickupTime" v-if="isSunday" v-model="createOrder.dueTime">
                 <option>7:30 AM</option>
                 <option>8:00 AM</option>
                 <option>8:30 AM</option>
@@ -48,25 +48,39 @@
                 <option>11:00 AM</option>
                 <option>11:30 AM</option>
             </select>
-
             <br>
 
             <button id="placeOrder" type="submit" class="is-primary">Place Order</button>
+            <button id="cancel" type="button" v-on:click="cancelForm">Cancel</button>
         </form>
     </div>
 </template>
 
 <script>
+import StdCakeOrderService from '../services/StdCakeOrderService';
+import StdCakeCard from './StdCakeCard.vue';
+
 export default {
+    props: {
+        order: {
+            type: Object,
+            required: true
+        }
+    },
     data() {
         return {
-            cake: {},
-            firstName: '',
-            lastName: '',
-            phoneNumber: '',
-            pickupDate: '',
-            pickupTime: ''
-        }
+        //     
+          createOrder: {
+            
+            writing: this.$store.state.writing,
+            firstName: this.order.firstName,
+            lastName: this.order.lastName,
+            phone: this.order.phoneNumber,
+            dueDate: this.order.dueDate,
+            dueTime: this.order.dueTime,
+            
+          }
+        };
     },
     computed: {
         currentDatePlusTwoDays() {
@@ -88,16 +102,51 @@ export default {
                 return true;
             }
             return false;
+        },
+        cakeInCart() {
+            console.log(this.$store.state.cakes.find(cake => cake.inCart === true))
+            return this.$store.state.cakes.find(cake => cake.inCart === true);
+        
         }
     },
     methods: {
+        submitForm() {
+
+          if (!this.validateForm()) {
+            return;
+          }
+
+          this.createOrder.standardCakeId = this.cakeInCart.standardCakeId,
+          this.createOrder.total = this.cakeInCart.price
+          this.createOrder.dueTime = null // TODO: fix this
+            
+            StdCakeOrderService
+              .addStandardCakeOrder(this.createOrder)
+              .then(response => {
+                if (response.status === 201) {
+                    this.$store.commit('CLEAR_CART')
+                    this.$router.push({ name: 'home' });
+                }
+              })
+              .catch(error => {
+                alert("Something went wrong.");
+              });
+        },
+        cancelForm() {
+            this.$router.back();
+        },
         
+        validateForm() {
+            return true;
+            // TODO: write this method
+        }
+                
     }
 }
 </script>
 
 <style>
-#placeOrder{
+#placeOrder, #cancel {
     background-color: white;
     border: none;
     border-radius: 20px;

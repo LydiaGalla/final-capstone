@@ -3,6 +3,8 @@ package com.techelevator.controller;
 import com.techelevator.dao.OrderDao;
 import com.techelevator.model.CakeOrder;
 import com.techelevator.model.CakeOrderDto;
+import com.techelevator.model.CustomCake;
+import com.techelevator.model.CustomCakeDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -49,5 +51,20 @@ public class OrderController {
     @GetMapping("/cakeorder/{id}")
     public CakeOrder getCakeOrderById(@PathVariable int id) {
         return orderDao.getCakeOrderById(id);
+    }
+
+    public CustomCake createNewCustomCake(@RequestBody CustomCakeDto customCakeDto) {
+
+        CustomCake cakeToCreate = new CustomCake();
+
+        cakeToCreate.setCakeSizeId(customCakeDto.getCakeSizeId());
+        cakeToCreate.setCakeFlavorId(customCakeDto.getCakeFlavorId());
+        cakeToCreate.setCakeFrostingId(customCakeDto.getCakeFrostingId());
+        cakeToCreate.setCakeFillingId(customCakeDto.getCakeFillingId());
+        cakeToCreate.setCakeStyleId(customCakeDto.getCakeStyleId());
+        cakeToCreate.setExtras(customCakeDto.getExtras());
+        cakeToCreate.setPriceId(customCakeDto.getPriceId());
+
+        return orderDao.createNewCustomCake(cakeToCreate);
     }
 }

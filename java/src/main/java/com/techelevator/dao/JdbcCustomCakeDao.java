@@ -236,6 +236,18 @@ public class JdbcCustomCakeDao implements CustomCakeDao {
         return getCakeStyleById(styleId);
     }
 
+    @Override
+    public CustomCake getCustomCakeById(int id) {
+        String sql ="SELECT * FROM custom_cake WHERE custom_cake_id = ?;";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
+
+        if(results.next()){
+            return mapRowToCustomCake(results);
+        }
+        return null;
+    }
+
 
     private CakeFillings mapToRowCakeFillings(SqlRowSet results){
         CakeFillings cakeFillings = new CakeFillings();
@@ -299,6 +311,20 @@ public class JdbcCustomCakeDao implements CustomCakeDao {
            cakeFlavors.add(cakeFlavor);
        }
        return cakeFlavors;
+   }
+
+   private CustomCake mapRowToCustomCake(SqlRowSet results){
+        CustomCake customCake = new CustomCake();
+        customCake.setCustomCakeId(results.getInt("custom_cake_id"));
+        customCake.setCakeSizeId(results.getInt("cake_size_id"));
+        customCake.setCakeFlavorId(results.getInt("flavor_id"));
+        customCake.setCakeFrostingId(results.getInt("frosting_id"));
+        customCake.setCakeFillingId(results.getInt("filling_id"));
+        customCake.setCakeStyleId(results.getInt("style_id"));
+        customCake.setExtras(results.getNString("extras"));
+        customCake.setPriceId(results.getInt("price_id"));
+
+        return customCake;
    }
 
 }

@@ -5,6 +5,8 @@ import com.techelevator.dao.UserDao;
 import com.techelevator.model.CakeFillings;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import com.techelevator.model.*;
@@ -19,6 +21,7 @@ import java.util.List;
 @CrossOrigin
 public class CustomCakeController {
 
+    private JdbcTemplate jdbcTemplate;
     private final CustomCakeDao customCakeDao;
 
     private final UserDao userDao;
@@ -33,7 +36,8 @@ public class CustomCakeController {
 
     private final CakeStyleDto cakeStyleDto;
 
-    public CustomCakeController(CustomCakeDao customCakeDao, UserDao userDao, CakeFillingDto cakeFillingDto, CakeFlavorDto cakeFlavorDto, CakeFrostingsDto cakeFrostingsDto, CakeSizeDto cakeSizeDto, CakeStyleDto cakeStyleDto) {
+    public CustomCakeController(JdbcTemplate jdbcTemplate, CustomCakeDao customCakeDao, UserDao userDao, CakeFillingDto cakeFillingDto, CakeFlavorDto cakeFlavorDto, CakeFrostingsDto cakeFrostingsDto, CakeSizeDto cakeSizeDto, CakeStyleDto cakeStyleDto) {
+        this.jdbcTemplate = jdbcTemplate;
         this.customCakeDao = customCakeDao;
         this.userDao = userDao;
         this.cakeFillingDto = cakeFillingDto;
@@ -185,6 +189,32 @@ public class CustomCakeController {
         styleToCreate.setAvailable(cakeStyleDto.isAvailable());
 
         return customCakeDao.createNewCakeStyle(styleToCreate);
+    }
+
+    public CustomCake getCustomCakeById(int id){
+        String sql ="SELECT * FROM custom_cake WHERE custom_cake_id = ?;";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
+
+        if(results.next()){
+            return mapToRowCustomCake(results);
+        }
+        return null;
+    }
+
+    private CustomCake mapToRowCustomCake(SqlRowSet results){
+        CustomCake customCake = new CustomCake();
+
+        customCake.setCustomCakeId(results.getInt("custom_cake_id"));
+        customCake.setCakeSizeId(results.getInt("cake_size_id"));
+        customCake.setCakeFlavorId(results.getInt("cake_flavor_id"));
+        customCake.setCakeFrostingId(results.getInt("cake_frosting_id"));
+        customCake.setCakeFillingId(results.getInt("cake_filling_id"));
+        customCake.setCakeStyleId(results.getInt("cake_style_id"));
+        customCake.setExtras(results.getString("extras"));
+        customCake.setPriceId(results.getInt("price_id"));
+
+        return customCake;
     }
 
 

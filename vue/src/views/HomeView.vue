@@ -1,8 +1,14 @@
 <template>
-  <div id="home">
-    <img id="logo" src="Tragic_Cakes_Logo.png" alt="Tragic Cakes: We bake tragedies, not sins.">
+    <div id="home">
+     <img id="logo" src="Tragic_Cakes_Logo.png" alt="Tragic Cakes: We bake tragedies, not sins.">
     <div>
+
+    <br>
+
     <img id="home-image" src="HomePageImg_3.jpg" alt="Home Page Image of Cake">
+
+    <br>
+    <br>
 
         <h2>Remedies for your Tragedies</h2>
         <p>
@@ -14,7 +20,11 @@
     </div>
   </div>
 
+  <br>
+  <br>
+
   <div id="custom-cake-info">
+    <div>
     <h2>
       Customize Your Tragic Cake
     </h2>
@@ -23,8 +33,13 @@
       Customize your terrible treats from the bottom up, choose everything from 
       cake flavors, fillings, frostings, and decorations. 
     </p>
+    <!---<button class="custom-cake-order"> Order Now </button>-->
+    </div>
     <img id="custom_cake_img" src="HomePageImg_1.jpg" alt="Round Cake with Purple Flowers">
   </div>
+
+  <br>
+  <br>
 
   <div id="footer">
     <div>
@@ -105,6 +120,23 @@ h3 {
 
 #custom-cake-img {
   max-width: 500px;
+}
+
+.custom-cake-order{
+    background-color: #583b66;
+    color:#ffffff;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Teko', sans-serif;
+    width: 90x;
+    align-items: center;
+    
+}
+
+.custom-cake-order:hover {
+    background-color: #ffffff;
+    color:#583b66;
+
 }
 
 </style>

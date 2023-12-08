@@ -79,6 +79,32 @@ export function createStore(currentToken, currentUser) {
           inCart: false
         }
         
+      ],
+      orders: [
+        {
+          order_id: 1,
+          firstName: "Lydia",
+          lastName: "Gallagher",
+          phoneNumber: "555-555-5555",
+          pickupDate: "1/1/2024",
+          pickupTime: "2:00pm",
+          cake_details: "A cute cake",
+          writing: "cute",
+          total: 10,
+          status: "Pending"
+        },
+        {
+          order_id: 2,
+          firstName: "Spencer",
+          lastName: "Nicol",
+          phoneNumber: "555-555-5555",
+          pickupDate: "1/1/2024",
+          pickupTime: "3:00pm",
+          cake_details: "Another cute cake",
+          writing: "cuter",
+          total: 20,
+          status: "Pending"
+        }
       ]
     },
     mutations: {

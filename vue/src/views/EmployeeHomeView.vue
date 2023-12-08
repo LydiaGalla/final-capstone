@@ -11,7 +11,7 @@
 
         <!-- table component for orders
         -- Name, contact, pickup, status, button to change .. etc.. -->
-        <OrdersTable></OrdersTable>
+        <OrderList></OrderList>
 
        
         
@@ -28,7 +28,7 @@
 
 <script>
 
-import OrdersTable from '../components/OrdersTable.vue';
+import OrderList from '../components/OrderList.vue';
 import EmployeeNav from '../components/EmployeeNav.vue';
 
 export default{
@@ -38,7 +38,7 @@ export default{
         }
     },
     components:{
-        OrdersTable,
+        OrderList,
         EmployeeNav
     }
 }

@@ -4,11 +4,10 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public class StandardCakeOrder {
-
-    private int orderId;
-
+public class CakeOrderDto {
     private int standardCakeId;
+
+    private int customCakeId;
 
     private String firstName;
 
@@ -26,20 +25,20 @@ public class StandardCakeOrder {
 
     private BigDecimal total;
 
-    public int getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
-    }
-
     public int getStandardCakeId() {
         return standardCakeId;
     }
 
     public void setStandardCakeId(int standardCakeId) {
         this.standardCakeId = standardCakeId;
+    }
+
+    public int getCustomCakeId() {
+        return customCakeId;
+    }
+
+    public void setCustomCakeId(int customCakeId) {
+        this.customCakeId = customCakeId;
     }
 
     public String getFirstName() {
@@ -106,20 +105,19 @@ public class StandardCakeOrder {
         this.total = total;
     }
 
-    public StandardCakeOrder() {
-
-    }
-
-    public StandardCakeOrder(int orderId, int standardCakeId, String firstName, String lastName, String phone, LocalDate dueDate, LocalTime dueTime, String writing, String status, BigDecimal total) {
-        this.orderId = orderId;
-        this.standardCakeId = standardCakeId;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phone = phone;
-        this.dueDate = dueDate;
-        this.dueTime = dueTime;
-        this.writing = writing;
-        this.status = status;
-        this.total = total;
+    @Override
+    public String toString() {
+        return "CakeOrderDto{" +
+                "standardCakeId=" + standardCakeId +
+                ", customCakeId=" + customCakeId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", phone='" + phone + '\'' +
+                ", dueDate=" + dueDate +
+                ", dueTime=" + dueTime +
+                ", writing='" + writing + '\'' +
+                ", status='" + status + '\'' +
+                ", total=" + total +
+                '}';
     }
 }

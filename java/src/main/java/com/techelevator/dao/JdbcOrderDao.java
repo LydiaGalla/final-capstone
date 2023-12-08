@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.StandardCakeOrder;
+import com.techelevator.model.CakeOrder;
+import com.techelevator.model.CustomCake;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -14,13 +15,16 @@ public class JdbcOrderDao implements OrderDao{
 
     private final JdbcTemplate jdbcTemplate;
 
-    public JdbcOrderDao(JdbcTemplate jdbcTemplate) {
+    private final CustomCakeDao customCakeDao;
+
+    public JdbcOrderDao(JdbcTemplate jdbcTemplate, CustomCakeDao customCakeDao) {
         this.jdbcTemplate = jdbcTemplate;
+        this.customCakeDao = customCakeDao;
     }
 
     @Override
-    public List<StandardCakeOrder> getAllCakeOrders() {
-        List<StandardCakeOrder> standardCakeOrders = new ArrayList<>();
+    public List<CakeOrder> getAllCakeOrders() {
+        List<CakeOrder> cakeOrders = new ArrayList<>();
 
         String sql = "SELECT * FROM cake_order ORDER BY customer_id ASC;";
 
@@ -28,15 +32,15 @@ public class JdbcOrderDao implements OrderDao{
 
         while (results.next()){
 
-            StandardCakeOrder standardCakeOrder = mapToRowCakeOrder(results);
+            CakeOrder cakeOrder = mapToRowCakeOrder(results);
 
-            standardCakeOrders.add(standardCakeOrder);
+            cakeOrders.add(cakeOrder);
         }
-        return standardCakeOrders;
+        return cakeOrders;
     }
 
     @Override
-    public StandardCakeOrder getCakeOrderById(int id) {
+    public CakeOrder getCakeOrderById(int id) {
         String sql ="SELECT * FROM cake_order WHERE order_id = ?;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
@@ -48,38 +52,55 @@ public class JdbcOrderDao implements OrderDao{
     }
 
     @Override
-    public StandardCakeOrder createNewStandardCakeOrder(StandardCakeOrder cakeToOrder) {
-        String sql = "INSERT INTO standard_cake_order (standard_cake_id, first_name, last_name, phone, due_date, due_time, writing, status, total) VALUES (?,?,?,?,?,?,?,?,?) RETURNING order_id;";
-            int orderId = jdbcTemplate.queryForObject(sql, Integer.class,
-                    cakeToOrder.getStandardCakeId(),
-                    cakeToOrder.getFirstName(),
-                    cakeToOrder.getLastName(),
-                    cakeToOrder.getPhone(),
-                    cakeToOrder.getDueDate(),
-                    cakeToOrder.getDueTime(),
-                    cakeToOrder.getWriting(),
-                    cakeToOrder.getStatus(),
-                    cakeToOrder.getTotal());
+    public CakeOrder createNewCakeOrder(CakeOrder cakeToOrder) {
+        String sql = "INSERT INTO cake_order (standard_cake_id, custom_cake_id, first_name, last_name, phone, due_date, due_time, writing, status, total) VALUES (?,?,?,?,?,?,?,?,?,?) RETURNING order_id;";
+        int orderId = jdbcTemplate.queryForObject(sql, Integer.class,
+                cakeToOrder.getStandardCakeId(),
+                cakeToOrder.getCustomCakeId(),
+                cakeToOrder.getFirstName(),
+                cakeToOrder.getLastName(),
+                cakeToOrder.getPhone(),
+                cakeToOrder.getDueDate(),
+                cakeToOrder.getDueTime(),
+                cakeToOrder.getWriting(),
+                cakeToOrder.getStatus(),
+                cakeToOrder.getTotal());
 
-            return getCakeOrderById(orderId);
+        return getCakeOrderById(orderId);
+    }
+
+    @Override
+    public CustomCake createNewCustomCake(CustomCake cakeToCreate) {
+        String sql = "INSERT INTO custom_cake (cake_size_id, cake_flavor_id, cake_frosting_id, cake_filling_id, cake_style_id, extras, price_id) VALUES (?,?,?,?,?,?,?) RETURNING custom_cake_id;";
+
+        int customCakeId = jdbcTemplate.queryForObject(sql, Integer.class,
+                cakeToCreate.getCakeSizeId(),
+                cakeToCreate.getCakeFlavorId(),
+                cakeToCreate.getCakeFrostingId(),
+                cakeToCreate.getCakeFillingId(),
+                cakeToCreate.getCakeSizeId(),
+                cakeToCreate.getExtras(),
+                cakeToCreate.getPriceId());
+
+        return customCakeDao.getCustomCakeById(customCakeId);
     }
 
 
+    private CakeOrder mapToRowCakeOrder(SqlRowSet results){
+        CakeOrder cakeOrder = new CakeOrder();
 
-    private StandardCakeOrder mapToRowCakeOrder(SqlRowSet results){
-        StandardCakeOrder standardCakeOrder = new StandardCakeOrder();
+        cakeOrder.setOrderId(results.getInt("order_id"));
+        cakeOrder.setStandardCakeId(results.getInt("standard_cake_id"));
+        cakeOrder.setCustomCakeId(results.getInt("custom_cake_id"));
+        cakeOrder.setFirstName(results.getString("first_name"));
+        cakeOrder.setLastName(results.getString("last_name"));
+        cakeOrder.setPhone(results.getString("phone"));
+        cakeOrder.setDueDate(Objects.requireNonNull(results.getDate("due_date")).toLocalDate());
+        cakeOrder.setDueTime(Objects.requireNonNull(results.getTime("due_time")).toLocalTime());
+        cakeOrder.setWriting(results.getString("writing"));
+        cakeOrder.setStatus(results.getString("status"));
+        cakeOrder.setTotal(results.getBigDecimal("total"));
 
-        standardCakeOrder.setOrderId(results.getInt("order_id"));
-        standardCakeOrder.setStandardCakeId(results.getInt("standard_cake_id"));
-        standardCakeOrder.setFirstName(results.getString("first_name"));
-        standardCakeOrder.setLastName(results.getString("last_name"));
-        standardCakeOrder.setPhone(results.getString("phone"));
-        standardCakeOrder.setDueDate(Objects.requireNonNull(results.getDate("due_date")).toLocalDate());
-        standardCakeOrder.setDueTime(Objects.requireNonNull(results.getTime("due_time")).toLocalTime());
-        standardCakeOrder.setWriting(results.getString("writing"));
-        standardCakeOrder.setStatus(results.getString("status"));
-        standardCakeOrder.setTotal(results.getBigDecimal("total"));
-
-        return standardCakeOrder;
+        return cakeOrder;
     }
 }

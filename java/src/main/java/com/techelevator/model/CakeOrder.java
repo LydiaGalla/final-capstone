@@ -4,8 +4,13 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public class StandardCakeOrderDto {
+public class CakeOrder {
+
+    private int orderId;
+
     private int standardCakeId;
+
+    private int customCakeId;
 
     private String firstName;
 
@@ -23,12 +28,28 @@ public class StandardCakeOrderDto {
 
     private BigDecimal total;
 
+    public int getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
+    }
+
     public int getStandardCakeId() {
         return standardCakeId;
     }
 
     public void setStandardCakeId(int standardCakeId) {
         this.standardCakeId = standardCakeId;
+    }
+
+    public int getCustomCakeId() {
+        return customCakeId;
+    }
+
+    public void setCustomCakeId(int customCakeId) {
+        this.customCakeId = customCakeId;
     }
 
     public String getFirstName() {
@@ -95,18 +116,21 @@ public class StandardCakeOrderDto {
         this.total = total;
     }
 
-    @Override
-    public String toString() {
-        return "StandardCakeOrderDto{" +
-                "standardCakeId=" + standardCakeId +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", phone='" + phone + '\'' +
-                ", dueDate=" + dueDate +
-                ", dueTime=" + dueTime +
-                ", writing='" + writing + '\'' +
-                ", status='" + status + '\'' +
-                ", total=" + total +
-                '}';
+    public CakeOrder() {
+
+    }
+
+    public CakeOrder(int orderId, int standardCakeId, int customCakeId, String firstName, String lastName, String phone, LocalDate dueDate, LocalTime dueTime, String writing, String status, BigDecimal total) {
+        this.orderId = orderId;
+        this.standardCakeId = standardCakeId;
+        this.customCakeId = customCakeId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phone = phone;
+        this.dueDate = dueDate;
+        this.dueTime = dueTime;
+        this.writing = writing;
+        this.status = status;
+        this.total = total;
     }
 }

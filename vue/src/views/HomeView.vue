@@ -1,7 +1,7 @@
 <template>
   <div id="home">
     <img id="logo" src="Tragic_Cakes_Logo.png" alt="Tragic Cakes: We bake tragedies, not sins.">
-      <std-cakes-list></std-cakes-list>
+      <std-cakes-list v-bind:cakes="cakes"></std-cakes-list>
   </div>
 
   <div id="footer">
@@ -23,11 +23,32 @@
 
 
 <script>
+import StdCakeService from '../services/StdCakeService';
 import StdCakesList from '../components/StdCakesList.vue';
 export default {
 
   components: {
     StdCakesList
+  },
+  data() {
+    return {
+      cakes: []
+    };
+  },
+  methods: {
+    getCakes() {
+      StdCakeService.list() 
+        .then(response => {
+          this.cakes = response.data;
+        })
+        .catch(error => {
+          // handle error
+        })
+      
+    }
+  },
+  created() {
+    this.getCakes();
   }
 
 };

@@ -101,9 +101,10 @@ export function createStore(currentToken, currentUser) {
       SET_IN_CART(state, payload) {
         payload.cake.inCart = payload.value;
       },
-      SAVE_CAKE(state, cake) {
-        state.cakes.push(cake);
+      SET_CAKES(state, cakes) {
+        state.cakes = cakes;
       }
+      
     },
   });
   return store;

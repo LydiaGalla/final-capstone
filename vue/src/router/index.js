@@ -3,7 +3,6 @@ import { useStore } from 'vuex'
 
 // Import components
 import HomeView from '../views/HomeView.vue';
-import OrderSummaryView from '../views/OrderSummaryView.vue';
 import CartView from '@/views/CartView.vue';
 import OrderInfoFormView from '../views/OrderInfoFormView.vue';
 import LoginView from '../views/LoginView.vue';
@@ -35,12 +34,6 @@ const routes = [
     meta: {
       requiresAuth: false
     }
-  },
-
-  {
-    name: 'order-summary',
-    path: '/orderSummary',
-    component: OrderSummaryView
   },
 
   {

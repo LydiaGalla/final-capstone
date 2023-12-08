@@ -8,7 +8,7 @@
             tragedies to sweeten up any sour situation, choose from any standard cake below.  
         </p>
         <div class="std-cakes-list">
-            <std-cake-card v-for="cake in cakes" v-bind:cake="cake" v-bind:key="cake.name"/>
+            <std-cake-card v-for="cake in cakes" v-bind:cake="cake" v-bind:key="cake.id"/>
         </div>
     </section>
     

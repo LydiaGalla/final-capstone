@@ -1,26 +1,26 @@
 <template>
     <img src="Checkout_Text.png" alt="Checkout">
     <div>
-        <form class="order-info-form">
+        <form v-on:submit.prevent="submitForm" class="order-info-form">
 
             <label for="firstName">First Name:</label>
-            <input type="text" id="firstName" v-model="firstName">
+            <input type="text" id="firstName" v-model="createOrder.firstName">
             <br>
 
             <label for="lastName">Last Name:</label>
-            <input type="text" id="lastName" v-model="lastName">
+            <input type="text" id="lastName" v-model="createOrder.lastName">
             <br>
 
             <label for="phoneNumber">Phone Number: </label>
-            <input type="text" id="phoneNumber" v-model="phoneNumber">
+            <input type="text" id="phoneNumber" v-model="createOrder.phoneNumber">
             <br>
 
             <label for="pickupDate">Pickup Date: </label>
-            <input type="date" id="pickupDate" v-model="pickupDate" :min="currentDatePlusTwoDays" :max="currentDatePlusMonth">
+            <input type="date" id="pickupDate" v-model="createOrder.pickupDate" :min="currentDatePlusTwoDays" :max="currentDatePlusMonth">
             
             <br>
             <label for="pickupTime">Pickup Time: </label>
-            <select id="pickupTime" v-if="!isSunday" v-model="pickupTime">
+            <select id="pickupTime" v-if="!isSunday" v-model="createOrder.pickupTime">
                 <option>7:30 AM</option>
                 <option>8:00 AM</option>
                 <option>8:30 AM</option>
@@ -48,25 +48,40 @@
                 <option>11:00 AM</option>
                 <option>11:30 AM</option>
             </select>
-
             <br>
 
             <button id="placeOrder" type="submit" class="is-primary">Place Order</button>
+            <button id="cancel" type="button" v-on:click="cancelForm">Cancel</button>
         </form>
     </div>
 </template>
 
 <script>
+import StdCakeOrderService from '../services/StdCakeOrderService';
+import StdCakeCard from './StdCakeCard.vue';
+
 export default {
+    props: {
+        order: {
+            type: Object,
+            required: true
+        }
+    },
     data() {
         return {
-            cake: {},
-            firstName: '',
-            lastName: '',
-            phoneNumber: '',
-            pickupDate: '',
-            pickupTime: ''
-        }
+        //     
+          createOrder: {
+            // name: this.cake.name,
+            // price: this.cake.price,
+            // writing: this.cake.writing,
+            // total: this.cake.total,
+            firstName: this.order.firstName,
+            lastName: this.order.lastName,
+            phoneNumber: this.order.phoneNumber,
+            pickupDate: this.order.pickupDate,
+            pickupTime: this.order.pickupTime
+          }
+        };
     },
     computed: {
         currentDatePlusTwoDays() {
@@ -91,13 +106,54 @@ export default {
         }
     },
     methods: {
+        submitForm() {
+
+          if (!this.validateForm()) {
+            return;
+          }
+
+          if (this.createOrder.id === 0) {
+            
+            StdCakeOrderService
+              .addStandardCakeOrder(this.createOrder)
+              .then(response => {
+                if (response.status === 201) {
+                    this.$store.commit('SET_NOTIFICATION', { message: 'A new cake order was added.', type: 'success'});
+                    this.$router.push({ name: 'order-info-form', params: { id: this.createOrder.id } });
+                }
+              })
+              .catch(error => {
+                alert("Something went wrong.");
+              });
+
+          } else {
+            //  StdCakeOrderService
+            //    .updateStandardCakeOrder(this.createOrder)
+            //    .then(response => {
+            //     if (response.status === 200) {
+            //         this.$store.commit('SET_NOTIFICATION', { message: `Standard Cake ${this.createOrder.id} was updated.`, type: 'success'});
+            //         this.$router.push({name: 'home', params: { id: this.createOrder.id } });
+            //     }
+            //    })
+            //    .catch(error => {
+            //      this.handleErrorResponse(error, 'updating');
+            //   });
+          }
+        },
+        cancelForm() {
+            this.$router.back();
+        },
         
+        validateForm() {
+            // TODO: write this method
+        }
+                
     }
 }
 </script>
 
 <style>
-#placeOrder{
+#placeOrder, #cancel {
     
     font-family: 'Teko', sans-serif;
     

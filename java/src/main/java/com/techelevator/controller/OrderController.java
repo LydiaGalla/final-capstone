@@ -1,8 +1,8 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.OrderDao;
-import com.techelevator.model.StandardCakeOrder;
-import com.techelevator.model.StandardCakeOrderDto;
+import com.techelevator.model.CakeOrder;
+import com.techelevator.model.CakeOrderDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,33 +20,34 @@ public class OrderController {
     }
 
     @GetMapping("/cakeorder")
-    public List<StandardCakeOrder> getAllCakeOrders() {
+    public List<CakeOrder> getAllCakeOrders() {
         return orderDao.getAllCakeOrders();
     }
 
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/cakeorder/create")
-    public StandardCakeOrder createNewStandardCakeOrder(@RequestBody StandardCakeOrderDto standardCakeOrderDto) {
+    public CakeOrder createNewCakeOrder(@RequestBody CakeOrderDto cakeOrderDto) {
 
-        StandardCakeOrder standardCakeOrderToCreate = new StandardCakeOrder();
+        CakeOrder cakeOrderToCreate = new CakeOrder();
 
-        standardCakeOrderToCreate.setStandardCakeId(standardCakeOrderDto.getStandardCakeId());
-        standardCakeOrderToCreate.setFirstName(standardCakeOrderDto.getFirstName());
-        standardCakeOrderToCreate.setLastName(standardCakeOrderDto.getLastName());
-        standardCakeOrderToCreate.setPhone(standardCakeOrderDto.getPhone());
-        standardCakeOrderToCreate.setDueDate(standardCakeOrderDto.getDueDate());
-        standardCakeOrderToCreate.setDueTime(standardCakeOrderDto.getDueTime());
-        standardCakeOrderToCreate.setWriting(standardCakeOrderDto.getWriting());
-        standardCakeOrderToCreate.setStatus(standardCakeOrderDto.getStatus());
-        standardCakeOrderToCreate.setTotal(standardCakeOrderDto.getTotal());
+        cakeOrderToCreate.setStandardCakeId(cakeOrderDto.getStandardCakeId());
+        cakeOrderToCreate.setCustomCakeId(cakeOrderDto.getCustomCakeId());
+        cakeOrderToCreate.setFirstName(cakeOrderDto.getFirstName());
+        cakeOrderToCreate.setLastName(cakeOrderDto.getLastName());
+        cakeOrderToCreate.setPhone(cakeOrderDto.getPhone());
+        cakeOrderToCreate.setDueDate(cakeOrderDto.getDueDate());
+        cakeOrderToCreate.setDueTime(cakeOrderDto.getDueTime());
+        cakeOrderToCreate.setWriting(cakeOrderDto.getWriting());
+        cakeOrderToCreate.setStatus(cakeOrderDto.getStatus());
+        cakeOrderToCreate.setTotal(cakeOrderDto.getTotal());
 
-        return orderDao.createNewStandardCakeOrder(standardCakeOrderToCreate);
+        return orderDao.createNewCakeOrder(cakeOrderToCreate);
 
     }
 
     @GetMapping("/cakeorder/{id}")
-    public StandardCakeOrder getCakeOrderById(@PathVariable int id) {
+    public CakeOrder getCakeOrderById(@PathVariable int id) {
         return orderDao.getCakeOrderById(id);
     }
 }

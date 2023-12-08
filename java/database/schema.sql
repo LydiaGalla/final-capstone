@@ -95,7 +95,7 @@ CREATE TABLE standard_cake_order (
     writing VARCHAR (140),
     status VARCHAR (20) NOT NULL,
     total NUMERIC(8, 2) NOT NULL,
-    CONSTRAINT PK_cake_order PRIMARY KEY (order_id),
+    CONSTRAINT PK_standard_cake_order PRIMARY KEY (order_id),
     FOREIGN KEY (standard_cake_id) REFERENCES standard_cake(standard_cake_id)
 );
 
@@ -110,7 +110,7 @@ CREATE TABLE custom_cake_order (
     writing VARCHAR (140),
     status VARCHAR (20) NOT NULL,
     total NUMERIC(8, 2) NOT NULL,
-    CONSTRAINT PK_cake_order PRIMARY KEY (order_id),
+    CONSTRAINT PK_custom_cake_order PRIMARY KEY (order_id),
     FOREIGN KEY (custom_cake_id) REFERENCES custom_cake(custom_cake_id)
 );
 

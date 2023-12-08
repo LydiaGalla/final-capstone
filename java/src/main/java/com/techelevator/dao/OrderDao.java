@@ -14,5 +14,6 @@ public interface OrderDao {
 
     StandardCakeOrder createNewStandardCakeOrder(StandardCakeOrder cakeToOrder);
 
+    void updateStandardCakeOrderStatus(int orderId, String status);
 
 }

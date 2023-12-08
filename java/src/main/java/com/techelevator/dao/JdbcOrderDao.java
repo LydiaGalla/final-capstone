@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Component
-public class JdbcOrderDao implements OrderDao{
+public class JdbcOrderDao implements OrderDao {
 
     private final JdbcTemplate jdbcTemplate;
 
@@ -26,7 +26,7 @@ public class JdbcOrderDao implements OrderDao{
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
 
-        while (results.next()){
+        while (results.next()) {
 
             StandardCakeOrder standardCakeOrder = mapToRowCakeOrder(results);
 
@@ -37,11 +37,11 @@ public class JdbcOrderDao implements OrderDao{
 
     @Override
     public StandardCakeOrder getCakeOrderById(int id) {
-        String sql ="SELECT * FROM cake_order WHERE order_id = ?;";
+        String sql = "SELECT * FROM cake_order WHERE order_id = ?;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
 
-        if (results.next()){
+        if (results.next()) {
             return mapToRowCakeOrder(results);
         }
         return null;
@@ -50,20 +50,25 @@ public class JdbcOrderDao implements OrderDao{
     @Override
     public StandardCakeOrder createNewStandardCakeOrder(StandardCakeOrder cakeToOrder) {
         String sql = "INSERT INTO standard_cake_order (standard_cake_id, first_name, last_name, phone, due_date, due_time, writing, status, total) VALUES (?,?,?,?,?,?,?,?,?) RETURNING order_id;";
-            int orderId = jdbcTemplate.queryForObject(sql, Integer.class,
-                    cakeToOrder.getStandardCakeId(),
-                    cakeToOrder.getFirstName(),
-                    cakeToOrder.getLastName(),
-                    cakeToOrder.getPhone(),
-                    cakeToOrder.getDueDate(),
-                    cakeToOrder.getDueTime(),
-                    cakeToOrder.getWriting(),
-                    cakeToOrder.getStatus(),
-                    cakeToOrder.getTotal());
+        int orderId = jdbcTemplate.queryForObject(sql, Integer.class,
+                cakeToOrder.getStandardCakeId(),
+                cakeToOrder.getFirstName(),
+                cakeToOrder.getLastName(),
+                cakeToOrder.getPhone(),
+                cakeToOrder.getDueDate(),
+                cakeToOrder.getDueTime(),
+                cakeToOrder.getWriting(),
+                cakeToOrder.getStatus(),
+                cakeToOrder.getTotal());
 
-            return getCakeOrderById(orderId);
+        return getCakeOrderById(orderId);
     }
 
+    @Override
+    public void updateStandardCakeOrderStatus(int orderId, String status) {
+        String sql = "UPDATE standard_cake_order SET status = ? WHERE standard_cake_order_id = ?;";
+        jdbcTemplate.update(sql, status, orderId);
+    }
 
 
     private StandardCakeOrder mapToRowCakeOrder(SqlRowSet results){

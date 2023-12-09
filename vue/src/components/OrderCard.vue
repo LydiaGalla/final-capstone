@@ -3,7 +3,7 @@
         <h2 class="order-id">Order # {{ order.order_id }}</h2>
         <h3 class="order-name">{{ order.firstName }} {{ order.lastName }} </h3>
         <p class="order-phone">Phone: {{ order.phoneNumber }}</p>
-        <p class="order-date-time">Pickup: {{ order.pickupDate }} {{ order.pickupTime }} </p>
+        <p class="order-date-time">Pickup: {{ order.dueDate }} {{ order.dueTime }} </p>
         <p class="order-details"> Cake details: {{ order.cake_details }}</p>
         <p class="order-writing">Requested cake text: {{ order.writing }}</p>
         <p class="order-total">Total: ${{ order.total }}</p>

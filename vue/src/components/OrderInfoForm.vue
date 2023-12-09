@@ -15,12 +15,12 @@
             <input type="text" id="phoneNumber" v-model="createOrder.phone">
             <br>
 
-            <label for="pickupDate">Pickup Date: </label>
-            <input type="date" id="pickupDate" v-model="createOrder.dueDate" :min="currentDatePlusTwoDays" :max="currentDatePlusMonth">
+            <label for="dueDate">Pickup Date: </label>
+            <input type="date" id="dueDate" v-model="createOrder.dueDate" :min="currentDatePlusTwoDays" :max="currentDatePlusMonth">
             
             <br>
-            <label for="pickupTime">Pickup Time: </label>
-            <select id="pickupTime" v-if="!isSunday" v-model="createOrder.dueTime">
+            <label for="dueTime">Pickup Time: </label>
+            <select id="dueTime" v-if="!isSunday" v-model="createOrder.dueTime">
                 <option>7:30 AM</option>
                 <option>8:00 AM</option>
                 <option>8:30 AM</option>
@@ -37,7 +37,7 @@
                 <option>2:00 PM</option>
                 <option>2:30 PM</option>
             </select>
-            <select id="pickupTime" v-if="isSunday" v-model="createOrder.dueTime">
+            <select id="dueTime" v-if="isSunday" v-model="createOrder.dueTime">
                 <option>7:30 AM</option>
                 <option>8:00 AM</option>
                 <option>8:30 AM</option>
@@ -97,7 +97,7 @@ export default {
             return oneMonthAndTwoDaysFromToday;
         },
         isSunday() {
-            const selectedDate = new Date(this.pickupDate);
+            const selectedDate = new Date(this.createOrder.dueDate);
             if (selectedDate.getDay() === 6) {
                 return true;
             }

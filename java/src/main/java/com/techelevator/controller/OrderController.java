@@ -1,14 +1,12 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.OrderDao;
-import com.techelevator.model.CakeOrder;
-import com.techelevator.model.CakeOrderDto;
-import com.techelevator.model.CustomCake;
-import com.techelevator.model.CustomCakeDto;
+import com.techelevator.dao.UserDao;
+import com.techelevator.model.*;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -16,10 +14,13 @@ import java.util.List;
 public class OrderController {
     private final OrderDao orderDao;
 
+    private final UserDao userDao;
 
 
-    public OrderController(OrderDao orderDao) {
+
+    public OrderController(OrderDao orderDao, UserDao userDao) {
         this.orderDao = orderDao;
+        this.userDao = userDao;
     }
 
     @GetMapping("/cakeorder")
@@ -67,5 +68,28 @@ public class OrderController {
         cakeToCreate.setPriceId(customCakeDto.getPriceId());
 
         return orderDao.createNewCustomCake(cakeToCreate);
+    }
+
+    @PutMapping("/cakeorder/{orderId}/status")
+    public CakeOrder updateCakeOrderStatus(@RequestBody CakeOrderStatusUpdateDto cakeOrderStatusUpdateDto, Principal principal, @PathVariable int orderId){
+        String username = principal.getName();
+        User loggedInUser = userDao.getUserByUsername(username);
+
+        CakeOrder cakeOrderToUpdate = getCakeOrderById(orderId);
+        String completed = "Completed";
+        String ready = "Ready";
+        String cancelled = "Cancelled";
+
+        if(cakeOrderToUpdate.getOrderId() == orderId && cakeOrderStatusUpdateDto.getStatus().equalsIgnoreCase("Completed")){
+            cakeOrderToUpdate.setStatus(completed);
+        }
+        if(cakeOrderToUpdate.getOrderId() == orderId && cakeOrderStatusUpdateDto.getStatus().equalsIgnoreCase("Ready")){
+            cakeOrderToUpdate.setStatus(ready);
+        }
+        if(cakeOrderToUpdate.getOrderId() == orderId && cakeOrderStatusUpdateDto.getStatus().equalsIgnoreCase("Cancelled")){
+            cakeOrderToUpdate.setStatus(cancelled);
+        }
+
+        return cakeOrderToUpdate;
     }
 }

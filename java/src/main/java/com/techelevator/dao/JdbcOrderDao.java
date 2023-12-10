@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import java.time.LocalTime;
 import com.techelevator.model.CakeOrder;
 import com.techelevator.model.CustomCake;
 import com.techelevator.model.StandardCake;
@@ -64,7 +65,7 @@ public class JdbcOrderDao implements OrderDao {
                 cakeToOrder.getLastName(),
                 cakeToOrder.getPhone(),
                 cakeToOrder.getDueDate(),
-                cakeToOrder.getDueTime(),
+                LocalTime.of(8,0), //TODO: use cakeToOrder.getDueTime()
                 cakeToOrder.getWriting(),
                 cakeToOrder.getStatus(),
                 cakeToOrder.getTotal());
@@ -88,11 +89,25 @@ public class JdbcOrderDao implements OrderDao {
     }
 
 
-
     @Override
-    public void updateStandardCakeOrderStatus(int orderId, String status) {
+    public CakeOrder updateCakeOrderStatus(String status, int orderId) {
+
+        CakeOrder cakeOrder = getCakeOrderById(orderId);
+
+        String sql = "UPDATE cake_order SET status = ? WHERE order_id = ?;";
+        if (status.equalsIgnoreCase("Completed")){
+            jdbcTemplate.update(sql, status, orderId);
+        }
+        if (status.equalsIgnoreCase("Ready")){
+            jdbcTemplate.update(sql, status, orderId);
+        }
+        if (status.equalsIgnoreCase("Cancelled")){
+            jdbcTemplate.update(sql, status, orderId);
+        }
+        return getCakeOrderById(orderId);
 
     }
+
 
     @Override
     public CustomCake createNewCustomCake(CustomCake cakeToCreate) {

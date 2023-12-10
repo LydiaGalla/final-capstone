@@ -11,6 +11,7 @@ import RegisterView from '../views/RegisterView.vue';
 import EmployeeHomeView from '../views/EmployeeHomeView.vue';
 import InventoryView from '../views/InventoryView.vue';
 import EditInventoryView from '../views/EditInventoryView.vue';
+import CustomOrderFormView from '../views/CustomOrderFormView.vue'
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -21,6 +22,14 @@ import EditInventoryView from '../views/EditInventoryView.vue';
  * If they have (or don't need to) they're allowed to go about their way.
  */
 const routes = [
+  {
+    path: '/custom-order-form',
+    name: 'custom order form',
+    component: CustomOrderFormView,
+    meta: {
+      requiresAuth: false
+    }
+  },
 
   {
     path: '/employeehome/editinventory',

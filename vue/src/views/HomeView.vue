@@ -10,7 +10,7 @@
     <br>
     <br>
 
-        <h2>Remedies for your Tragedies</h2>
+        <img src="Remedies_Text.png" alt="Remedies for your Tragedies">
         <p>
             At Tragic Cakes, we're prepared for the worst. We offer a variety of pre-made 
             tragedies to sweeten up any sour situation, choose from any standard cake below.  
@@ -25,17 +25,19 @@
 
   <div id="custom-cake-info">
     <div>
-    <h2>
-      Customize Your Tragic Cake
-    </h2>
+  
+    <img src="Customize_Cake_Text.png" alt="Customize Your Tragic Cake">
     <p>
       Build your own custom cake for any tragic event. 
       Customize your terrible treats from the bottom up, choose everything from 
       cake flavors, fillings, frostings, and decorations. 
     </p>
-    <!---<button class="custom-cake-order"> Order Now </button>-->
+    <br>
+    <router-link :to="{ name: 'custom order form'}">
+      <button class="custom-cake-order"> Order Now </button>
+    </router-link>
     </div>
-    <img id="custom_cake_img" src="HomePageImg_1.jpg" alt="Round Cake with Purple Flowers">
+    <!--<img id="custom_cake_img" src="HomePageImg_1.jpg" alt="Round Cake with Purple Flowers">-->
   </div>
 
   <br>
@@ -115,10 +117,6 @@ h3 {
     opacity: 1;
 }
 
-#custom-cake-info {
-  column-count: 2;
-}
-
 #custom-cake-img {
   max-width: 500px;
 }
@@ -127,10 +125,11 @@ h3 {
     background-color: #583b66;
     color:#ffffff;
     border: none;
-    border-radius: 10px;
+    border-radius: 20px;
     font-family: 'Teko', sans-serif;
-    width: 90x;
-    align-items: center;
+    font-size: large;
+    width: 200x;
+    margin-left: 48%;
     
 }
 
@@ -139,5 +138,7 @@ h3 {
     color:#583b66;
 
 }
+
+
 
 </style>

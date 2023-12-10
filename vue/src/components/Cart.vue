@@ -11,8 +11,10 @@
     <form v-on:submit.prevent="submitForm" class="add-text-form">
         <label for="addText">Add Writing to Cake (optional, $5 fee): </label>
         <input type="text" id="addedText" v-model="addedText">
+        
         <div>
-            <button>Checkout</button>
+            <br>
+            <button class="checkout-button">Checkout</button>
         </div>
 
     </form>
@@ -57,5 +59,21 @@ export default {
 h1 {
     text-align: center;
     font-size: 300%;
+}
+
+.checkout-button{ 
+    background-color: #583b66;
+    color:#ffffff;
+    border: none;
+    border-radius: 20px;
+    font-family: 'Teko', sans-serif;
+    font-size: large;
+    width: 200x;
+    
+}
+
+.checkout-button:hover {
+    background-color: #ffffff;
+    color:#583b66;
 }
 </style>

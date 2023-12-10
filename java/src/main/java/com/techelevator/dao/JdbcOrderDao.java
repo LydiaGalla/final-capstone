@@ -72,11 +72,25 @@ public class JdbcOrderDao implements OrderDao {
         return getCakeOrderById(orderId);
     }
 
-
     @Override
-    public void updateStandardCakeOrderStatus(int orderId, String status) {
+    public CakeOrder updateCakeOrderStatus(String status, int orderId) {
+
+        CakeOrder cakeOrder = getCakeOrderById(orderId);
+
+        String sql = "UPDATE cake_order SET status = ? WHERE order_id = ?;";
+        if (status.equalsIgnoreCase("Completed")){
+            jdbcTemplate.update(sql, status, orderId);
+        }
+        if (status.equalsIgnoreCase("Ready")){
+            jdbcTemplate.update(sql, status, orderId);
+        }
+        if (status.equalsIgnoreCase("Cancelled")){
+            jdbcTemplate.update(sql, status, orderId);
+        }
+        return getCakeOrderById(orderId);
 
     }
+
 
     @Override
     public CustomCake createNewCustomCake(CustomCake cakeToCreate) {

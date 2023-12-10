@@ -12,7 +12,8 @@
         <tbody>
             <tr>
                 <td>Almond </td>
-                <td><input type="button" value="Available"></td>
+                <td><input type="button" value="Available">
+                <button class="class1">Available</button></td>
             </tr>
             <tr>
                 <td>Chocolate</td>

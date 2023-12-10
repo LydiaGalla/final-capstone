@@ -1,7 +1,7 @@
 <template>
   <div id="register" class="text-center">
     <form v-on:submit.prevent="register">
-      <h1>Create Account</h1>
+      <img src="Create_Account.png" alt="Create Account">
       <div role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
@@ -17,7 +17,7 @@
         <label for="confirmPassword">Confirm Password</label>
         <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
       </div>
-      <button type="submit">Create Account</button>
+      <button class="submit" type="submit">Create Account</button>
       <p><router-link v-bind:to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
     </form>
   </div>
@@ -78,5 +78,19 @@ export default {
 }
 label {
   margin-right: 0.5rem;
+}
+.submit {
+  background-color: #583b66;
+    color:#ffffff;
+    border: none;
+    border-radius: 20px;
+    font-family: 'Teko', sans-serif;
+    font-size: large;
+    width: 200x;
+}
+
+.submit:hover {
+  background-color: #ffffff;
+    color:#583b66;
 }
 </style>

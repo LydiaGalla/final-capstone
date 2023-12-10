@@ -51,7 +51,7 @@
             <br>
 
             <button id="placeOrder" type="submit" class="is-primary">Place Order</button>
-            <button id="cancel" type="button" v-on:click="cancelForm">Cancel</button>
+            <button id="cancel" type="button" v-on:click="cancelForm" style="margin-left:20px ;">Cancel</button>
         </form>
     </div>
 </template>
@@ -148,16 +148,17 @@ export default {
 
 <style>
 #placeOrder, #cancel {
-    background-color: white;
+    background-color: #583b66;
+    color: white;
     border: none;
     border-radius: 20px;
     font-family: 'Teko', sans-serif;
     width: 50x;    
 }
 
-#placeOrder:hover {
-    background-color: #583b66;
-    color: white;
+#placeOrder:hover, #cancel:hover {
+    background-color: white;
+    color: #583b66;
 }
 
 </style>

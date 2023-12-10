@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import java.time.LocalTime;
 import com.techelevator.model.CakeOrder;
 import com.techelevator.model.CustomCake;
 import com.techelevator.model.StandardCake;
@@ -64,7 +65,7 @@ public class JdbcOrderDao implements OrderDao {
                 cakeToOrder.getLastName(),
                 cakeToOrder.getPhone(),
                 cakeToOrder.getDueDate(),
-                cakeToOrder.getDueTime(),
+                LocalTime.of(8,0), //TODO: use cakeToOrder.getDueTime()
                 cakeToOrder.getWriting(),
                 cakeToOrder.getStatus(),
                 cakeToOrder.getTotal());

@@ -28,11 +28,11 @@ public class CakeOrder {
 
     private BigDecimal total;
 
-    public int getOrderId() {
+    public Integer getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(int orderId) {
+    public void setOrderId(Integer orderId) {
         this.orderId = orderId;
     }
 
@@ -120,7 +120,7 @@ public class CakeOrder {
 
     }
 
-    public CakeOrder(int orderId, int standardCakeId, int customCakeId, String firstName, String lastName, String phone, LocalDate dueDate, LocalTime dueTime, String writing, String status, BigDecimal total) {
+    public CakeOrder(Integer orderId, Integer standardCakeId, Integer customCakeId, String firstName, String lastName, String phone, LocalDate dueDate, LocalTime dueTime, String writing, String status, BigDecimal total) {
         this.orderId = orderId;
         this.standardCakeId = standardCakeId;
         this.customCakeId = customCakeId;

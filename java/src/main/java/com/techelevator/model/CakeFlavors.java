@@ -2,17 +2,17 @@ package com.techelevator.model;
 
 public class CakeFlavors {
 
-    private int flavorId;
+    private Integer flavorId;
 
     private String flavorName;
 
     private boolean isAvailable;
 
-    public int getFlavorId() {
+    public Integer getFlavorId() {
         return flavorId;
     }
 
-    public void setFlavorId(int flavorId) {
+    public void setFlavorId(Integer flavorId) {
         this.flavorId = flavorId;
     }
 

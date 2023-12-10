@@ -118,7 +118,8 @@ export default {
 
           this.createOrder.standardCakeId = this.cakeInCart.standardCakeId,
           this.createOrder.total = this.cakeInCart.price
-          this.createOrder.dueTime = null // TODO: fix this
+          this.createOrder.dueTime = null // TODO:fix this
+          
             
             StdCakeOrderService
               .addStandardCakeOrder(this.createOrder)

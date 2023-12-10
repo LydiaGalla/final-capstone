@@ -65,7 +65,7 @@ public class JdbcOrderDao implements OrderDao {
                 cakeToOrder.getLastName(),
                 cakeToOrder.getPhone(),
                 cakeToOrder.getDueDate(),
-                LocalTime.of(8,0), //TODO: use cakeToOrder.getDueTime()
+                cakeToOrder.getDueTime(), //TODO: use LocalTime.of(8,0) to make work
                 cakeToOrder.getWriting(),
                 cakeToOrder.getStatus(),
                 cakeToOrder.getTotal());

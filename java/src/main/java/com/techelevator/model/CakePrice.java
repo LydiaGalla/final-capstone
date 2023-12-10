@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public class CakePrice {
 
-    private int priceId;
+    private Integer priceId;
 
     private BigDecimal cupcakeSingle;
 
@@ -18,11 +18,11 @@ public class CakePrice {
 
     private BigDecimal largeCakeCustom;
 
-    public int getPriceId() {
+    public Integer getPriceId() {
         return priceId;
     }
 
-    public void setPriceId(int priceId) {
+    public void setPriceId(Integer priceId) {
         this.priceId = priceId;
     }
 
@@ -78,7 +78,7 @@ public class CakePrice {
 
     }
 
-    public CakePrice(int priceId, BigDecimal cupcakeSingle, BigDecimal cupcakeBakersDozen, BigDecimal smallCake, BigDecimal largeCake, BigDecimal smallCakeCustom, BigDecimal largeCakeCustom) {
+    public CakePrice(Integer priceId, BigDecimal cupcakeSingle, BigDecimal cupcakeBakersDozen, BigDecimal smallCake, BigDecimal largeCake, BigDecimal smallCakeCustom, BigDecimal largeCakeCustom) {
         this.priceId = priceId;
         this.cupcakeSingle = cupcakeSingle;
         this.cupcakeBakersDozen = cupcakeBakersDozen;

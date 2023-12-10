@@ -1,13 +1,13 @@
 <template>
     <div class="order-card">
-        <h2 class="order-id">Order # {{ order.order_id }}</h2>
+        <h2 class="order-id">Order # {{ order.orderId }}</h2>
         <h3 class="order-name">{{ order.firstName }} {{ order.lastName }} </h3>
-        <p class="order-phone">Phone: {{ order.phoneNumber }}</p>
+        <p class="order-phone">Phone: {{ order.phone }}</p>
         <p class="order-date-time">Pickup: {{ order.dueDate }} {{ order.dueTime }} </p>
-        <p class="order-details"> Cake details: {{ order.cake_details }}</p>
+        <!-- <p class="order-details"> Cake details: {{ order.cake_details }}</p> -->
         <p class="order-writing">Requested cake text: {{ order.writing }}</p>
-        <p class="order-total">Total: ${{ order.total }}</p>
-        <p class="order-status"> {{ order.status }}</p>
+        <!-- <p class="order-total">Total: ${{ order.total }}</p> -->
+        <!-- <p class="order-status"> {{ order.status }}</p> -->
         <button class="status"> Edit Status</button>
     </div>
 </template>
@@ -15,8 +15,12 @@
 <script>
 
 export default{
-    props:
-        ['order']
+    props: {
+        order: {
+            type: Object,
+            required: true
+        }
+    }
     ,
     methods: {
 

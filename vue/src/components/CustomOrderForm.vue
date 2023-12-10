@@ -57,8 +57,8 @@
             <label for="lastName">Last Name:</label>
             <input type="text" id="lastName" v-model="lastName">
             <br>
-            <label for="phoneNumber">Phone Number: </label>
-            <input type="text" id="phoneNumber" v-model="phoneNumber">
+            <label for="phone">Phone Number: </label>
+            <input type="text" id="phone" v-model="phone">
             <br>
             <label for="email">E-mail: </label>
             <input type="text" id="email" v-model="email">

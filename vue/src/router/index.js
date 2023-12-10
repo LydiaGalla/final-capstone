@@ -24,7 +24,7 @@ const routes = [
 
   {
     path: '/employeehome/editinventory',
-    name: 'edit inventory',
+    name: 'edit-inventory',
     component: EditInventoryView,
     meta: {
       requiresAuth: false
@@ -43,13 +43,12 @@ const routes = [
 
    { 
     path: '/employeehome',
-    name: 'employee home',
+    name: 'employee-home',
     component: EmployeeHomeView,
     meta:{
       requiresAuth: false
     }
   },
-  
 
   {
     path: '/',

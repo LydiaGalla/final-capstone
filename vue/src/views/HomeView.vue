@@ -37,7 +37,8 @@
       <button class="custom-cake-order"> Order Now </button>
     </router-link>
     </div>
-    <!--<img id="custom_cake_img" src="HomePageImg_1.jpg" alt="Round Cake with Purple Flowers">-->
+    <br>
+    <img class="custom_cake_img" src="HomePageImg_1.jpg" alt="Round Cake with Purple Flowers">
   </div>
 
   <br>
@@ -117,8 +118,8 @@ h3 {
     opacity: 1;
 }
 
-#custom-cake-img {
-  max-width: 500px;
+.custom-cake-img {
+  max-width: auto;
 }
 
 .custom-cake-order{

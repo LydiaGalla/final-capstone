@@ -22,6 +22,14 @@ import ConfirmOrder from '../views/OrderConfirmedView.vue';
  * If they have (or don't need to) they're allowed to go about their way.
  */
 const routes = [
+  {
+    path: '/custom-order-form',
+    name: 'custom order form',
+    component: CustomOrderFormView,
+    meta: {
+      requiresAuth: false
+    }
+  },
 
   {
     path: '/employeehome/editinventory',

@@ -1,7 +1,7 @@
 <template>
     <div class="card">
         <h2 class="cake-name">{{ cake.cakeName }}</h2>
-        <img v-if="cake.cakeName" v-bind:src="cake.cakeName.replace(' ', '') + 'Cake.jpg'">
+        <img v-if="cake.cakeName" v-bind:src="'/' + cake.cakeName.replace(' ', '') + 'Cake.jpg'">
         <h3 class="cake-price"> $ {{ cake.price }}</h3>
         <p class="description">{{ cake.description }}</p>
         <router-link :to="{ name: 'cart'}" style="position: absolute; bottom: 10px; margin-left: -25px;">

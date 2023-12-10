@@ -14,6 +14,8 @@ public interface OrderDao {
 
     CakeOrder createNewCakeOrder(CakeOrder cakeToOrder);
 
+    CakeOrder updateCakeOrderStatus(String status, int orderId);
+
     CustomCake createNewCustomCake(CustomCake cakeToCreate);
 
 }

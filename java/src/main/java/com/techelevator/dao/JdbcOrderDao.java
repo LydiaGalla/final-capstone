@@ -1,7 +1,9 @@
 package com.techelevator.dao;
 
+import java.time.LocalTime;
 import com.techelevator.model.CakeOrder;
 import com.techelevator.model.CustomCake;
+import com.techelevator.model.StandardCake;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -12,9 +14,10 @@ import java.util.List;
 import java.util.Objects;
 
 @Component
-public class JdbcOrderDao implements OrderDao{
+public class JdbcOrderDao implements OrderDao {
 
     private final JdbcTemplate jdbcTemplate;
+
 
     private final CustomCakeDao customCakeDao;
 
@@ -31,7 +34,7 @@ public class JdbcOrderDao implements OrderDao{
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
 
-        while (results.next()){
+        while (results.next()) {
 
             CakeOrder cakeOrder = mapToRowCakeOrder(results);
 
@@ -46,7 +49,7 @@ public class JdbcOrderDao implements OrderDao{
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
 
-        if (results.next()){
+        if (results.next()) {
             return mapToRowCakeOrder(results);
         }
         return null;
@@ -62,13 +65,33 @@ public class JdbcOrderDao implements OrderDao{
                 cakeToOrder.getLastName(),
                 cakeToOrder.getPhone(),
                 cakeToOrder.getDueDate(),
-                LocalTime.of(8,0), // TODO: use cakeToOrder.getDueTime()
+                LocalTime.of(8,0), //TODO: use cakeToOrder.getDueTime()
                 cakeToOrder.getWriting(),
                 cakeToOrder.getStatus(),
                 cakeToOrder.getTotal());
 
         return getCakeOrderById(orderId);
     }
+
+    @Override
+    public CakeOrder updateCakeOrderStatus(String status, int orderId) {
+
+        CakeOrder cakeOrder = getCakeOrderById(orderId);
+
+        String sql = "UPDATE cake_order SET status = ? WHERE order_id = ?;";
+        if (status.equalsIgnoreCase("Completed")){
+            jdbcTemplate.update(sql, status, orderId);
+        }
+        if (status.equalsIgnoreCase("Ready")){
+            jdbcTemplate.update(sql, status, orderId);
+        }
+        if (status.equalsIgnoreCase("Cancelled")){
+            jdbcTemplate.update(sql, status, orderId);
+        }
+        return getCakeOrderById(orderId);
+
+    }
+
 
     @Override
     public CustomCake createNewCustomCake(CustomCake cakeToCreate) {
@@ -85,7 +108,6 @@ public class JdbcOrderDao implements OrderDao{
 
         return customCakeDao.getCustomCakeById(customCakeId);
     }
-
 
     private CakeOrder mapToRowCakeOrder(SqlRowSet results){
         CakeOrder cakeOrder = new CakeOrder();

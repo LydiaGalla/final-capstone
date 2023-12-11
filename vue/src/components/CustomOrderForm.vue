@@ -44,6 +44,8 @@
             </select>
             <br>
             <br>
+            <label for="phone">Phone Number: </label>
+            <input type="text" id="phone" v-model="phone">
             <label for="selectSize">Select Cake Size </label>
             <select id="selectSize" v-model="size">
                 <option value="Small">Small</option>
@@ -52,6 +54,8 @@
                 <option value="Bakers Dozen">Bakers Dozen, Cupcakes Only</option>
             </select>
             <br>
+            <label for="phone">Phone Number: </label>
+            <input type="text" id="phone" v-model="phone">
             <br>
             <router-link :to="{ name: 'cart'}">
                 <button class="custom-cake-in-cart"> Add Custom Cake to Cart </button>

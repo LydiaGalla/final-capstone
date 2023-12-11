@@ -143,6 +143,18 @@ export function createStore(currentToken, currentUser) {
       },
       TOGGLE_AVAILABLE(state, cake){
         cake.available = !cake.available;
+      },
+      ADD_STANDARD_CAKE(state, cake) {
+        state.cakes.push(cake)
+        state.cakes.sort((cake1, cake2) => {
+            if (cake1.cakeName < cake2.cakeName) {
+              return -1
+            }
+            if (cake1.cakeName === cake2.cakeName) {
+              return 0
+            }
+            return 1
+        })
       }
       
     },

@@ -2,17 +2,17 @@ package com.techelevator.model;
 
 public class CakeSizes {
 
-    private int sizeId;
+    private Integer sizeId;
 
     private String sizeName;
 
     private boolean isAvailable;
 
-    public int getSizeId() {
+    public Integer getSizeId() {
         return sizeId;
     }
 
-    public void setSizeId(int sizeId) {
+    public void setSizeId(Integer sizeId) {
         this.sizeId = sizeId;
     }
 
@@ -36,7 +36,7 @@ public class CakeSizes {
 
     }
 
-    public CakeSizes(int sizeId, String sizeName, boolean isAvailable) {
+    public CakeSizes(Integer sizeId, String sizeName, boolean isAvailable) {
         this.sizeId = sizeId;
         this.sizeName = sizeName;
         this.isAvailable = isAvailable;

@@ -1,9 +1,11 @@
 package com.techelevator.model;
 
+import org.springframework.data.relational.core.sql.In;
+
 import java.math.BigDecimal;
 
 public class StandardCake {
-    private int standardCakeId;
+    private Integer standardCakeId;
 
     private String cakeName;
 
@@ -13,11 +15,11 @@ public class StandardCake {
 
     private boolean isAvailable;
 
-    public int getStandardCakeId() {
+    public Integer getStandardCakeId() {
         return standardCakeId;
     }
 
-    public void setStandardCakeId(int standardCakeId) {
+    public void setStandardCakeId(Integer standardCakeId) {
         this.standardCakeId = standardCakeId;
     }
 
@@ -57,7 +59,7 @@ public class StandardCake {
 
     }
 
-    public StandardCake(int standardCakeId, String cakeName, String description, BigDecimal price, boolean isAvailable) {
+    public StandardCake(Integer standardCakeId, String cakeName, String description, BigDecimal price, boolean isAvailable) {
         this.standardCakeId = standardCakeId;
         this.cakeName = cakeName;
         this.description = description;

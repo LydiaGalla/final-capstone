@@ -2,13 +2,13 @@ package com.techelevator.model;
 
 public class CakeFillings {
 
-    private int fillingId;
+    private Integer fillingId;
 
     private String fillingName;
 
     private boolean isAvailable;
 
-    public int getFillingId() {
+    public Integer getFillingId() {
         return fillingId;
     }
 
@@ -36,7 +36,7 @@ public class CakeFillings {
 
     }
 
-    public CakeFillings(int fillingId, String fillingName, boolean isAvailable) {
+    public CakeFillings(Integer fillingId, String fillingName, boolean isAvailable) {
         this.fillingId = fillingId;
         this.fillingName = fillingName;
         this.isAvailable = isAvailable;

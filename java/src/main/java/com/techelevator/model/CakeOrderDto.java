@@ -38,7 +38,7 @@ public class CakeOrderDto {
         return standardCakeId;
     }
 
-    public void setStandardCakeId(int standardCakeId) {
+    public void setStandardCakeId(Integer standardCakeId) {
         this.standardCakeId = standardCakeId;
     }
 
@@ -46,7 +46,7 @@ public class CakeOrderDto {
         return customCakeId;
     }
 
-    public void setCustomCakeId(int customCakeId) {
+    public void setCustomCakeId(Integer customCakeId) {
         this.customCakeId = customCakeId;
     }
 

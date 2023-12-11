@@ -1,57 +1,57 @@
 package com.techelevator.model;
 
 public class CustomCakeDto {
-    private int cakeSizeId;
+    private Integer cakeSizeId;
 
-    private int cakeFlavorId;
+    private Integer cakeFlavorId;
 
-    private int cakeFrostingId;
+    private Integer cakeFrostingId;
 
-    private int cakeFillingId;
+    private Integer cakeFillingId;
 
-    private int cakeStyleId;
+    private Integer cakeStyleId;
 
     private String extras;
 
-    private int priceId;
+    private Integer priceId;
 
-    public int getCakeSizeId() {
+    public Integer getCakeSizeId() {
         return cakeSizeId;
     }
 
-    public void setCakeSizeId(int cakeSizeId) {
+    public void setCakeSizeId(Integer cakeSizeId) {
         this.cakeSizeId = cakeSizeId;
     }
 
-    public int getCakeFlavorId() {
+    public Integer getCakeFlavorId() {
         return cakeFlavorId;
     }
 
-    public void setCakeFlavorId(int cakeFlavorId) {
+    public void setCakeFlavorId(Integer cakeFlavorId) {
         this.cakeFlavorId = cakeFlavorId;
     }
 
-    public int getCakeFrostingId() {
+    public Integer getCakeFrostingId() {
         return cakeFrostingId;
     }
 
-    public void setCakeFrostingId(int cakeFrostingId) {
+    public void setCakeFrostingId(Integer cakeFrostingId) {
         this.cakeFrostingId = cakeFrostingId;
     }
 
-    public int getCakeFillingId() {
+    public Integer getCakeFillingId() {
         return cakeFillingId;
     }
 
-    public void setCakeFillingId(int cakeFillingId) {
+    public void setCakeFillingId(Integer cakeFillingId) {
         this.cakeFillingId = cakeFillingId;
     }
 
-    public int getCakeStyleId() {
+    public Integer getCakeStyleId() {
         return cakeStyleId;
     }
 
-    public void setCakeStyleId(int cakeStyleId) {
+    public void setCakeStyleId(Integer cakeStyleId) {
         this.cakeStyleId = cakeStyleId;
     }
 
@@ -63,11 +63,11 @@ public class CustomCakeDto {
         this.extras = extras;
     }
 
-    public int getPriceId() {
+    public Integer getPriceId() {
         return priceId;
     }
 
-    public void setPriceId(int priceId) {
+    public void setPriceId(Integer priceId) {
         this.priceId = priceId;
     }
 

@@ -1,27 +1,30 @@
 <template>
-    <div>
+    <div style="overflow: hidden;">
       <OrderConfirmation></OrderConfirmation>
+      <Quote></Quote>
     </div>
-    <body>
-    <section class="wrapper">
+    <body style="height: 100%; margin: 0;">
+      <section class="wrapper">
         <div id="stars"></div>
         <div id="stars2"></div>
         <div id="stars3"></div>
-        <div id="title">
-        </div>
-    </section>
-</body>
+        <div id="title"></div>
+      </section>
+    </body>
   </template>
   
   
   <script>
   import OrderConfirmation from '@/components/OrderConfirm.vue';
+  import Quote from '@/components/Quote.vue'
   
   export default {
     name: 'OrderConfirmationPage',
     components: {
       OrderConfirmation,
+      Quote,
     },
+    
 };
   </script>
 
@@ -43,10 +46,19 @@
     padding-left: 10px;
 }
 
+body {
+    overflow: hidden;
+    height: 100vh;
+}
+
 #title span {
     background: -webkit-linear-gradient(white, #38495a);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+.wrapper{
+    overflow: hidden;
+    height:   200vh;
 }
 
 #stars {

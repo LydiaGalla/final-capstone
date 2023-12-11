@@ -10,9 +10,9 @@ export default {
     },
 
     addStandardCake(cake) {
-        return axios.post(`/standardcake/create`);
+        return axios.post(`/standardcake/create`, cake);
     },
-    
+
     updateAvailability(id, isAvailable) {
         return axios.put(`/standardcake/${id}?isAvailable=${isAvailable}`);
     }

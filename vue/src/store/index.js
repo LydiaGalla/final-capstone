@@ -142,7 +142,7 @@ export function createStore(currentToken, currentUser) {
         })
       },
       SET_AVAILABILITY_STATUS(state, payload){
-        payload.cake.available = payload.value;
+        payload.cake.isAvailable = payload.value;
       }
       
     },

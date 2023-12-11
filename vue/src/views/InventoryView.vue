@@ -4,8 +4,9 @@
         <EmployeeNav></EmployeeNav>
         <br>
         <button class="add-standard-cake"> Add New Standard Cake Option </button>
-        <StdCakesListVue></StdCakesListVue>
-
+        <div class="std-cakes-list">
+            <std-cake-card v-for="cake in cakes" v-bind:cake="cake" v-bind:key="cake.id"/>
+        </div>
 
     </div>
 
@@ -16,14 +17,20 @@
 <script>
 import StdCakesListVue from '../components/StdCakesList.vue';
 import EmployeeNav from '../components/EmployeeNav.vue';
+import StdCakeCard from '../components/StdCakeCard.vue';
 
 export default{
     data(){
 
     },
     components: {
-        StdCakesListVue,
+        StdCakeCard,
         EmployeeNav
+    },
+    computed: {
+        cakes() {
+            return this.$store.state.cakes;
+        }
     }
 
 }

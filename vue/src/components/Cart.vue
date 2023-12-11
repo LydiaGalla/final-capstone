@@ -9,7 +9,7 @@
         <br>
     </div>
     <form v-on:submit.prevent="submitForm" class="add-text-form">
-        <label for="addText">Add Writing to Cake (optional, $5 fee): </label>
+        <label for="addText">Add Writing to Cake (optional, $5 fee):</label>
         <input type="text" id="addedText" v-model="addedText">
         
         <div>
@@ -47,8 +47,12 @@ export default {
     methods: {
         submitForm() {
             this.$store.commit('SET_WRITING', this.addedText)
-            this.$router.push({ name: 'order-info-form' })
+            if (this.addedText != '') {
+                this.$store.commit('CHARGE_FEE', { cake: this.cakes[0], value: 5});
+            }
+            this.$router.push({ name: 'order-info-form' });
         }
+        
         
     }
 }

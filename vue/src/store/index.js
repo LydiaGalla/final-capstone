@@ -133,6 +133,9 @@ export function createStore(currentToken, currentUser) {
       SET_WRITING(state, writing) {
         state.writing = writing;
       },
+      CHARGE_FEE(state, payload) {
+        payload.cake.price += payload.value;
+      },
       CLEAR_CART(state) {
         state.cakes.forEach(cake => {
           cake.inCart = false;

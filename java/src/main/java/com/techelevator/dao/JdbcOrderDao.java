@@ -30,7 +30,7 @@ public class JdbcOrderDao implements OrderDao {
     public List<CakeOrder> getAllCakeOrders() {
         List<CakeOrder> cakeOrders = new ArrayList<>();
 
-        String sql = "SELECT * FROM cake_order ORDER BY customer_id ASC;";
+        String sql = "SELECT * FROM cake_order ORDER BY order_id ASC;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
 
@@ -65,9 +65,9 @@ public class JdbcOrderDao implements OrderDao {
                 cakeToOrder.getLastName(),
                 cakeToOrder.getPhone(),
                 cakeToOrder.getDueDate(),
-                LocalTime.of(8,0), //TODO: use cakeToOrder.getDueTime()
+                cakeToOrder.getDueTime(), //TODO: use LocalTime.of(8,0) to make work cakeToOrder.getDueTime()
                 cakeToOrder.getWriting(),
-                cakeToOrder.getStatus(),
+                "Pending",
                 cakeToOrder.getTotal());
 
         return getCakeOrderById(orderId);

@@ -69,14 +69,17 @@ label {
 }
 
 #submit{
-    background-color: white;
+    background-color: #583b66;
+    color: white;
     border: none;
     border-radius: 20px;
     font-family: 'Teko', sans-serif;
+    font-size: large;
+    width: 200x;
 }
 
 #submit:hover {
-    background-color: #583b66;
-    color: white;
+    background-color: white;
+    color: #583b66;
 }
 </style>

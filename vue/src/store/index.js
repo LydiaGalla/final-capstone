@@ -80,32 +80,32 @@ export function createStore(currentToken, currentUser) {
         }
         
       ],
-      orders: [
-        {
-          order_id: 1,
-          firstName: "Lydia",
-          lastName: "Gallagher",
-          phoneNumber: "555-555-5555",
-          dueDate: "1/1/2024",
-          dueTime: "2:00pm",
-          cake_details: "A cute cake",
-          writing: "cute",
-          total: 10,
-          status: "Pending"
-        },
-        {
-          order_id: 2,
-          firstName: "Spencer",
-          lastName: "Nicol",
-          phoneNumber: "555-555-5555",
-          dueDate: "1/1/2024",
-          dueTime: "3:00pm",
-          cake_details: "Another cute cake",
-          writing: "cuter",
-          total: 20,
-          status: "Pending"
-        }
-      ]
+      // orders: [
+      //   {
+      //     orderId: 1,
+      //     firstName: "Lydia",
+      //     lastName: "Gallagher",
+      //     phoneNumber: "555-555-5555",
+      //     dueDate: "1/1/2024",
+      //     dueTime: "2:00pm",
+      //     cakeDetails: "A cute cake",
+      //     writing: "cute",
+      //     total: 10,
+      //     status: "Pending"
+      //   },
+      //   {
+      //     orderId: 2,
+      //     firstName: "Spencer",
+      //     lastName: "Nicol",
+      //     phoneNumber: "555-555-5555",
+      //     dueDate: "1/1/2024",
+      //     dueTime: "3:00pm",
+      //     cakeDetails: "Another cute cake",
+      //     writing: "cuter",
+      //     total: 20,
+      //     status: "Pending"
+      //   }
+      // ]
     },
     mutations: {
       SET_AUTH_TOKEN(state, token) {
@@ -133,10 +133,16 @@ export function createStore(currentToken, currentUser) {
       SET_WRITING(state, writing) {
         state.writing = writing;
       },
+      CHARGE_FEE(state, payload) {
+        payload.cake.price += payload.value;
+      },
       CLEAR_CART(state) {
         state.cakes.forEach(cake => {
           cake.inCart = false;
         })
+      },
+      SET_AVAILABILITY_STATUS(state, payload){
+        payload.cake.available = payload.value;
       }
       
     },

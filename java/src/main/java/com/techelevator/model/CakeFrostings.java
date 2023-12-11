@@ -2,17 +2,17 @@ package com.techelevator.model;
 
 public class CakeFrostings {
 
-    private int frostingId;
+    private Integer frostingId;
 
     private String frostingName;
 
     private boolean isAvailable;
 
-    public int getFrostingId() {
+    public Integer getFrostingId() {
         return frostingId;
     }
 
-    public void setFrostingId(int frostingId) {
+    public void setFrostingId(Integer frostingId) {
         this.frostingId = frostingId;
     }
 
@@ -36,7 +36,7 @@ public class CakeFrostings {
 
     }
 
-    public CakeFrostings(int frostingId, String frostingName, boolean isAvailable) {
+    public CakeFrostings(Integer frostingId, String frostingName, boolean isAvailable) {
         this.frostingId = frostingId;
         this.frostingName = frostingName;
         this.isAvailable = isAvailable;

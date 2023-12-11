@@ -90,6 +90,7 @@ public class OrderController {
             cakeOrderToUpdate.setStatus(cancelled);
         }
 
+        orderDao.updateCakeOrderStatus(cakeOrderToUpdate.getStatus(), orderId);
         return cakeOrderToUpdate;
     }
 }

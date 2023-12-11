@@ -15,14 +15,13 @@
 </template>
 
 <script>
-import StdCakesListVue from '../components/StdCakesList.vue';
 import EmployeeNav from '../components/EmployeeNav.vue';
 import StdCakeCard from '../components/StdCakeCard.vue';
 
 export default{
-    data(){
+    // data(){
 
-    },
+    // },
     components: {
         StdCakeCard,
         EmployeeNav

@@ -13,7 +13,9 @@ import StdCakeCard from './StdCakeCard.vue';
 export default {
     computed: {
         cakes() {
-            return this.$store.state.cakes;
+            return this.$store.state.cakes.filter((cake) => {
+                return cake.available;
+            });
         }
     },
     components: {

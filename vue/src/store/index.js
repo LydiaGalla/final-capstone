@@ -141,8 +141,8 @@ export function createStore(currentToken, currentUser) {
           cake.inCart = false;
         })
       },
-      SET_AVAILABILITY_STATUS(state, payload){
-        payload.cake.isAvailable = payload.value;
+      TOGGLE_AVAILABLE(state, cake){
+        cake.available = !cake.available;
       }
       
     },

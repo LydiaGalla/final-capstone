@@ -68,23 +68,18 @@ import StdCakeOrderService from '../services/StdCakeOrderService';
 import StdCakeCard from './StdCakeCard.vue';
 
 export default {
-    props: {
-        order: {
-            type: Object,
-            required: true
-        }
-    },
+    
     data() {
         return {
             //     
             createOrder: {
 
                 writing: this.$store.state.writing,
-                firstName: this.order.firstName,
-                lastName: this.order.lastName,
-                phone: this.order.phone,
-                dueDate: this.order.dueDate,
-                dueTime: this.order.dueTime,
+                firstName: '',
+                lastName: '',
+                phone: '',
+                dueDate: '',
+                dueTime: '',
 
             }
         };
@@ -123,7 +118,7 @@ export default {
             }
 
             this.createOrder.standardCakeId = this.cakeInCart.standardCakeId,
-                this.createOrder.total = this.cakeInCart.price
+            this.createOrder.total = this.cakeInCart.price
             console.log(this.cakeInCart);
 
             StdCakeOrderService

@@ -11,12 +11,8 @@
 
         <!-- table component for orders
         -- Name, contact, pickup, status, button to change .. etc.. -->
-        <OrderList></OrderList>
-
+        <employee-order-list v-bind:orders="orders"></employee-order-list>
        
-        
-
-
 
     </div>
 
@@ -28,20 +24,36 @@
 
 <script>
 
-import OrderList from '../components/OrderList.vue';
+import stdCakeOrderService from '../services/StdCakeOrderService';
+import EmployeeOrderList from '@/components/EmployeeOrderList.vue';
 import EmployeeNav from '../components/EmployeeNav.vue';
 
 export default{
-    data(){
-        return{
-
+    components:{
+        EmployeeOrderList,
+        EmployeeNav
+    },
+    data() {
+        return {
+            orders: []
+        };
+    },
+    methods: {
+        getOrders() {
+            stdCakeOrderService.list()
+              .then(response => {
+                this.orders = response.data;
+              })
+              .catch(error => {
+                alert("Something went wrong.");
+              });
         }
     },
-    components:{
-        OrderList,
-        EmployeeNav
+    created() {
+        this.getOrders();
     }
-}
 
+    
+}
 
 </script>

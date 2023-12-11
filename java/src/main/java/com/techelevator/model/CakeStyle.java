@@ -2,17 +2,17 @@ package com.techelevator.model;
 
 public class CakeStyle {
 
-    private int styleId;
+    private Integer styleId;
 
     private String styleName;
 
     private boolean isAvailable;
 
-    public int getStyleId() {
+    public Integer getStyleId() {
         return styleId;
     }
 
-    public void setStyleId(int styleId) {
+    public void setStyleId(Integer styleId) {
         this.styleId = styleId;
     }
 
@@ -36,7 +36,7 @@ public class CakeStyle {
 
     }
 
-    public CakeStyle(int styleId, String styleName, boolean isAvailable) {
+    public CakeStyle(Integer styleId, String styleName, boolean isAvailable) {
         this.styleId = styleId;
         this.styleName = styleName;
         this.isAvailable = isAvailable;

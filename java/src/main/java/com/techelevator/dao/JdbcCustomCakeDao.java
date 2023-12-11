@@ -227,7 +227,7 @@ public class JdbcCustomCakeDao implements CustomCakeDao {
 
     @Override
     public CakeStyle createNewCakeStyle(CakeStyle styleToCreate) {
-        String sql = "INSERT INTO cake_style (style_name, is_avaialable) VALUES (?,?) RETURNING style_id;";
+        String sql = "INSERT INTO cake_style (style_name, is_available) VALUES (?,?) RETURNING style_id;";
 
         int styleId = jdbcTemplate.queryForObject(sql, Integer.class,
                 styleToCreate.getStyleName(),

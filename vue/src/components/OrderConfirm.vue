@@ -9,11 +9,14 @@
   </template>
   
   <script>
+  import Quote from './Quote.vue'
   export default {
     name: 'OrderConfirmation',
     props: {
-    quote: Object,
-  },
+        quote: Object,
+    },
+    components: {
+    },
     methods: {
       goHomePage() {
         this.$router.push({ name: 'home' });

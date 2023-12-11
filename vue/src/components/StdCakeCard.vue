@@ -4,9 +4,16 @@
         <img v-if="cake.cakeName" v-bind:src="'/' + cake.cakeName.replace(' ', '') + 'Cake.jpg'">
         <h3 class="cake-price"> $ {{ cake.price }}</h3>
         <p class="description">{{ cake.description }}</p>
+        <div class="button-container" v-if="! isAuthenticated">
         <router-link :to="{ name: 'cart'}" style="position: absolute; bottom: 10px; margin-left: -25px;">
             <button class="addToCart" v-on:click="setInCart" v-bind:disabled="cake.inCart">Add to Cart</button>
         </router-link>
+        </div>
+
+        <div class="button-container-employee" v-if="isAuthenticated">
+        <button class="mark-available" v-on:click.prevent="setAvailabilityStatus(true)">Available</button>
+        <button class="mark-unavailable" v-on:click.prevent="setAvailabilityStatus(false)">Unavailable</button>
+        </div>
     </div>
 </template>
 
@@ -19,6 +26,9 @@ export default {
     methods: {
         setInCart() {
             this.$store.commit('SET_IN_CART', { cake: this.cake, value: true});
+        },
+        setAvailabilityStatus(value){
+            this.$store.commit('SET_AVAILABILITY_STATUS', {cake: this.cake, value: value});
         }
     },
     computed: {

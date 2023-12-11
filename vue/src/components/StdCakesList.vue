@@ -1,7 +1,7 @@
 <template>
     <section>
         <div class="std-cakes-list">
-            <std-cake-card v-for="cake in cakes" v-bind:cake="cake" v-bind:key="cake.id"/>
+            <std-cake-card v-for="cake in cakes" v-bind:cake="cake" v-bind:key="cake.name"/>
         </div>
     </section>
     
@@ -13,7 +13,9 @@ import StdCakeCard from './StdCakeCard.vue';
 export default {
     computed: {
         cakes() {
-            return this.$store.state.cakes;
+            return this.$store.state.cakes.filter((cake) => {
+                return cake.available;
+            });
         }
     },
     components: {

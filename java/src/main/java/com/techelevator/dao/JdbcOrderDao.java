@@ -30,7 +30,7 @@ public class JdbcOrderDao implements OrderDao {
     public List<CakeOrder> getAllCakeOrders() {
         List<CakeOrder> cakeOrders = new ArrayList<>();
 
-        String sql = "SELECT * FROM cake_order ORDER BY customer_id ASC;";
+        String sql = "SELECT * FROM cake_order ORDER BY order_id ASC;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
 

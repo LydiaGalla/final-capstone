@@ -14,8 +14,8 @@
             <br>
             <br>
 
-            <label for="phoneNumber">Phone Number: </label>
-            <input type="text" id="phoneNumber" v-model="createOrder.phone">
+            <label for="phone">Phone Number: </label>
+            <input type="text" id="phone" v-model="createOrder.phone">
             <br>
             <br>
 
@@ -81,7 +81,7 @@ export default {
             writing: this.$store.state.writing,
             firstName: this.order.firstName,
             lastName: this.order.lastName,
-            phone: this.order.phoneNumber,
+            phone: this.order.phone,
             dueDate: this.order.dueDate,
             dueTime: this.order.dueTime,
             

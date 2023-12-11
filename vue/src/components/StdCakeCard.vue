@@ -1,12 +1,17 @@
 <template>
-    <form class="standard-cake">
+    <div class="standard-cake">
         <div class="card">
             <h2 class="cake-name">{{ cake.cakeName }}</h2>
             <img v-if="cake.cakeName" v-bind:src="'/' + cake.cakeName.replace(' ', '') + 'Cake.jpg'">
             <h3 class="cake-price"> $ {{ cake.price }}</h3>
             <p class="description">{{ cake.description }}</p>
-            <div >
-                <button class="add-to-cart"  v-on:click.prevent="setInCart(true)" v-bind:disabled="anyCakesInCart">Add to Cart</button>
+            <div class="button-container-employee" v-if="isAuthenticated">
+                <!-- <button class="mark-available" v-on:click.prevent="setAvailabilityStatus(true)" v-if="!cake.available">Available</button>
+                <button class="mark-unavailable" v-on:click.prevent="setAvailabilityStatus(false)" v-if="cake.available">Unavailable</button> -->
+                <button v-bind:class="{'mark-unavailable' : cake.available, 'mark-available' : !cake.available}" v-on:click="toggleAvailable(cake)">{{ cake.available === true ? 'Mark Unavailable' : 'Mark Available' }}</button>
+            </div>
+            <div v-if="!isAuthenticated">
+                <button class="add-to-cart" v-on:click.prevent="setInCart(true)" v-bind:disabled="anyCakesInCart">Add to Cart</button>
             </div>
             <!-- <div v-show="thisCakeInCart">
                 <p>Hello</p>
@@ -18,25 +23,28 @@
                 <!-- <button class="delete-from-cart" v-bind:cake="thisCakeInCart" v-on:click.prevent="setInCart(false)">Remove from Cart</button> -->
 
             <!-- </div> -->
-            <div class="button-container-employee" v-if="isAuthenticated">
-                <button class="mark-available" v-on:click.prevent="setAvailabilityStatus(true)">Available</button>
-                <button class="mark-unavailable" v-on:click.prevent="setAvailabilityStatus(false)">Unavailable</button>
-            </div>
+            
         </div>
-    </form>
+    </div>
 </template>
 
 <script>
+import stdCakeService from '../services/StdCakeService.js'
 
 export default {
-    props: ['cake'],
+    props: {
+        cake: Object
+
+    },
     methods: {
         setInCart(value) {
             this.$store.commit('SET_IN_CART', { cake: this.cake, value: value});
             this.$router.push({ name: 'cart'});
         },
-        setAvailabilityStatus(value){
-            this.$store.commit('SET_AVAILABILITY_STATUS', {cake: this.cake, value: value});
+        toggleAvailable(cake){
+            this.$store.commit('TOGGLE_AVAILABLE', cake);
+            stdCakeService
+              .updateAvailability(cake.standardCakeId, cake.available);
         }
     },
     computed: {
@@ -51,6 +59,9 @@ export default {
                 }
             }
             return false;
+        },
+        isAuthenticated() {
+            return this.$store.state.token != '';
         }
     }
 }

@@ -5,8 +5,8 @@
             <img v-if="cake.cakeName" v-bind:src="'/' + cake.cakeName.replace(' ', '') + 'Cake.jpg'">
             <h3 class="cake-price"> $ {{ cake.price }}</h3>
             <p class="description">{{ cake.description }}</p>
-            <div>
-                <button class="add-to-cart" v-on:click.prevent="setInCart(true)" v-bind:disabled="anyCakesInCart">Add to Cart</button>
+            <div >
+                <button class="add-to-cart"  v-on:click.prevent="setInCart(true)" v-bind:disabled="anyCakesInCart">Add to Cart</button>
             </div>
             <!-- <div v-show="thisCakeInCart">
                 <p>Hello</p>
@@ -18,6 +18,10 @@
                 <!-- <button class="delete-from-cart" v-bind:cake="thisCakeInCart" v-on:click.prevent="setInCart(false)">Remove from Cart</button> -->
 
             <!-- </div> -->
+            <div class="button-container-employee" v-if="isAuthenticated">
+                <button class="mark-available" v-on:click.prevent="setAvailabilityStatus(true)">Available</button>
+                <button class="mark-unavailable" v-on:click.prevent="setAvailabilityStatus(false)">Unavailable</button>
+            </div>
         </div>
     </form>
 </template>
@@ -30,6 +34,9 @@ export default {
         setInCart(value) {
             this.$store.commit('SET_IN_CART', { cake: this.cake, value: value});
             this.$router.push({ name: 'cart'});
+        },
+        setAvailabilityStatus(value){
+            this.$store.commit('SET_AVAILABILITY_STATUS', {cake: this.cake, value: value});
         }
     },
     computed: {

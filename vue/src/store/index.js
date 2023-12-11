@@ -140,6 +140,9 @@ export function createStore(currentToken, currentUser) {
         state.cakes.forEach(cake => {
           cake.inCart = false;
         })
+      },
+      SET_AVAILABILITY_STATUS(state, payload){
+        payload.cake.available = payload.value;
       }
       
     },

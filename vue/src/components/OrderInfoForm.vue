@@ -1,23 +1,28 @@
 <template>
     <img src="Checkout_Text.png" alt="Checkout">
+    <br>
     <div>
         <form v-on:submit.prevent="submitForm" class="order-info-form">
 
             <label for="firstName">First Name:</label>
             <input type="text" id="firstName" v-model="createOrder.firstName">
             <br>
+            <br>
 
             <label for="lastName">Last Name:</label>
             <input type="text" id="lastName" v-model="createOrder.lastName">
+            <br>
             <br>
 
             <label for="phoneNumber">Phone Number: </label>
             <input type="text" id="phoneNumber" v-model="createOrder.phone">
             <br>
+            <br>
 
             <label for="dueDate">Pickup Date: </label>
             <input type="date" id="dueDate" v-model="createOrder.dueDate" :min="currentDatePlusTwoDays" :max="currentDatePlusMonth">
             
+            <br>
             <br>
             <label for="dueTime">Pickup Time: </label>
             <select id="dueTime" v-if="!isSunday" v-model="createOrder.dueTime">
@@ -48,6 +53,7 @@
                 <option>11:00 AM</option>
                 <option>11:30 AM</option>
             </select>
+            <br>
             <br>
 
             <button id="placeOrder" type="submit" class="is-primary">Place Order</button>
@@ -153,7 +159,8 @@ export default {
     border: none;
     border-radius: 20px;
     font-family: 'Teko', sans-serif;
-    width: 50x;    
+    font-size: large;
+    width: 100x;    
 }
 
 #placeOrder:hover, #cancel:hover {

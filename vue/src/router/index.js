@@ -11,7 +11,7 @@ import RegisterView from '../views/RegisterView.vue';
 import EmployeeHomeView from '../views/EmployeeHomeView.vue';
 import InventoryView from '../views/InventoryView.vue';
 import EditInventoryView from '../views/EditInventoryView.vue';
-import CustomOrderFormView from '../views/CustomOrderFormView.vue'
+import ConfirmOrder from '../views/OrderConfirmedView.vue';
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -82,6 +82,12 @@ const routes = [
     name: 'order-info-form',
     path: '/orderInfoForm',
     component: OrderInfoFormView
+  },
+
+  {
+    name: 'order-confirmation',
+    path: '/orderInfoForm/orderConfirmation',
+    component: ConfirmOrder
   },
 
   {

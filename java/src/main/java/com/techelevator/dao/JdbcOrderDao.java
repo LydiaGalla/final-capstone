@@ -72,22 +72,6 @@ public class JdbcOrderDao implements OrderDao {
 
         return getCakeOrderById(orderId);
     }
-    @Override
-    public CustomCake createNewCustomCake(CustomCake cakeToCreate) {
-        String sql = "INSERT INTO custom_cake (cake_size_id, cake_flavor_id, cake_frosting_id, cake_filling_id, cake_style_id, extras, price_id) VALUES (?,?,?,?,?,?,?) RETURNING custom_cake_id;";
-
-        int customCakeId = jdbcTemplate.queryForObject(sql, Integer.class,
-                cakeToCreate.getCakeSizeId(),
-                cakeToCreate.getCakeFlavorId(),
-                cakeToCreate.getCakeFrostingId(),
-                cakeToCreate.getCakeFillingId(),
-                cakeToCreate.getCakeSizeId(),
-                cakeToCreate.getExtras(),
-                cakeToCreate.getPriceId());
-
-        return customCakeDao.getCustomCakeById(customCakeId);
-    }
-
 
     @Override
     public CakeOrder updateCakeOrderStatus(String status, int orderId) {
@@ -106,6 +90,23 @@ public class JdbcOrderDao implements OrderDao {
         }
         return getCakeOrderById(orderId);
 
+    }
+
+
+    @Override
+    public CustomCake createNewCustomCake(CustomCake cakeToCreate) {
+        String sql = "INSERT INTO custom_cake (cake_size_id, cake_flavor_id, cake_frosting_id, cake_filling_id, cake_style_id, extras, price_id) VALUES (?,?,?,?,?,?,?) RETURNING custom_cake_id;";
+
+        int customCakeId = jdbcTemplate.queryForObject(sql, Integer.class,
+                cakeToCreate.getCakeSizeId(),
+                cakeToCreate.getCakeFlavorId(),
+                cakeToCreate.getCakeFrostingId(),
+                cakeToCreate.getCakeFillingId(),
+                cakeToCreate.getCakeSizeId(),
+                cakeToCreate.getExtras(),
+                cakeToCreate.getPriceId());
+
+        return customCakeDao.getCustomCakeById(customCakeId);
     }
 
     private CakeOrder mapToRowCakeOrder(SqlRowSet results){

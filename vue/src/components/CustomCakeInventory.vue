@@ -8,35 +8,13 @@
                 <th>Availability</th>
             </tr>
         </thead>
-
         <tbody>
-            <tr>
-                <td>Almond </td>
-                <td><input class="status-button" type="button" value="Available"></td>
-            </tr>
-            <tr>
-                <td>Chocolate</td>
-                <td><input class="status-button" type="button" value="Available"></td>
-            </tr>
-            <tr>
-                <td>Marble</td>
-                <td><input class="status-button" type="button" value="Available"></td>
-            </tr>
-            <tr>
-                <td>Red Velvet</td>
-                <td><input class="status-button" type="button" value="Available"></td>
-            </tr>
-            <tr>
-                <td>White</td>
-                <td><input class="status-button" type="button" value="Available"></td>
-            </tr>
-            <tr>
-                <td>Yellow</td>
-                <td><input class="status-button" type="button" value="Available"></td>
+            <tr v-for="flavor in flavors" :key="flavor.flavorName">
+                <td>{{ flavor.flavorName }} </td>
+                <td><button  value="CHANGE THIS">{{ flavor.isAvailable ? "Mark Unavailable" : "Mark Available"}}</button></td>
             </tr>
         </tbody>
     </table>
-
     <br>
 
     <table>
@@ -46,23 +24,13 @@
                 <th>Availability</th>
             </tr>
         </thead>
-
         <tbody>
-            <tr>
-                <td>Chocolate Buttercream </td>
-                <td><input class="status-button" type="button" value="Available"></td>
-            </tr>
-            <tr>
-                <td>Cream Cheese Frosting </td>
-                <td><input class="status-button" type="button" value="Available"></td>
-            </tr>
-            <tr>
-                <td>Vanilla Buttercream</td>
-                <td><input class="status-button" type="button" value="Available"></td>
+            <tr v-for="frosting in frostings" :key="frosting.frostingName">
+                <td>{{ frosting.frostingName }} </td>
+                <td><button v-on:click.prevent="toggleAvailability(frosting.frostingName)" value="CHANGE THIS">{{ frosting.isAvailable ? "Mark Unavailable" : "Mark Available"}}</button></td>
             </tr>
         </tbody>
     </table>
-
     <br>
 
     <table>
@@ -72,68 +40,71 @@
                 <th>Availability</th>
             </tr>
         </thead>
-
         <tbody>
-            <tr>
-                <td>Custard </td>
-                <td><input class="status-button" type="button" value="Available"></td>
-            </tr>
-            <tr>
-                <td>Fudge</td>
-                <td><input class="status-button" type="button" value="Available"></td>
-            </tr>
-            <tr>
-                <td>Raspberry Jam</td>
-                <td><input class="status-button" type="button" value="Available"></td>
-            </tr>
-            <tr>
-                <td>Vanilla Buttercream</td>
-                <td><input class="status-button" type="button" value="Available"></td>
+            <tr v-for="filling in fillings" :key="filling.fillingName" >
+                <td>{{ filling.fillingName }} </td>
+                <td><button v-on:click.prevent="toggleAvailability(filling.fillingName)" class="status-button" value="CHANGE THIS">{{ filling.isAvailable ? "Mark Unavailable" : "Mark Available"}}</button></td>
             </tr>
         </tbody>
     </table>
-
     <br>
 
     <table>
         <thead>
             <tr>
-                <th>Cake Sizes</th>  
-                <th>Availability</th>
+                <th>Cake Sizes - </th>  
+                <th> Availability</th>
             </tr>
         </thead>
-
         <tbody>
-            <tr>
-                <td>Small </td>
-                <td><input class="status-button" type="button" value="Available"></td>
-            </tr>
-            <tr>
-                <td>Large </td>
-                <td><input class="status-button" type="button" value="Available"></td>
-            </tr>
-            <tr>
-                <td>Cupcake </td>
-                <td><input class="status-button" type="button" value="Available" v-on:click="changeAvailability"></td>
+            <tr v-for="size in sizes" :key="size.sizeName">
+                <td>{{ size.sizeName }} </td>
+              <!--click event calls the method to toggle the  availability -->  
+              <td><button v-on:click.prevent="toggleAvailability(size.sizeName)" value="CHANGE THIS">{{ size.isAvailable ? "Mark Unavailable" : "Mark Available"}}</button></td>
             </tr>
         </tbody>
     </table>
-    
 </div>
-
 </template>
 
+
+
 <script>
+import CustomCakeInventoryService from '../services/CustomCakeInventoryService';
+
 export default{
     data(){
         return{
-
+            sizes: [],
+            flavors: [],
+            fillings: [],
+            frostings: []
         }
     },
     methods:{
-        changeAvailability(){
-            
+        toggleAvailability(option){
+            if(option === 1){
+                CustomCakeInventoryService.updateFilling()
+            }
+            else if(option === 2){
+                CustomCakeInventoryService.updateFlavor()
+            }
+            else if(option === 3){
+                CustomCakeInventoryService.updateFrosting()
+            }
+            else if(option === 4){
+                CustomCakeInventoryService.updateSize()
+            }
         }
+    },
+    created() {
+            //created calls the service to get the list
+            // assign the response data to the arrays for each one.
+       this.sizes = CustomCakeInventoryService.getAllFillings();
+       this.flavors = CustomCakeInventoryService.getAllFlavors();
+       this.fillings = CustomCakeInventoryService.getAllFillings();
+       this.frostings = CustomCakeInventoryService.getAllFrostings();
+
     }
 }
 </script>

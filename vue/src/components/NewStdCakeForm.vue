@@ -75,7 +75,7 @@ import stdCakeService from '../services/StdCakeService';
 
 </script>
 
-<style>
+<style scoped>
 .add-cake {
     background-color: #583b66;
     color: white;

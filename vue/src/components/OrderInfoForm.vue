@@ -162,5 +162,4 @@ export default {
     background-color: white;
     color: #583b66;
 }
-</style>
-
+</style> 

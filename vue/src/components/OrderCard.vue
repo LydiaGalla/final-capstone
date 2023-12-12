@@ -1,19 +1,31 @@
 <template>
     <div class="order-card">
-        <h2 class="order-id">Order # {{ order.orderId }}</h2>
-        <h3 class="order-name">{{ order.firstName }} {{ order.lastName }} </h3>
-        <p class="order-phone">Phone: {{ order.phone }}</p>
-        <p class="order-date-time">Pickup: {{ order.dueDate }} {{ order.dueTime }} </p>
+        <h2 class="order-id">Order # {{ editOrder.orderId }}</h2>
+        <h3 class="order-name">{{ editOrder.firstName }} {{ order.lastName }} </h3>
+        <p class="order-phone">Phone: {{ editOrder.phone }}</p>
+        <p class="order-date-time">Pickup: {{ editOrder.dueDate }} {{ editOrder.dueTime }} </p>
         <p class="order-details"> Cake Name: {{ cake.cakeName }}</p>
-        <p class="order-writing">Requested cake text: {{ order.writing }}</p>
-        <p class="order-total">Total: ${{ order.total }}</p>
-        <p class="order-status"> {{ order.status }}</p>
-        <button class="status"> Edit Status</button>
+        <p class="order-writing">Requested cake text: {{ editOrder.writing }}</p>
+        <p class="order-total">Total: ${{ editOrder.total }}</p>
+        <p class="order-status"> {{ editOrder.status }}</p>
+
+        <select class="status" id="status" v-model="status">
+            <option value="">&nbsp; &nbsp;Edit Status</option>
+            <option value="Pending">&nbsp; &nbsp;Pending</option>
+            <option value="Ready">&nbsp; &nbsp;Ready</option>
+            <option value="Completed">&nbsp; &nbsp;Completed</option>
+            <option value="Cancelled">&nbsp; &nbsp;Cancelled</option>
+        </select>
+
+        <button v-on:click.prevent="updateOrderStatus()" :disabled="status ===''" class="status"> Save </button>
+
+
     </div>
 </template>
 
 <script>
 import stdCakeService from '../services/StdCakeService';
+import stdCakeOrderService from '../services/StdCakeOrderService';
 
 export default{
     props: {
@@ -21,15 +33,15 @@ export default{
             type: Object,
             required: true
         }
+    
     },
+
     data() {
         return {
-            cake: {}
+            cake: {},
+            editOrder: { ...this.order},
+            status: ''
         }
-    },
-    computed: {
-    
-
     },
 
     methods: {
@@ -41,6 +53,13 @@ export default{
               .catch(error => {
                 //alert("Something went wrong.");
               });
+        },
+        updateOrderStatus() {
+            stdCakeOrderService
+              .updateStatus(this.status, this.order.orderId)
+              .then(() => {
+                this.editOrder.status = this.status
+              })
         }
     },
     mounted() {
@@ -74,8 +93,8 @@ export default{
 }
 
 .status:hover {
-    background-color: #583b66;
-    color: white;
+    background-color: white;
+    color: #583b66;
 }
 
 </style>

@@ -1,10 +1,13 @@
 <template>
     <section>
         <div class="order-list" >
-            <order-card v-for="order in orders" v-bind:order="order" v-bind:key="order.orderId"></order-card>
+            <order-card v-for="order in pendingOrders" v-bind:order="order" v-bind:key="order.orderId"></order-card>
             <!-- <router-link v-bind:to="{ name: 'order-details-view', params: { orderId: order.id} }">
                 {{ order.firstName }}
             </router-link> -->
+            <!-- <order-card v-for="order in archivedOrders" v-bind:order="order" v-bind:key="order.orderId"></order-card> -->
+
+
         </div>
     </section>
     
@@ -19,6 +22,18 @@ export default {
         type: Array,
         required: true
       }
+    },
+    computed: {
+        pendingOrders() {
+            return this.orders.filter((order) => {
+                return order.status === "Pending" || order.status === "Ready";
+            }) 
+        },
+        archivedOrders() {
+            return this.orders.filter((order) => {
+                return order.status === "Cancelled" || order.status === "Completed";
+            })
+        }
     },
     components: {
         OrderCard

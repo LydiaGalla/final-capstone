@@ -7,6 +7,8 @@ export function createStore(currentToken, currentUser) {
       token: currentToken || '',
       user: currentUser || {},
 
+      customCakeInCart: null,
+
       cakes: [
         {
           name: "Dead Pet",
@@ -157,8 +159,8 @@ export function createStore(currentToken, currentUser) {
         })
       },
 
-      ADD_CUSTOM_CAKE(state, cake){
-        state.cakes.push(cake)
+      ADD_CUSTOM_CAKE_TO_CART(state, cake){
+        state.customCakeInCart = cake
       }
       
     },

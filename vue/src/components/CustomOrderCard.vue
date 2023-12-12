@@ -15,7 +15,12 @@ import CustomOrderService from '../services/CustomOrderService';
 
     export default {
         props: {
-            cake: Object
+            cake: Object,
+            data() {
+                return {
+                    cake: {}
+                }
+            }
         },
         methods: {
             

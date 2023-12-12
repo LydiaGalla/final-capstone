@@ -119,15 +119,13 @@ export default {
 
             this.createOrder.standardCakeId = this.cakeInCart.standardCakeId,
             this.createOrder.total = this.cakeInCart.price
-            console.log(this.cakeInCart);
 
             StdCakeOrderService
                 .addStandardCakeOrder(this.createOrder)
                 .then(response => {
-                    console.log("in submit");
                     if (response.status === 201) {
                         this.$store.commit('CLEAR_CART')
-                        this.$router.push({ name: 'home' });
+                        this.$router.push({ name: 'order-confirmation' });
                     }
                 })
                 .catch(error => {

@@ -3,7 +3,9 @@
         <h3>Employee Home - Inventory</h3>
         <EmployeeNav></EmployeeNav>
         <br>
-        <router-link class="add-standard-cake" :to="{ name: 'new standard cake'}"> Add New Standard Cake Option </router-link>
+        <router-link :to="{ name: 'new standard cake'}">
+             <button class="add-standard-cake" > Add New Standard Cake Option </button>
+        </router-link>
         <div class="std-cakes-list">
             <std-cake-card v-for="cake in cakes" v-bind:cake="cake" v-bind:key="cake.id"/>
         </div>

@@ -105,7 +105,7 @@ export default {
     color: #583b66;
 }
 
-.add-to-cart, .delete-from-cart {
+.add-to-cart, .delete-from-cart, .mark-available, .mark-unavailable {
     background-color: #d1b8dd;
     border: none;
     border-radius: 20px;
@@ -113,8 +113,7 @@ export default {
     width: 50x;
     position: absolute;
     bottom: 15px;
-    margin-left: -25px;
-    
+    margin-left: -40px;
 }
 
 .addToCart:hover {

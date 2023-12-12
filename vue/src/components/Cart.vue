@@ -3,7 +3,9 @@
     <div class="cake-container">
         <std-cake-card v-for="cake in cakes" v-bind:cake="cake" v-bind:key="cake.name"></std-cake-card>
     </div>
-    <router-link :to="{ name: 'home'}">Continue Shopping</router-link>
+    <router-link :to="{ name: 'home'}">
+        <button class="continue-shopping"> Continue Shopping </button> 
+    </router-link>
 
     <div>
         <br>
@@ -65,7 +67,7 @@ h1 {
     font-size: 300%;
 }
 
-.checkout-button{ 
+.continue-shopping, .checkout-button{ 
     background-color: #583b66;
     color:#ffffff;
     border: none;
@@ -76,7 +78,7 @@ h1 {
     
 }
 
-.checkout-button:hover {
+.continue-shopping:hover, .checkout-button:hover {
     background-color: #ffffff;
     color:#583b66;
 }

@@ -8,12 +8,24 @@
         <p class="order-writing">Requested cake text: {{ order.writing }}</p>
         <p class="order-total">Total: ${{ order.total }}</p>
         <p class="order-status"> {{ order.status }}</p>
-        <button class="status"> Edit Status</button>
+
+        <select class="status" id="status" v-model="status">
+            <option value="">&nbsp; &nbsp;Edit Status</option>
+            <option value="Pending">&nbsp; &nbsp;Pending</option>
+            <option value="Ready">&nbsp; &nbsp;Ready</option>
+            <option value="Completed">&nbsp; &nbsp;Completed</option>
+            <option value="Cancelled">&nbsp; &nbsp;Cancelled</option>
+        </select>
+
+        <button class="status"> Save </button>
+
+
     </div>
 </template>
 
 <script>
 import stdCakeService from '../services/StdCakeService';
+import stdCakeOrderService from '../services/StdCakeOrderService';
 
 export default{
     props: {
@@ -24,7 +36,7 @@ export default{
     },
     data() {
         return {
-            cake: {}
+            status: ''
         }
     },
     computed: {
@@ -41,6 +53,10 @@ export default{
               .catch(error => {
                 //alert("Something went wrong.");
               });
+        },
+        updateOrderStatus() {
+            stdCakeOrderService.updateStatus(status, this.cake.standardCakeId);
+            //TODO COME BACK AND FINISH
         }
     },
     mounted() {
@@ -74,8 +90,8 @@ export default{
 }
 
 .status:hover {
-    background-color: #583b66;
-    color: white;
+    background-color: white;
+    color: #583b66;
 }
 
 </style>

@@ -60,8 +60,6 @@ export default{
               .then(() => {
                 this.editOrder.status = this.status
               })
-
-            //TODO COME BACK AND FINISH
         }
     },
     mounted() {

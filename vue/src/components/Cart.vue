@@ -51,12 +51,13 @@ export default {
         }
     },
     components: {
-        StdCakeCard
+        StdCakeCard,
+        CustomOrderCard
     },
     methods: {
         submitForm() {
             this.$store.commit('SET_WRITING', this.addedText)
-            if (this.addedText != '') {
+            if (this.addedText != '' && this.cakes.length > 0) {
                 this.$store.commit('CHARGE_FEE', { cake: this.cakes[0], value: 5});
             }
             this.$router.push({ name: 'order-info-form' });

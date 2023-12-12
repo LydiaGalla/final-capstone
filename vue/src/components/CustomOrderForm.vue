@@ -43,7 +43,7 @@
             <br>
             <br>
             <label for="selectStyle">Select Cake Style </label>
-            <select id="selectStyle" v-model="createdCustomCake.style">
+            <select id="selectStyle" v-model="createdCustomCake.cakeStyleId">
                 <!-- <option value="Round">Round</option>
                 <option value="Square">Square</option>
                 <option value="Cupcake">Cupcake</option> -->
@@ -53,12 +53,12 @@
             <br>
             <br>
             <label for="selectSize">Select Cake Size </label>
-            <select id="selectSize" v-model="createdCustomCake.size">
+            <select id="selectSize" v-model="createdCustomCake.cakeSizeId">
                 <!-- <option value="Small">Small</option>
                 <option value="Large">Large</option>
                 <option value="Cupcake">Single Cupcake</option>
                 <option value="Bakers Dozen">Bakers Dozen, Cupcakes Only</option> -->
-                <option v-for="size in availableCakeSizes" :key="size.sizeId" :value="size.sizeId"> {{ size.sizeName }}</option>
+                <option v-for="size in validCakeSizes" :key="size.sizeId" :value="size.sizeId"> {{ size.sizeName }}</option>
 
             </select>
             <br>
@@ -77,36 +77,58 @@
 
 <script>
 import CustomOrderService from '../services/CustomOrderService';
+import CustomCakeInventoryService from '../services/CustomCakeInventoryService';
 
     export default{
+        computed: {
+            validCakeSizes() {
+                return this.availableCakeSizes.filter((cakeSize) => {
+                    if (!this.createdCustomCake.cakeStyleId) {
+                        return false;
+                    }
+
+                    const cakeStyleText = this.availableCakeStyles.find(style => style.styleId === this.createdCustomCake.cakeStyleId).styleName;
+
+                    if (cakeStyleText === 'Cupcake') {
+                        return (cakeSize.sizeName === 'Cupcake' || cakeSize.sizeName === "Bakers Dozen");
+                    }
+                    if (cakeStyleText === 'Round' || cakeStyleText === 'Square') {
+                        return (cakeSize.sizeName === 'Small' || cakeSize.sizeName === 'Large');
+                    }
+
+                    return false;
+                })
+            }
+        },
+
         created() {
             // TODO: change to CustomCakeService
-            CustomOrderService
-                .getFlavors()
+            CustomCakeInventoryService
+                .getAllFlavors()
                 .then(response => {
                     this.availableCakeFlavors = response.data.filter(flavor => flavor.available === true);
                 });
 
-            CustomOrderService
-                .getFillings()
+            CustomCakeInventoryService
+                .getAllFillings()
                 .then(response => {
                     this.availableCakeFillings = response.data.filter(filling => filling.available === true);
                 });
 
-            CustomOrderService
-                .getFrostings()
+            CustomCakeInventoryService
+                .getAllFrostings()
                 .then(response => {
                     this.availableCakeFrostings = response.data.filter(frosting => frosting.available === true);
                 });    
 
-            CustomOrderService
-                .getStyles()
+            CustomCakeInventoryService
+                .getAllStyles()
                 .then(response => {
                     this.availableCakeStyles = response.data.filter(style => style.available === true);
                 });
             
-            CustomOrderService
-                .getSizes()
+            CustomCakeInventoryService
+                .getAllSizes()
                 .then(response => {
                     this.availableCakeSizes = response.data.filter(size => size.available === true);
                 });    
@@ -122,11 +144,11 @@ import CustomOrderService from '../services/CustomOrderService';
                 availableCakeSizes: [],
 
                 createdCustomCake: {
-                cakeFlavorId:'',
-                cakeFillingId:'',
-                cakeFrostingId:'',
-                cakeStyleId:'',
-                cakeSizeId:'',
+                    cakeFlavorId:'',
+                    cakeFillingId:'',
+                    cakeFrostingId:'',
+                    cakeStyleId:'',
+                    cakeSizeId:''
                 }
             }
         },
@@ -134,14 +156,11 @@ import CustomOrderService from '../services/CustomOrderService';
             getPriceBySize(size) {
                 if (size == 'Small') {
                     return 35;
-                }
-                if (size == 'Large'){
+                } else if (size == 'Large') {
                     return 50;
-                }
-                if (size == 'Single Cupcake') {
+                } else if (size == 'Single Cupcake') {
                     return 4;
-                }
-                if (size == 'Bakers Dozen') {
+                } else if (size == 'Bakers Dozen') {
                     return 48;
                 }        
             },
@@ -155,27 +174,26 @@ import CustomOrderService from '../services/CustomOrderService';
             CustomOrderService
                 .addCustomCakeOrder(this.createdCustomCake)
                 .then(response => {
-                    if (response.status === 201) {
                         
-                        const cakeFlavorText = this.availableCakeFlavors.find(flavor => flavor.flavorId === this.createdCustomCake.cakeFlavorId).flavorName;
-                        const cakeFillingText = this.availableCakeFillings.find(filling => filling.fillingId === this.createdCustomCake.cakeFillingId).fillingName;
-                        const cakeFrostingText = this.availableCakeFrostings.find(frosting => frosting.frostingId === this.createdCustomCake.cakeFrostingId).frostingName;
-                        const cakeStyleText = this.availableCakeStyles.find(style => style.styleId === this.createdCustomCake.cakeStyleId).styleName;
-                        const cakeSizeText = this.availableCakeSizes.find(size => size.sizeId === this.createdCustomCake.cakeSizeId).sizeName;
+                    const cakeFlavorText = this.availableCakeFlavors.find(flavor => flavor.flavorId === this.createdCustomCake.cakeFlavorId).flavorName;
+                    const cakeFillingText = this.availableCakeFillings.find(filling => filling.fillingId === this.createdCustomCake.cakeFillingId).fillingName;
+                    const cakeFrostingText = this.availableCakeFrostings.find(frosting => frosting.frostingId === this.createdCustomCake.cakeFrostingId).frostingName;
+                    const cakeStyleText = this.availableCakeStyles.find(style => style.styleId === this.createdCustomCake.cakeStyleId).styleName;
+                    const cakeSizeText = this.availableCakeSizes.find(size => size.sizeId === this.createdCustomCake.cakeSizeId).sizeName;
 
 
-                        const customCakeWithText = {
-                            cakeFlavor: cakeFlavorText,
-                            cakeFilling: cakeFillingText,
-                            cakeFrosting: cakeFrostingText,
-                            cakeStyle: cakeStyleText,
-                            cakeSize: cakeSizeText,
-                            cakePrice: this.getPriceBySize(this.createdCustomCake.size)
-                        };
+                    const customCakeWithText = {
+                        cakeFlavor: cakeFlavorText,
+                        cakeFilling: cakeFillingText,
+                        cakeFrosting: cakeFrostingText,
+                        cakeStyle: cakeStyleText,
+                        cakeSize: cakeSizeText,
+                        cakePrice: this.getPriceBySize(cakeSizeText),
+                        customCakeId: response.data.customCakeId
+                    };
 
-                        this.$store.commit('ADD_CUSTOM_CAKE_TO_CART', customCakeWithText)
-                        this.$router.push({ name: 'cart'});
-                    }
+                    this.$store.commit('ADD_CUSTOM_CAKE_TO_CART', customCakeWithText)
+                    this.$router.push({ name: 'cart'});
                 })
             },
 

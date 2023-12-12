@@ -102,7 +102,7 @@ public class JdbcOrderDao implements OrderDao {
                 cakeToCreate.getCakeFlavorId(),
                 cakeToCreate.getCakeFrostingId(),
                 cakeToCreate.getCakeFillingId(),
-                cakeToCreate.getCakeSizeId(),
+                cakeToCreate.getCakeStyleId(),
                 cakeToCreate.getExtras(),
                 cakeToCreate.getPriceId());
 

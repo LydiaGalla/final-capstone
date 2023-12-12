@@ -127,7 +127,7 @@ export default {
                     console.log("in submit");
                     if (response.status === 201) {
                         this.$store.commit('CLEAR_CART')
-                        this.$router.push({ name: 'home' });
+                        this.$router.push({ name: 'order-confirmation' });
                     }
                 })
                 .catch(error => {
@@ -164,5 +164,4 @@ export default {
     background-color: white;
     color: #583b66;
 }
-</style>
-
+</style> 

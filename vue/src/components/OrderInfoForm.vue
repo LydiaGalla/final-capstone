@@ -117,8 +117,16 @@ export default {
                 return;
             }
 
-            this.createOrder.standardCakeId = this.cakeInCart.standardCakeId,
-            this.createOrder.total = this.cakeInCart.price
+            if (this.$store.state.customCakeInCart == null) {
+                this.createOrder.standardCakeId = this.cakeInCart.standardCakeId,
+                this.createOrder.total = this.cakeInCart.price
+            } else {
+                this.createOrder.customCakeId = this.$store.state.customCakeInCart.customCakeId;
+                this.createOrder.total = this.$store.state.customCakeInCart.cakePrice;
+                if (this.writing != '') {
+                    this.createOrder.total += 5;
+                }
+            }
 
             StdCakeOrderService
                 .addStandardCakeOrder(this.createOrder)

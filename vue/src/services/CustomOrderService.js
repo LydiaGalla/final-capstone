@@ -13,5 +13,18 @@ export default {
     addCustomCakeOrder(order){
         return axios.post('/cakeorder/customcake', order);
 
+    },
+
+    getFillings() {
+        return Promise.resolve({ data: [
+            {
+                fillingId: 1,
+                fillingName: 'Raspberry Jam' 
+            },
+            {
+                fillingId: 2,
+                fillingName: 'Fudge' 
+            },
+        ]});
     }
 }

@@ -21,10 +21,8 @@
 
             <br>
             <br>
-                <!--Does this work?-->
             <label for="image">Image (url): </label>
             <input type="url" id="image" v-model="createdStandardCake.img">
-            <!-- create image url string property in backend and in database -->
 
             <br>
             <br>

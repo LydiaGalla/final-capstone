@@ -56,7 +56,7 @@ public class OrderController {
         return orderDao.getCakeOrderById(id);
     }
 
-    @PostMapping("cakeorder/customcake")
+    @PostMapping("/cakeorder/customcake")
     public CustomCake createNewCustomCake(@RequestBody CustomCakeDto customCakeDto) {
 
         CustomCake cakeToCreate = new CustomCake();

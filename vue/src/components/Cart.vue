@@ -1,7 +1,12 @@
 <template>
     <img src="Order_Summary_Text.png" alt="Order Summary">
     <div class="cake-container">
-        <std-cake-card v-for="cake in cakes" v-bind:cake="cake" v-bind:key="cake.name"></std-cake-card>
+        <div v-if="$store.state.customCakeInCart != null">
+            <custom-order-card v-bind:cake="$store.state.customCakeInCart"></custom-order-card>
+        </div>
+        <div v-else>
+            <std-cake-card v-for="cake in cakes" v-bind:cake="cake" v-bind:key="cake.name"></std-cake-card>
+        </div>
     </div>
     <router-link :to="{ name: 'home'}">
         <button class="continue-shopping"> Continue Shopping </button> 
@@ -28,6 +33,8 @@
 <script>
 import StdCakeCard from './StdCakeCard.vue';
 import StdCakeOrderService from '../services/StdCakeOrderService';
+import CustomOrderCard from './CustomOrderCard.vue';
+import CustomOrderService from '../services/CustomOrderService';
 
 export default {
     
@@ -44,12 +51,13 @@ export default {
         }
     },
     components: {
-        StdCakeCard
+        StdCakeCard,
+        CustomOrderCard
     },
     methods: {
         submitForm() {
             this.$store.commit('SET_WRITING', this.addedText)
-            if (this.addedText != '') {
+            if (this.addedText != '' && this.cakes.length > 0) {
                 this.$store.commit('CHARGE_FEE', { cake: this.cakes[0], value: 5});
             }
             this.$router.push({ name: 'order-info-form' });

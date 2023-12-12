@@ -29,7 +29,7 @@
             <br>
             <br>
 
-            <button class="add-cake"> Add Cake </button>
+            <button id="addCake" class="add-cake"> Add Cake </button>
 
         </form>
 
@@ -74,15 +74,16 @@ import stdCakeService from '../services/StdCakeService';
 
 </script>
 
-<style>
-.add-cake {
+<style scoped>
+#addCake {
     background-color: #583b66;
-    color:#ffffff;
+    color: white;
     border: none;
     border-radius: 20px;
     font-family: 'Teko', sans-serif;
     font-size: large;
     width: 100px;
+    
 }
 
 .add-cake:hover {

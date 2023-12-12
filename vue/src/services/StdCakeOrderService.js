@@ -15,7 +15,7 @@ export default {
   },
 
   updateStatus(status, orderId) {
-    return axios.put(`/cakeorder/${orderId}/status`);
+    return axios.put(`/cakeorder/${orderId}/status`, {status} );
   }
 
 }

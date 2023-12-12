@@ -1,13 +1,13 @@
 <template>
     <div class="order-card">
-        <h2 class="order-id">Order # {{ order.orderId }}</h2>
-        <h3 class="order-name">{{ order.firstName }} {{ order.lastName }} </h3>
-        <p class="order-phone">Phone: {{ order.phone }}</p>
-        <p class="order-date-time">Pickup: {{ order.dueDate }} {{ order.dueTime }} </p>
+        <h2 class="order-id">Order # {{ editOrder.orderId }}</h2>
+        <h3 class="order-name">{{ editOrder.firstName }} {{ order.lastName }} </h3>
+        <p class="order-phone">Phone: {{ editOrder.phone }}</p>
+        <p class="order-date-time">Pickup: {{ editOrder.dueDate }} {{ editOrder.dueTime }} </p>
         <p class="order-details"> Cake Name: {{ cake.cakeName }}</p>
-        <p class="order-writing">Requested cake text: {{ order.writing }}</p>
-        <p class="order-total">Total: ${{ order.total }}</p>
-        <p class="order-status"> {{ order.status }}</p>
+        <p class="order-writing">Requested cake text: {{ editOrder.writing }}</p>
+        <p class="order-total">Total: ${{ editOrder.total }}</p>
+        <p class="order-status"> {{ editOrder.status }}</p>
 
         <select class="status" id="status" v-model="status">
             <option value="">&nbsp; &nbsp;Edit Status</option>
@@ -17,7 +17,7 @@
             <option value="Cancelled">&nbsp; &nbsp;Cancelled</option>
         </select>
 
-        <button class="status"> Save </button>
+        <button v-on:click.prevent="updateOrderStatus()" :disabled="status ===''" class="status"> Save </button>
 
 
     </div>
@@ -33,15 +33,15 @@ export default{
             type: Object,
             required: true
         }
+    
     },
+
     data() {
         return {
+            cake: {},
+            editOrder: { ...this.order},
             status: ''
         }
-    },
-    computed: {
-    
-
     },
 
     methods: {
@@ -55,7 +55,12 @@ export default{
               });
         },
         updateOrderStatus() {
-            stdCakeOrderService.updateStatus(status, this.cake.standardCakeId);
+            stdCakeOrderService
+              .updateStatus(this.status, this.order.orderId)
+              .then(() => {
+                this.editOrder.status = this.status
+              })
+
             //TODO COME BACK AND FINISH
         }
     },

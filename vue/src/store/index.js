@@ -155,6 +155,10 @@ export function createStore(currentToken, currentUser) {
             }
             return 1
         })
+      },
+
+      ADD_CUSTOM_CAKE(state, cake){
+        state.cakes.push(cake)
       }
       
     },

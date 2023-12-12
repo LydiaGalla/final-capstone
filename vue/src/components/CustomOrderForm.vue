@@ -1,7 +1,7 @@
 <template>
     <div>
         
-        <form>
+        <form v-on:submit.prevent="submitForm" class="custom-order-form">
             
             <img src="Build_Custom_Cake_Text.png" alt="Build A Custom Cake">
 
@@ -9,7 +9,7 @@
             <br>
 
             <label for="selectCakeFlavor">Select Cake Flavor </label>
-            <select id="selectCakeFlavor" v-model="cakeFlavor">
+            <select id="selectCakeFlavor" v-model="createdCustomCake.cakeFlavor">
                 <option value="Almond">Almond Cake</option>
                 <option value="Chocolate">Chocolate Cake</option>
                 <option value="Marble">Marble Cake</option>
@@ -20,7 +20,7 @@
             <br>
             <br>
             <label for="selectFilling">Select Cake Filling </label>
-            <select id="selectFilling" v-model="filling">
+            <select id="selectFilling" v-model="createdCustomCake.cakeFilling">
                 <option value="Custard">Custard Filling</option>
                 <option value="Fudge">Chocolate Fudge Filling</option>
                 <option value="Raspberry Jam">Raspberry Jam Filling</option>
@@ -29,7 +29,7 @@
             <br>
             <br>
             <label for="selectFrostingFlavor">Select Frosting Flavor </label>
-            <select id="selectFrostingFlavor" v-model="frostingFlavor">
+            <select id="selectFrostingFlavor" v-model="createdCustomCake.cakeFrosting">
                 <option value="Vanilla Buttercream">Vanilla Buttercream</option>
                 <option value="Cream Cheese">Cream Cheese Frosting</option>
                 <option value="Chocolate Buttercream">Chocolate Buttercream</option>
@@ -37,7 +37,7 @@
             <br>
             <br>
             <label for="selectStyle">Select Cake Style </label>
-            <select id="selectStyle" v-model="style">
+            <select id="selectStyle" v-model="createdCustomCake.style">
                 <option value="Round">Round</option>
                 <option value="Square">Square</option>
                 <option value="Cupcake">Cupcake</option>
@@ -45,7 +45,7 @@
             <br>
             <br>
             <label for="selectSize">Select Cake Size </label>
-            <select id="selectSize" v-model="size">
+            <select id="selectSize" v-model="createdCustomCake.size">
                 <option value="Small">Small</option>
                 <option value="Large">Large</option>
                 <option value="Cupcake">Single Cupcake</option>
@@ -53,9 +53,9 @@
             </select>
             <br>
             <br>
-            <router-link :to="{ name: 'cart'}">
-                <button class="custom-cake-in-cart"> Add Custom Cake to Cart </button>
-            </router-link>
+            
+            <button class="custom-cake-in-cart" > Add Custom Cake to Cart </button>
+            
 
         </form>
 
@@ -66,22 +66,43 @@
 
 
 <script>
+import CustomOrderService from '../services/CustomOrderService';
+
     export default{
         data () {
             return{
+                createdCustomCake: {
                 cakeFlavor:'',
                 frostingFlavor:'',
                 style:'',
                 size:'',
                 filling:''
+                }
             }
         },
         methods: {
+            submitForm(){
+                if (!this.validateForm()) {
+                    return;
 
-        },
-        computed:{
+                }
 
-        },
+            CustomOrderService
+                .addCustomCakeOrder(this.createdCustomCake)
+                .then(response => {
+                    if (response.status === 201) {
+                        this.$store.commit('ADD_CUSTOM_CAKE', response.data)
+                        this.$store.commit('SET_IN_CART', { cake: this.createdCustomCake, value: true})
+                        this.$router.push({ name: 'cart'});
+                    }
+                })
+            },
+
+            validateForm() {
+                return true;
+                // TODO: write this method
+            },
+        }
 
     }
 

@@ -9,6 +9,7 @@
 import stdCakeOrderService from '../services/StdCakeOrderService';
 import OrderCard from '../components/OrderCard.vue';
 import CustomOrderCard from '../components/CustomOrderCard.vue';
+import CustomOrderService from '../services/CustomOrderService';
 
 export default {
     components: {
@@ -29,7 +30,8 @@ export default {
               .catch(error => {
                 alert("Something went wrong.");
               });
-        }
+        },
+
     },
     created() {
         this.getOrder(this.$route.params.orderId);

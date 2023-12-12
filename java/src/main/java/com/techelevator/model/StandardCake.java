@@ -13,6 +13,8 @@ public class StandardCake {
 
     private BigDecimal price;
 
+    private String img;
+
     private boolean isAvailable;
 
     public Integer getStandardCakeId() {
@@ -47,6 +49,14 @@ public class StandardCake {
         this.price = price;
     }
 
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
     public boolean isAvailable() {
         return isAvailable;
     }
@@ -59,12 +69,12 @@ public class StandardCake {
 
     }
 
-    public StandardCake(Integer standardCakeId, String cakeName, String description, BigDecimal price, boolean isAvailable) {
+    public StandardCake(Integer standardCakeId, String cakeName, String description, BigDecimal price, String img, boolean isAvailable) {
         this.standardCakeId = standardCakeId;
         this.cakeName = cakeName;
         this.description = description;
         this.price = price;
+        this.img = img;
         this.isAvailable = isAvailable;
     }
-
 }

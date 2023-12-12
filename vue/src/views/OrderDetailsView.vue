@@ -1,16 +1,19 @@
 <template>
     <div>
         <order-card v-bind:order="order"></order-card>
+        <custom-order-card></custom-order-card>
     </div>
 </template>
 
 <script>
 import stdCakeOrderService from '../services/StdCakeOrderService';
 import OrderCard from '../components/OrderCard.vue';
+import CustomOrderCard from '../components/CustomOrderCard.vue';
 
 export default {
     components: {
-        OrderCard
+        OrderCard,
+        CustomOrderCard
     },
     data() {
         return {

@@ -3,33 +3,33 @@
         <form v-on:submit.prevent="addNewCake">
             <br>
             
-            <label for="cakeName">Cake Name: </label>
+            <label for="cakeName">Cake Name (must not be the same as one of the existing standard cakes): </label>
             <input type="text" id="cakeName" v-model="createdStandardCake.cakeName">
 
             <br>
             <br>
 
-            <label for="description">Cake Description: </label>
+            <label for="description">Cake Description (specify style, size, flavor, frosting, filling, and extras): </label>
             <br>
             <textarea name="description" id="description" cols="38" rows="10" v-model="createdStandardCake.description"></textarea>
 
             <br>
             <br>
 
-            <label for="price">Cake Price: </label>
+            <label for="price">Cake Price: $ </label>
             <input type="text" id="price" v-model="createdStandardCake.price">
 
             <br>
             <br>
                 <!--Does this work?-->
             <label for="image">Image (url): </label>
-            <input type="url" id="image">
+            <input type="url" id="image" v-model="createdStandardCake.img">
             <!-- create image url string property in backend and in database -->
 
             <br>
             <br>
 
-            <button id="addCake" class="add-cake"> Add Cake </button>
+            <button id="add-cake" class="add-cake"> Add Cake </button>
 
         </form>
 
@@ -46,6 +46,7 @@ import stdCakeService from '../services/StdCakeService';
                     cakeName: '',
                     description: '',
                     price: '',
+                    img: ''
                 }
             };
         },
@@ -75,7 +76,7 @@ import stdCakeService from '../services/StdCakeService';
 </script>
 
 <style scoped>
-#addCake {
+.add-cake {
     background-color: #583b66;
     color: white;
     border: none;

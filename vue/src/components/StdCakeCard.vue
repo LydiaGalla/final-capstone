@@ -2,7 +2,7 @@
     <div class="standard-cake">
         <div class="card">
             <h2 class="cake-name">{{ cake.cakeName }}</h2>
-            <img v-if="cake.imageUrl" v-bind:src="cake.imageUrl">
+            <img v-if="cake.img" v-bind:src="cake.img">
             <img v-else-if="cake.cakeName" v-bind:src="'/' + cake.cakeName.replace(' ', '') + 'Cake.jpg'">
             <h3 class="cake-price"> $ {{ cake.price }}</h3>
             <p class="description">{{ cake.description }}</p>

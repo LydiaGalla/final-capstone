@@ -10,6 +10,8 @@ public class StandardCakeDto {
 
     private BigDecimal price;
 
+    private String img;
+
     private boolean isAvailable;
 
     public String getCakeName() {
@@ -36,6 +38,14 @@ public class StandardCakeDto {
         this.price = price;
     }
 
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
     public boolean isAvailable() {
         return isAvailable;
     }
@@ -50,6 +60,7 @@ public class StandardCakeDto {
                 "cakeName='" + cakeName + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +
+                ", img='" + img + '\'' +
                 ", isAvailable=" + isAvailable +
                 '}';
     }

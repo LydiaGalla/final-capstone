@@ -58,6 +58,7 @@ public class StandardCakeController {
         standardCakeToCreate.setDescription(standardCakeDto.getDescription());
         standardCakeToCreate.setDescription(standardCakeDto.getDescription());
         standardCakeToCreate.setPrice(standardCakeDto.getPrice());
+        standardCakeToCreate.setImg(standardCakeDto.getImg());
         standardCakeToCreate.setAvailable(standardCakeDto.isAvailable());
 
         return standardCakeDao.createNewStandardCake(standardCakeToCreate);

@@ -61,7 +61,7 @@ CREATE TABLE standard_cake (
     cake_name VARCHAR(25) NOT NULL UNIQUE,
     description VARCHAR(500) NOT NULL,
     price NUMERIC(6, 2) NOT NULL,
-    img VARCHAR(100),
+    img VARCHAR(1000),
     is_available BOOLEAN NOT NULL,
     CONSTRAINT PK_standard_cake PRIMARY KEY (standard_cake_id)
 

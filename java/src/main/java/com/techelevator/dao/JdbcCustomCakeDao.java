@@ -317,11 +317,11 @@ public class JdbcCustomCakeDao implements CustomCakeDao {
         CustomCake customCake = new CustomCake();
         customCake.setCustomCakeId(results.getInt("custom_cake_id"));
         customCake.setCakeSizeId(results.getInt("cake_size_id"));
-        customCake.setCakeFlavorId(results.getInt("flavor_id"));
-        customCake.setCakeFrostingId(results.getInt("frosting_id"));
-        customCake.setCakeFillingId(results.getInt("filling_id"));
-        customCake.setCakeStyleId(results.getInt("style_id"));
-        customCake.setExtras(results.getNString("extras"));
+        customCake.setCakeFlavorId(results.getInt("cake_flavor_id"));
+        customCake.setCakeFrostingId(results.getInt("cake_frosting_id"));
+        customCake.setCakeFillingId(results.getInt("cake_filling_id"));
+        customCake.setCakeStyleId(results.getInt("cake_style_id"));
+        customCake.setExtras(results.getString("extras"));
         customCake.setPriceId(results.getInt("price_id"));
 
         return customCake;

@@ -29,7 +29,7 @@
             <br>
             <br>
 
-            <button id="addCake" class="add-cake"> Add Cake </button>
+            <button id="add-cake" class="add-cake"> Add Cake </button>
 
         </form>
 
@@ -75,7 +75,7 @@ import stdCakeService from '../services/StdCakeService';
 </script>
 
 <style scoped>
-#addCake {
+.add-cake {
     background-color: #583b66;
     color: white;
     border: none;

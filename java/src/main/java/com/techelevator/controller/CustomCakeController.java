@@ -26,25 +26,13 @@ public class CustomCakeController {
 
     private final UserDao userDao;
 
-    private CakeFillingDto cakeFillingDto;
 
-    private CakeFlavorDto cakeFlavorDto;
-
-    private CakeFrostingsDto cakeFrostingsDto;
-
-    private CakeSizeDto cakeSizeDto;
-
-    private CakeStyleDto cakeStyleDto;
 
     public CustomCakeController(JdbcTemplate jdbcTemplate, CustomCakeDao customCakeDao, UserDao userDao) {
         this.jdbcTemplate = jdbcTemplate;
         this.customCakeDao = customCakeDao;
         this.userDao = userDao;
-//        this.cakeFillingDto = cakeFillingDto;
-//        this.cakeFlavorDto = cakeFlavorDto;
-//        this.cakeFrostingsDto = cakeFrostingsDto;
-//        this.cakeSizeDto = cakeSizeDto;
-//        this.cakeStyleDto = cakeStyleDto;
+
     }
 
     @GetMapping("/customcake/fillings")
@@ -119,7 +107,7 @@ public class CustomCakeController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/customcake/fillings/create")
     @PreAuthorize("isAuthenticated()")
-    public CakeFillings createNewCakeFilling(@RequestBody CustomCakeDao customCakeDao, Principal principal){
+    public CakeFillings createNewCakeFilling(@RequestBody CakeFillingDto cakeFillingDto, Principal principal){
         String username = principal.getName();
         User loggedInUser = userDao.getUserByUsername(username);
 
@@ -133,7 +121,7 @@ public class CustomCakeController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/customcake/flavors/create")
     @PreAuthorize("isAuthenticated()")
-    public CakeFlavors createNewCakeFlavor(@RequestBody CustomCakeDao customCakeDao, Principal principal){
+    public CakeFlavors createNewCakeFlavor(@RequestBody CakeFlavorDto cakeFlavorDto, Principal principal){
         String username = principal.getName();
         User loggedInUser = userDao.getUserByUsername(username);
 
@@ -148,7 +136,7 @@ public class CustomCakeController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/customcake/frostings/create")
     @PreAuthorize("isAuthenticated()")
-    public CakeFrostings createNewCakeFrosting(@RequestBody CustomCakeDao customCakeDao, Principal principal){
+    public CakeFrostings createNewCakeFrosting(@RequestBody CakeFrostingsDto cakeFrostingsDto, Principal principal){
         String username = principal.getName();
         User loggedInUser = userDao.getUserByUsername(username);
 
@@ -164,7 +152,7 @@ public class CustomCakeController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/customcake/cakesize/create")
     @PreAuthorize("isAuthenticated()")
-    public CakeSizes createNewCakeSize(@RequestParam CustomCakeDao customCakeDao, Principal principal){
+    public CakeSizes createNewCakeSize(@RequestBody CakeSizeDto cakeSizeDto, Principal principal){
         String username = principal.getName();
         User loggedInUser = userDao.getUserByUsername(username);
 
@@ -179,7 +167,7 @@ public class CustomCakeController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/customcake/cakestyle/create")
     @PreAuthorize("isAuthenticated()")
-    public CakeStyle createNewCakeStyle(@RequestParam CustomCakeDao customCakeDao, Principal principal){
+    public CakeStyle createNewCakeStyle(@RequestBody CakeStyleDto cakeStyleDto, Principal principal){
         String username = principal.getName();
         User loggedInUser = userDao.getUserByUsername(username);
 
@@ -191,6 +179,7 @@ public class CustomCakeController {
         return customCakeDao.createNewCakeStyle(styleToCreate);
     }
 
+    @GetMapping("/customcake/{id}")
     public CustomCake getCustomCakeById(int id){
         String sql ="SELECT * FROM custom_cake WHERE custom_cake_id = ?;";
 

@@ -46,6 +46,7 @@ public class OrderController {
         cakeOrderToCreate.setStatus(cakeOrderDto.getStatus());
         cakeOrderToCreate.setTotal(cakeOrderDto.getTotal());
 
+
         return orderDao.createNewCakeOrder(cakeOrderToCreate);
 
     }
@@ -55,6 +56,7 @@ public class OrderController {
         return orderDao.getCakeOrderById(id);
     }
 
+    @PostMapping("cakeorder/customcake")
     public CustomCake createNewCustomCake(@RequestBody CustomCakeDto customCakeDto) {
 
         CustomCake cakeToCreate = new CustomCake();

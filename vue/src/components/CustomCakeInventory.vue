@@ -11,7 +11,7 @@
         <tbody>
             <tr v-for="flavor in flavors" :key="flavor.flavorName">
                 <td>{{ flavor.flavorName }} </td>
-                <td><button  value="CHANGE THIS">{{ flavor.isAvailable ? "Mark Unavailable" : "Mark Available"}}</button></td>
+                <td><button v-on:click.prevent="toggleAvailFlavor(flavor)" class="status-button">{{ flavor.isAvailable ? "Mark Unavailable" : "Mark Available"}}</button></td>
             </tr>
         </tbody>
     </table>
@@ -27,7 +27,7 @@
         <tbody>
             <tr v-for="frosting in frostings" :key="frosting.frostingName">
                 <td>{{ frosting.frostingName }} </td>
-                <td><button v-on:click.prevent="toggleAvailability(frosting.frostingName)" value="CHANGE THIS">{{ frosting.isAvailable ? "Mark Unavailable" : "Mark Available"}}</button></td>
+                <td><button v-on:click.prevent="toggleAvailFrosting(frosting)" class="status-button">{{ frosting.isAvailable ? "Mark Unavailable" : "Mark Available"}}</button></td>
             </tr>
         </tbody>
     </table>
@@ -43,7 +43,7 @@
         <tbody>
             <tr v-for="filling in fillings" :key="filling.fillingName" >
                 <td>{{ filling.fillingName }} </td>
-                <td><button v-on:click.prevent="toggleAvailability(filling.fillingName)" class="status-button" value="CHANGE THIS">{{ filling.isAvailable ? "Mark Unavailable" : "Mark Available"}}</button></td>
+                <td><button v-on:click.prevent="toggleAvailFilling(filling)" class="status-button">{{ filling.isAvailable ? "Mark Unavailable" : "Mark Available"}}</button></td>
             </tr>
         </tbody>
     </table>
@@ -60,13 +60,12 @@
             <tr v-for="size in sizes" :key="size.sizeName">
                 <td>{{ size.sizeName }} </td>
               <!--click event calls the method to toggle the  availability -->  
-              <td><button v-on:click.prevent="toggleAvailability(size.sizeName)" value="CHANGE THIS">{{ size.isAvailable ? "Mark Unavailable" : "Mark Available"}}</button></td>
+              <td><button v-on:click.prevent="toggleAvailSize(size)" class="status-button">{{ size.isAvailable ? "Mark Unavailable" : "Mark Available"}}</button></td>
             </tr>
         </tbody>
     </table>
 </div>
 </template>
-
 
 
 <script>
@@ -81,35 +80,60 @@ export default{
             frostings: []
         }
     },
+    
     methods:{
-        toggleAvailability(option){
-            if(option === 1){
-                CustomCakeInventoryService.updateFilling()
-            }
-            else if(option === 2){
-                CustomCakeInventoryService.updateFlavor()
-            }
-            else if(option === 3){
-                CustomCakeInventoryService.updateFrosting()
-            }
-            else if(option === 4){
-                CustomCakeInventoryService.updateSize()
-            }
+           
+        // DONT DO THIS
+        // toggleAvailability(option){
+        //     if(option === 1){
+        //         CustomCakeInventoryService.updateFilling(filling_id, filling.isAvailable)
+        //     }
+        //     else if(option === 2){
+        //         CustomCakeInventoryService.updateFlavor(flavor_id, flavor.isAvailable)
+        //     }
+        //     else if(option === 3){
+        //         CustomCakeInventoryService.updateFrosting(frosting_id, frosting.isAvailable)
+        //     }
+        //     else if(option === 4){
+        //         CustomCakeInventoryService.updateSize(size_id, size.isAvailable)
+        //     }
+        // },
+
+        toggleAvailFlavor(flavor){
+            flavor.isAvailable = !flavor.isAvailable;
+            CustomCakeInventoryService.updateFlavor(flavor.flavorId, flavor.isAvailable);
+        },
+        toggleAvailFrosting(frosting){
+            frosting.isAvailable = !frosting.isAvailable;
+            CustomCakeInventoryService.updateFrosting(frosting.frostingId, frosting.isAvailable);
+
+        },
+        toggleAvailFilling(filling){
+            filling.isAvailable = !filling.isAvailable;
+            CustomCakeInventoryService.updateFilling(filling.fillingId, filling.isAvailable)
+
+        },
+        toggleAvailSize(size){
+            size.isAvailable = !size.isAvailable
+            CustomCakeInventoryService.updateSize(size.sizeId, size.isAvailable)
+
         }
+
     },
+
+    //created calls the service to get the lists
     created() {
-            //created calls the service to get the list
             // assign the response data to the arrays for each one.
-       this.sizes = CustomCakeInventoryService.getAllFillings();
-       this.flavors = CustomCakeInventoryService.getAllFlavors();
-       this.fillings = CustomCakeInventoryService.getAllFillings();
-       this.frostings = CustomCakeInventoryService.getAllFrostings();
+        CustomCakeInventoryService.getAllFillings().then(response => {this.fillings = response.data});
+        CustomCakeInventoryService.getAllFlavors().then(response => {this.flavors = response.data})
+        CustomCakeInventoryService.getAllFrostings().then(response => {this.frostings = response.data});
+        CustomCakeInventoryService.getAllSizes().then(response => {this.sizes = response.data});
 
     }
 }
 </script>
 
-<style>
+<style scoped>
 h3 {
     font-family: 'Teko', sans-serif;
     font-size: 2rem;
@@ -133,5 +157,9 @@ th {
 .status-button:hover {
     background-color: #583b66;
     color: white;
+}
+
+td {
+    width: 200px;
 }
 </style>

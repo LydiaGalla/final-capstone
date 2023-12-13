@@ -28,10 +28,10 @@ export default {
         return axios.put(`/customcake/fillings/${id}?isAvailable=${isAvailable}`)
     },
     updateSize(id, isAvailable){
-        return axios.put(`/customcake/sizes/${id}?isAvailable=${isAvailable}`)
-    },
-    updateStyle(id, isAvailable){
-        return axios.put(``)
+        return axios.put(`/customcake/cakesize/${id}?isAvailable=${isAvailable}`)
     }
+    // updateStyle(id, isAvailable){
+    //     return axios.put(``)
+    // }
 
 }

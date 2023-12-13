@@ -158,7 +158,7 @@ import CustomCakeInventoryService from '../services/CustomCakeInventoryService';
                     return 35;
                 } else if (size == 'Large') {
                     return 50;
-                } else if (size == 'Single Cupcake') {
+                } else if (size == 'Cupcake') {
                     return 4;
                 } else if (size == 'Bakers Dozen') {
                     return 48;

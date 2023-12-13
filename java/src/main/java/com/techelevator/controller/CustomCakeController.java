@@ -63,7 +63,7 @@ public class CustomCakeController {
         customCakeDao.updateCakeFillingsAvailability(fillingId, isAvailable);
         return ResponseEntity.ok("Filling availability updated successfully");
     }
-    @PutMapping("/customcake/flavors/{flavorsId}")
+    @PutMapping("/customcake/flavors/{flavorId}")
     public ResponseEntity<String> updateCakeFlavorsAvailability(@PathVariable int flavorId, @RequestParam boolean isAvailable){
         customCakeDao.updateCakeFlavorsAvailability(flavorId, isAvailable);
         return ResponseEntity.ok("Flavor availability updated successfully");

@@ -12,6 +12,10 @@ export default {
 
   addStandardCakeOrder(order) {
     return axios.post('/cakeorder/create', order);
+  },
+
+  updateStatus(status, orderId) {
+    return axios.put(`/cakeorder/${orderId}/status`, {status} );
   }
 
 }

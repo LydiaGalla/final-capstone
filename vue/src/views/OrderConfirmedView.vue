@@ -1,16 +1,13 @@
 <template>
-    <div style="overflow: hidden;">
-      <OrderConfirmation></OrderConfirmation>
-      <Quote></Quote>
+    <OrderConfirmation></OrderConfirmation>
+    <section class="wrapper">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+    <div>
+    <Quote></Quote>
     </div>
-    <body style="height: 100%; margin: 0;">
-      <section class="wrapper">
-        <div id="stars"></div>
-        <div id="stars2"></div>
-        <div id="stars3"></div>
-        <div id="title"></div>
-      </section>
-    </body>
+    </section>
   </template>
   
   
@@ -31,41 +28,16 @@
   
   <style scoped>
 
-#title {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    color: #fff;
-    text-align: center;
-    font-family: Lato;
-    font-weight: 300;
-    font-size: 50px;
-    letter-spacing: 10px;
-    margin-top: -60px;
-    padding-left: 10px;
-}
-
-body {
-    overflow: hidden;
-    height: 100vh;
-}
-
-#title span {
-    background: -webkit-linear-gradient(white, #38495a);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
 .wrapper{
-    overflow: hidden;
-    height:   200vh;
+    overflow:hidden;
+    height: 90vh;
 }
 
 #stars {
     width: 1px;
     height: 1px;
     background: transparent;
-    animation: animStar 50s linear infinite;
+    animation: animStar 60s linear infinite;
     box-shadow: 779px 1331px #fff, 324px 42px #fff, 303px 586px #fff,
     1312px 276px #fff, 451px 625px #fff, 521px 1931px #fff, 1087px 1871px #fff,
     36px 1546px #fff, 132px 934px #fff, 1698px 901px #fff, 1418px 664px #fff,
@@ -435,7 +407,7 @@ body {
     width: 2px;
     height: 2px;
     background: transparent;
-    animation: animStar 100s linear infinite;
+    animation: animStar 40s linear infinite;
     box-shadow: 1448px 320px #fff, 1775px 1663px #fff, 332px 1364px #fff,
     878px 340px #fff, 569px 1832px #fff, 1422px 1684px #fff, 1946px 1907px #fff,
     121px 979px #fff, 1044px 1069px #fff, 463px 381px #fff, 423px 112px #fff,
@@ -553,7 +525,7 @@ body {
     width: 3px;
     height: 3px;
     background: transparent;
-    animation: animStar 150s linear infinte;
+    animation: animStar 150s linear infinite;
     box-shadow: 387px 1878px #fff, 760px 1564px #fff, 1487px 999px #fff,
     948px 1828px #fff, 1977px 1001px #fff, 1284px 1963px #fff, 656px 284px #fff,
     1268px 1635px #fff, 1820px 598px #fff, 642px 1900px #fff, 296px 57px #fff,

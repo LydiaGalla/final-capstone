@@ -1,8 +1,8 @@
 <template>
     <div>
         <header>
-      <p>{{ randomQuote }}</p>
-      <p>- {{ randomAuthor }}</p>
+      <p style="font-weight: 600;">{{ randomQuote }}</p>
+      <p style="font-weight: 400;">- {{ randomAuthor }}</p>
         </header>
     </div>
   </template>
@@ -36,6 +36,6 @@
 <style scoped>
 
 div {
-  margin-top: 80px; 
+  margin-top: 70px; 
 }
 </style>

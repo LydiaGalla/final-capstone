@@ -3,7 +3,7 @@
       <div class="confirmation-card">
         <h2>Thank you for your order!</h2>
         <p>You'll receive text updates on your cake's status, and when it's ready to be picked up! </p>
-        <button @click="goHomePage">Back to Home</button>
+        <button class="back-to-home" @click="goHomePage">Back to Home</button>
       </div>
     </div>
   </template>
@@ -44,5 +44,20 @@
     padding: 20px;
     border-radius: 10px;
     text-align: center;
+  }
+
+  .back-to-home {
+    background-color: #583b66;
+    color:#ffffff;
+    border: none;
+    border-radius: 20px;
+    font-family: 'Teko', sans-serif;
+    font-size: large;
+    width: 100px;
+  }
+
+  .back-to-home:hover {
+    background-color: #d1b8dd;
+    color: #583b66
   }
   </style>

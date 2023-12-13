@@ -100,7 +100,7 @@ public class CustomCakeController {
         return customCakeDao.getCakeSizeById(id);
     }
     @GetMapping("/customcake/cakestyle/{id}")
-    public CakeStyle getCakeStyleById(int id){
+    public CakeStyle getCakeStyleById(@PathVariable int id){
         return customCakeDao.getCakeStyleById(id);
     }
 
@@ -180,7 +180,7 @@ public class CustomCakeController {
     }
 
     @GetMapping("/customcake/{id}")
-    public CustomCake getCustomCakeById(int id){
+    public CustomCake getCustomCakeById(@PathVariable int id){
         String sql ="SELECT * FROM custom_cake WHERE custom_cake_id = ?;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);

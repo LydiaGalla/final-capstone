@@ -105,7 +105,29 @@ export default {
     color: #583b66;
 }
 
-.add-to-cart, .delete-from-cart, .mark-available, .mark-unavailable {
+.add-to-cart, .delete-from-cart {
+    background-color: #d1b8dd;
+    border: none;
+    border-radius: 20px;
+    font-family: 'Teko', sans-serif;
+    width: 50x;
+    position: absolute;
+    bottom: 15px;
+    margin-left: -26px;
+}
+
+.mark-available {
+    background-color: #d1b8dd;
+    border: none;
+    border-radius: 20px;
+    font-family: 'Teko', sans-serif;
+    width: 50x;
+    position: absolute;
+    bottom: 15px;
+    margin-left: -30px;
+}
+
+.mark-unavailable {
     background-color: #d1b8dd;
     border: none;
     border-radius: 20px;
@@ -115,6 +137,7 @@ export default {
     bottom: 15px;
     margin-left: -40px;
 }
+
 
 .addToCart:hover {
     background-color: #583b66;

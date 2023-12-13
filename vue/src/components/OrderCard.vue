@@ -4,11 +4,12 @@
         <h3 class="order-name">{{ editOrder.firstName }} {{ order.lastName }} </h3>
         <p class="order-phone">Phone: {{ editOrder.phone }}</p>
         <p class="order-date-time">Pickup: {{ editOrder.dueDate }} {{ editOrder.dueTime }} </p>
-        <p class="order-details"> Cake Name: {{ cake.cakeName }}</p>
-        <p class="order-writing">Requested cake text: {{ editOrder.writing }}</p>
+        <p class="order-details"> Cake Name: {{ cake.cakeName != null ? cake.cakeName : '(Custom Cake, see details below)' }} </p>
+        <custom-order-card :cake="$store.state.customCakeInCart" v-if="editOrder.customCakeId === $store.state.customCakeInCart.customCakeId" />
+        <!-- <p v-if="customCake.customCakeId != null" class="custom-order-details"> {{ customCake.cakeFlavor }}</p> -->
+        <p class="order-writing">Requested cake text: {{ editOrder.writing }} </p>
         <p class="order-total">Total: ${{ editOrder.total }}</p>
         <p :class="{ 'order-status': editOrder.status === 'Pending' }"> {{ editOrder.status }}</p>
-
         <select class="status" id="status" v-model="status">
             <option value="">&nbsp; &nbsp;Edit Status</option>
             <option value="Pending">&nbsp; &nbsp;Pending</option>
@@ -26,8 +27,13 @@
 <script>
 import stdCakeService from '../services/StdCakeService';
 import stdCakeOrderService from '../services/StdCakeOrderService';
+import CustomOrderService from '../services/CustomOrderService';
+import CustomOrderCard from '../components/CustomOrderCard.vue'
 
 export default{
+    components: {
+        CustomOrderCard
+    },
     props: {
         order: {
             type: Object,
@@ -62,9 +68,19 @@ export default{
               })
         }
     },
+    computed: {
+        currCustomCake() {
+            const currCustomCakeId = this.$route.params.customCakeId;
+            return this.$store.state.customCakeInCart
+        }
+    },
     mounted() {
-        this.getCake(this.order.standardCakeId)
-    }
+        this.getCake(this.order.standardCakeId);
+    },
+    
+
+
+
 }
 
 </script>

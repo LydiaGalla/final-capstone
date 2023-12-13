@@ -37,8 +37,9 @@ import CustomOrderService from '../services/CustomOrderService';
 <style>
     .custom-order-card {
         text-align: center;
+        background-color: white;
         width: 300px;
-        height: 420px;
+        height: 250px;
         margin: 20px;
         padding: 20px;
         border-radius: 10px;

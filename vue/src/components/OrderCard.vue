@@ -7,7 +7,7 @@
         <p class="order-details"> Cake Name: {{ cake.cakeName }}</p>
         <p class="order-writing">Requested cake text: {{ editOrder.writing }}</p>
         <p class="order-total">Total: ${{ editOrder.total }}</p>
-        <p class="order-status"> {{ editOrder.status }}</p>
+        <p :class="{ 'order-status': editOrder.status === 'Pending' }"> {{ editOrder.status }}</p>
 
         <select class="status" id="status" v-model="status">
             <option value="">&nbsp; &nbsp;Edit Status</option>

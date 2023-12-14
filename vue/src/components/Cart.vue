@@ -99,6 +99,11 @@ h1 {
     padding: 20px;
     margin: 20px;
 }
+
+#footer {
+  column-count: 3;
+  text-align: center;
+}
 .input{
     width: 250px;
     height: 30px;

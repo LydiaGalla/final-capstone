@@ -2,6 +2,7 @@
   <div id="capstone-app">
     <div id="nav">
       <router-link v-bind:to="{ name: 'home' }" v-if="$store.state.token == ''" class="nav-link">Home </router-link> 
+      <router-link v-bind:to="{ name: 'about' }" v-if="$store.state.token == ''" class="nav-link separator">About </router-link> 
       <router-link v-bind:to="{ name: 'cart' }" v-if="$store.state.token == ''" class="nav-link separator"> Cart </router-link> 
       <router-link v-bind:to="{ name: 'login' }" v-if="$store.state.token == ''" class="nav-link separator"> Employee Login</router-link> 
       <router-link v-bind:to="{ name: 'employee-home'}" v-if="$store.state.token != ''" class="nav-link separator"> Employee Home</router-link> 

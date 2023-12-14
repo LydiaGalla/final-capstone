@@ -2,16 +2,18 @@
     <div class="order-card">
         <h2 class="order-id">Order # {{ editOrder.orderId }}</h2>
         <h3 class="order-name">{{ editOrder.firstName }} {{ editOrder.lastName }} </h3>
-        <p class="order-phone">Phone: {{ editOrder.phone }}</p>
-        <p class="order-date-time">Pickup: {{ editOrder.dueDate }} {{ editOrder.dueTime }} </p>
-        <p class="order-details" v-if="cake || customCake"> Cake Name: {{ cake != null ? cake.cakeName : '(Custom Cake, see details below)' }} </p>
+        <p class="order-phone"><span class="bold">Phone:</span> {{ editOrder.phone }}</p>
+        <p class="order-date-time"><span class="bold">Pickup: </span>{{ editOrder.dueDate }} {{ editOrder.dueTime }} </p>
+        <p class="order-details" v-if="cake || customCake"> <span class="bold">Cake Name: </span>{{ cake != null ? cake.cakeName : '(Custom Cake, see details below)' }} </p>
         <div class="custom-order-information">
              <custom-order-card :cake="customCake" v-if="customCake != null" from-order-card="true" />
         </div>
-        <img v-if="cake && cake.img" v-bind:src="cake.img">
-        <img v-else-if="cake && cake.standardCakeId != 0" v-bind:src="'/' + cake.cakeName.replace(' ', '') + 'Cake.jpg'">
-        <p class="order-writing">Requested cake text: {{ editOrder.writing }} </p>
-        <p class="order-total">Total: ${{ editOrder.total }}</p>
+        <div class="images">
+            <img class="cake-img" v-if="cake && cake.img" v-bind:src="cake.img">
+            <img class="cake-img" v-else-if="cake && cake.standardCakeId != 0" v-bind:src="'/' + cake.cakeName.replace(' ', '') + 'Cake.jpg'">
+        </div>
+        <p class="order-writing"><span class="bold">Requested cake text: </span>{{ editOrder.writing }} </p>
+        <p class="order-total"> <span class="bold">Total: </span> ${{ editOrder.total }}</p>
         <p :class="{ 'order-status': editOrder.status === 'Pending' }"> {{ editOrder.status }}</p>
         <select class="status" id="status" v-model="status">
             <option value="">&nbsp; &nbsp;Edit Status</option>
@@ -160,10 +162,17 @@ export default{
 
 </script>
 
-<style>
+<style scoped>
+.bold {
+    font-weight: 600;
+}
+
 .custom-order-information {
     display: flex;
     justify-content: center;
+    /* height: 155px;  */
+    margin: 0px;
+    padding: 0px;
     
 }
 .order-card {
@@ -178,6 +187,13 @@ export default{
 
 .order-status {
     color: red;
+}
+
+.cake-img {  
+  max-width: 20%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
 }
 
 .status {

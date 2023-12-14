@@ -4,9 +4,12 @@
         <h3 class="order-name">{{ editOrder.firstName }} {{ editOrder.lastName }} </h3>
         <p class="order-phone">Phone: {{ editOrder.phone }}</p>
         <p class="order-date-time">Pickup: {{ editOrder.dueDate }} {{ editOrder.dueTime }} </p>
-        <p class="order-details"> Cake Name: {{ cake.cakeName != null ? cake.cakeName : '(Custom Cake, see details below)' }} </p>
-        <custom-order-card :cake="this.customCake" v-if="order.customCakeId != 0" />
-        <!-- <p v-if="customCake.customCakeId != null" class="custom-order-details"> {{ customCake.cakeFlavor }}</p> -->
+        <p class="order-details" v-if="cake || customCake"> Cake Name: {{ cake != null ? cake.cakeName : '(Custom Cake, see details below)' }} </p>
+        <div class="custom-order-information">
+             <custom-order-card :cake="customCake" v-if="customCake != null" from-order-card="true" />
+        </div>
+        <img v-if="cake && cake.img" v-bind:src="cake.img">
+        <img v-else-if="cake && cake.standardCakeId != 0" v-bind:src="'/' + cake.cakeName.replace(' ', '') + 'Cake.jpg'">
         <p class="order-writing">Requested cake text: {{ editOrder.writing }} </p>
         <p class="order-total">Total: ${{ editOrder.total }}</p>
         <p :class="{ 'order-status': editOrder.status === 'Pending' }"> {{ editOrder.status }}</p>
@@ -80,8 +83,8 @@ export default{
 
     data() {
         return {
-            cake: {},
-            customCake: {},
+            cake: null,
+            customCake: null,
             editOrder: { ...this.order},
             status: '',
 
@@ -158,11 +161,16 @@ export default{
 </script>
 
 <style>
+.custom-order-information {
+    display: flex;
+    justify-content: center;
+    
+}
 .order-card {
   text-align: center;
   background-color: white;
   width: 800px;
-  height: 300px;
+  height: 600px;
   margin: 20px;
   padding: 20px;
   border-radius: 10px;

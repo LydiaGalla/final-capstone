@@ -2,7 +2,7 @@
     <img src="Order_Summary_Text.png" alt="Order Summary">
     <div class="cake-container">
         <div v-if="$store.state.customCakeInCart != null">
-            <custom-order-card v-bind:cake="$store.state.customCakeInCart"></custom-order-card>
+            <custom-order-card v-bind:cake="$store.state.customCakeInCart" class="pad-and-margin"></custom-order-card>
         </div>
         <div v-else>
             <std-cake-card v-for="cake in cakes" v-bind:cake="cake" v-bind:key="cake.name"></std-cake-card>
@@ -89,5 +89,10 @@ h1 {
 .continue-shopping:hover, .checkout-button:hover {
     background-color: #ffffff;
     color:#583b66;
+}
+
+.pad-and-margin {
+    padding: 20px;
+    margin: 20px;
 }
 </style>

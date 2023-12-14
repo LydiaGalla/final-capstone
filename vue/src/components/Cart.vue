@@ -9,26 +9,25 @@
             <div v-else>
                 <std-cake-card v-for="cake in cakes" v-bind:cake="cake" v-bind:key="cake.name"></std-cake-card>
             </div>
+ 
+        </div>
+
+        <div id="form-container">
+            <form v-on:submit.prevent="submitForm" class="add-text-form">
+                <label for="addText">Add Writing to Cake (optional, $5 fee):</label>
+                <br>
+                <input class="input" type="text" placeholder="Custom Message..." id="addedText" v-model="addedText">
+                <br>
+                <router-link :to="{ name: 'home'}"><button class="continue-shopping"> Continue Shopping </button> </router-link><button class="checkout-button">Checkout</button>
+                <br>
+            </form>
         </div>
         
-        <form v-on:submit.prevent="submitForm" class="add-text-form">
-            <label for="addText">Add Writing to Cake (optional, $5 fee):</label>
-            <br>
-            <input class="input" type="text" placeholder="Custom Message..." id="addedText" v-model="addedText">
-            <br>
-            
-            <div>
-                <button class="checkout-button">Checkout</button>
-                <br>
-                <router-link :to="{ name: 'home'}">
-                    <button class="continue-shopping"> Continue Shopping </button> 
-                </router-link>
+        <div v-if="($store.state.customCakeInCart == null) && '<!--standard cake in cart is null-->'">
+                <h2> Your Cart Is Empty! </h2>
+                <h3> Please add items to your cart to checkout.</h3>
             </div>
 
-        </form>
-    
-    
-        
     </div>
 
 </template>
@@ -51,6 +50,9 @@ export default {
             return this.$store.state.cakes.filter((cake) => {
                 return cake.inCart === true;
             })
+        },
+        isSomethingInCart() {
+            return this.cakes.length > 0 || this.$store.state.customCakeInCart != null;
         }
     },
     components: {
@@ -78,21 +80,38 @@ h1 {
     font-size: 300%;
 }
 
-.continue-shopping, .checkout-button{ 
+.checkout-button{ 
     background-color: #583b66;
     color:#ffffff;
     border: none;
     border-radius: 20px;
     font-family: 'Teko', sans-serif;
-    font-size: large;
-    width: 200px;
-    display: inline;
+    font-size: 20px;
+    width: auto;
+    padding: 0px 10px;
+    margin: 10px;
     
 }
 
-.continue-shopping:hover, .checkout-button:hover {
+.continue-shopping {
     background-color: #ffffff;
     color:#583b66;
+    border: none;
+    border-radius: 20px;
+    font-family: 'Teko', sans-serif;
+    font-size: 20px;
+    padding: 0px 10px 0px 10px;
+    margin: 10px;
+}
+
+ .checkout-button:hover {
+    background-color: #ffffff;
+    color:#583b66;
+}
+
+.continue-shopping:hover {
+    background-color: #583b66;
+    color:#ffffff;
 }
 
 .pad-and-margin {
@@ -105,10 +124,16 @@ h1 {
 }
 #checkout-container{
     display: flex;
+    align-items: center;
     justify-content: center;
 }
-.add-text-form{
-    margin-top: 80px;
+#form_container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+    
+    
+
 
 </style>

@@ -146,6 +146,19 @@ export function createStore(currentToken, currentUser) {
       TOGGLE_AVAILABLE(state, cake){
         cake.available = !cake.available;
       },
+      TOGGLE_FLAVOR(state, flavor) {
+        flavor.available = !flavor.available;
+      },
+      TOGGLE_FROSTING(state, frosting){
+        frosting.available = !frosting.available;
+      },
+      TOGGLE_FILLING(state, filling){
+        filling.available = !filling.available;
+      },
+      TOGGLE_SIZE(state, size){
+        size.available = !size.available;
+      },
+      
       ADD_STANDARD_CAKE(state, cake) {
         state.cakes.push(cake)
         state.cakes.sort((cake1, cake2) => {

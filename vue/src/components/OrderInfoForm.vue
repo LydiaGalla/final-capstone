@@ -5,27 +5,32 @@
         <form v-on:submit.prevent="submitForm" class="order-info-form">
 
             <label for="firstName">First Name:</label>
-            <input type="text" id="firstName" v-model="createOrder.firstName">
+            <br>
+            <input class="input" type="text" id="firstName" v-model="createOrder.firstName">
             <br>
             <br>
 
-            <label for="lastName">Last Name:</label>
-            <input type="text" id="lastName" v-model="createOrder.lastName">
+            <label for="lastName">Last Name: </label>
+            <br>
+            <input class="input" type="text" id="lastName" v-model="createOrder.lastName">
             <br>
             <br>
 
             <label for="phone">Phone Number: </label>
-            <input type="text" id="phone" v-model="createOrder.phone">
+            <br>
+            <input class="input" type="text" id="phone" v-model="createOrder.phone">
             <br>
             <br>
 
             <label for="dueDate">Pickup Date: </label>
+            <br>
             <input type="date" id="dueDate" v-model="createOrder.dueDate" :min="currentDatePlusTwoDays"
                 :max="currentDatePlusMonth">
 
             <br>
             <br>
             <label for="dueTime">Pickup Time: </label>
+            <br>
             <select id="dueTime" v-if="!isSunday" v-model="createOrder.dueTime">
                 <option value="07:30">7:30 AM</option>
                 <option value="08:00">8:00 AM</option>

@@ -1,25 +1,29 @@
 <template>
   <div id="login">
-    <form v-on:submit.prevent="login">
-      <img src="Please_Sign_In_Text.png" alt="Please Sign In">
-      <div role="alert" v-if="invalidCredentials">
-        Invalid username and password!
+    <img src="Please_Sign_In_Text.png" alt="Please Sign In">
+      <div role="alert" v-if="invalidCredentials">Invalid username and password!
       </div>
-      <div role="alert" v-if="this.$route.query.registration">
-        Thank you for registering, please sign in.
+        <div id="form_container">
+        <form v-on:submit.prevent="login">
+          <div role="alert" v-if="this.$route.query.registration">
+            Thank you for registering, please sign in.
+          </div>
+          <div class="form-input-group">
+            <label for="username">Username</label>
+            <br>
+            <input class="input" type="text" id="username" v-model="user.username" required autofocus />
+          </div>
+          <div class="form-input-group">
+            <label for="password">Password</label>
+            <br>
+            <input class="input" type="password" id="password" v-model="user.password" required />
+          </div>
+          
+          <button id="submit" type="submit">Sign in</button>
+          <br>
+          <p><router-link v-bind:to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
+        </form>
       </div>
-      <div class="form-input-group">
-        <label for="username">Username</label>
-        <input type="text" id="username" v-model="user.username" required autofocus />
-      </div>
-      <div class="form-input-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" v-model="user.password" required />
-      </div>
-      <button id="submit" type="submit">Sign in</button>
-      <p>
-      <router-link v-bind:to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
-    </form>
   </div>
 </template>
 
@@ -68,7 +72,16 @@ label {
   margin-right: 0.5rem;
 }
 
+#form_container{
+  padding-top: 50px;
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  
+}
+
 #submit{
+    display: flex;
     background-color: #583b66;
     color: white;
     border: none;
@@ -76,10 +89,12 @@ label {
     font-family: 'Teko', sans-serif;
     font-size: large;
     width: 200x;
+    margin: auto;
 }
 
 #submit:hover {
     background-color: white;
     color: #583b66;
 }
+
 </style>

@@ -14,6 +14,7 @@ import EditInventoryView from '../views/EditInventoryView.vue';
 import CustomOrderFormView from '../views/CustomOrderFormView.vue';
 import OrderConfirmView from '../views/OrderConfirmedView.vue';
 import AddNewStdCakeView from '../views/AddNewStdCakeView.vue';
+import AboutView from '../views/AboutView.vue';
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -24,6 +25,14 @@ import AddNewStdCakeView from '../views/AddNewStdCakeView.vue';
  * If they have (or don't need to) they're allowed to go about their way.
  */
 const routes = [
+  {
+    path: '/about',
+    name: 'about',
+    component: AboutView,
+    meta: {
+      requiresAuth: false
+    }
+  },
   {
     path: '/employeehome/inventory/new-standard-cake',
     name: 'new standard cake',

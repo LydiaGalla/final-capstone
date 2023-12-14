@@ -1,6 +1,8 @@
 <template>
-<div>
+<div class="CakeComponents">
+    
     <h3>Ingredients</h3>
+
     <table>
         <thead>
             <tr>
@@ -11,7 +13,7 @@
         <tbody>
             <tr v-for="flavor in flavors" :key="flavor.flavorName">
                 <td>{{ flavor.flavorName }} </td>
-                <td><button v-on:click.prevent="toggleAvailFlavor(flavor)" class="status-button">{{ flavor.isAvailable ? "Mark Unavailable" : "Mark Available"}}</button></td>
+                <td><button v-on:click.prevent="toggleAvailFlavor(flavor)" class="status-button">{{ flavor.available ? "Unavailable" : "Available"}}</button></td>
             </tr>
         </tbody>
     </table>
@@ -27,7 +29,7 @@
         <tbody>
             <tr v-for="frosting in frostings" :key="frosting.frostingName">
                 <td>{{ frosting.frostingName }} </td>
-                <td><button v-on:click.prevent="toggleAvailFrosting(frosting)" class="status-button">{{ frosting.isAvailable ? "Mark Unavailable" : "Mark Available"}}</button></td>
+                <td><button v-on:click.prevent="toggleAvailFrosting(frosting)" class="status-button">{{ frosting.available ? "Unavailable" : "Available"}}</button></td>
             </tr>
         </tbody>
     </table>
@@ -43,7 +45,7 @@
         <tbody>
             <tr v-for="filling in fillings" :key="filling.fillingName" >
                 <td>{{ filling.fillingName }} </td>
-                <td><button v-on:click.prevent="toggleAvailFilling(filling)" class="status-button">{{ filling.isAvailable ? "Mark Unavailable" : "Mark Available"}}</button></td>
+                <td><button v-on:click.prevent="toggleAvailFilling(filling)" class="status-button">{{ filling.available ? "Unavailable" : "Available"}}</button></td>
             </tr>
         </tbody>
     </table>
@@ -60,7 +62,7 @@
             <tr v-for="size in sizes" :key="size.sizeName">
                 <td>{{ size.sizeName }} </td>
               <!--click event calls the method to toggle the  availability -->  
-              <td><button v-on:click.prevent="toggleAvailSize(size)" class="status-button">{{ size.isAvailable ? "Mark Unavailable" : "Mark Available"}}</button></td>
+              <td><button v-on:click.prevent="toggleAvailSize(size)" class="status-button">{{ size.available ? "Unavailable" : "Available"}}</button></td>
             </tr>
         </tbody>
     </table>
@@ -100,21 +102,25 @@ export default{
         // },
 
         toggleAvailFlavor(flavor){
-            flavor.isAvailable = !flavor.isAvailable;
-            CustomCakeInventoryService.updateFlavor(flavor.flavorId, flavor.isAvailable);
+            this.$store.commit('TOGGLE_FLAVOR', flavor);
+            // flavor.isAvailable = !flavor.isAvailable; (happening in store because of above line)
+            CustomCakeInventoryService.updateFlavor(flavor.flavorId, flavor.available);
         },
         toggleAvailFrosting(frosting){
-            frosting.isAvailable = !frosting.isAvailable;
+            this.$store.commit('TOGGLE_FROSTING', frosting);
+            // frosting.isAvailable = !frosting.isAvailable;
             CustomCakeInventoryService.updateFrosting(frosting.frostingId, frosting.isAvailable);
 
         },
         toggleAvailFilling(filling){
-            filling.isAvailable = !filling.isAvailable;
+            this.$store.commit('TOGGLE_FILLING', filling);
+            // filling.isAvailable = !filling.isAvailable;
             CustomCakeInventoryService.updateFilling(filling.fillingId, filling.isAvailable)
 
         },
         toggleAvailSize(size){
-            size.isAvailable = !size.isAvailable
+            this.$store.commit('TOGGLE_SIZE', size);
+            // size.isAvailable = !size.isAvailable
             CustomCakeInventoryService.updateSize(size.sizeId, size.isAvailable)
 
         }
@@ -148,10 +154,10 @@ th {
 .status-button {
     background-color: white;
     border: none;
-    border-radius: 10px;
+    border-radius: 25px;
     font-family: 'Teko', sans-serif;
-    width: 50x;
-    margin-left: 15px;
+    margin: 0px 10px 0px 10px;
+    padding: 5px 15px 5px 15px;
 }
 
 .status-button:hover {
@@ -160,6 +166,15 @@ th {
 }
 
 td {
-    width: 200px;
+    width: 150px;
+    height:40px;
 }
+
+table{
+    align-items: center;
+}
+.CakeComponents {
+     justify-content: center;
+}
+
 </style>

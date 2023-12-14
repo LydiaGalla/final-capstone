@@ -17,7 +17,9 @@
     </div>
     <form v-on:submit.prevent="submitForm" class="add-text-form">
         <label for="addText">Add Writing to Cake (optional, $5 fee):</label>
-        <input type="text" id="addedText" v-model="addedText">
+        <br>
+        <input class="input" type="text" placeholder="Custom Message..." id="addedText" v-model="addedText">
+        
         
         <div>
             <br>
@@ -89,5 +91,9 @@ h1 {
 .continue-shopping:hover, .checkout-button:hover {
     background-color: #ffffff;
     color:#583b66;
+}
+.input{
+    width: 250px;
+    height: 30px;
 }
 </style>

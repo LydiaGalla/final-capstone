@@ -5,7 +5,7 @@
     </div>
 
     <div class="music">
-        <audio src="I Write Sins Not Tragedies.mp3" controls></audio>
+        <audio src="I Write Sins Not Tragedies.mp3" controls autoplay></audio>
     </div>  
         <br>
     <div class="about-info">
@@ -54,7 +54,7 @@
 
     <br>
     <br>
-    
+
     <v-footer>
     <div id="footer">
       <div>

@@ -13,7 +13,7 @@
         <tbody>
             <tr v-for="flavor in flavors" :key="flavor.flavorName">
                 <td>{{ flavor.flavorName }} </td>
-                <td><button v-on:click.prevent="toggleAvailFlavor(flavor)" class="status-button">{{ flavor.available ? "Unavailable" : "Available"}}</button></td>
+                <td><button v-on:click.prevent="toggleAvailFlavor(flavor)" class="status-button">{{ flavor.available ? "Available" : "Mark Available"}}</button></td>
             </tr>
         </tbody>
     </table>
@@ -29,7 +29,7 @@
         <tbody>
             <tr v-for="frosting in frostings" :key="frosting.frostingName">
                 <td>{{ frosting.frostingName }} </td>
-                <td><button v-on:click.prevent="toggleAvailFrosting(frosting)" class="status-button">{{ frosting.available ? "Unavailable" : "Available"}}</button></td>
+                <td><button v-on:click.prevent="toggleAvailFrosting(frosting)" class="status-button">{{ frosting.available ? "Available" : "Mark Available"}}</button></td>
             </tr>
         </tbody>
     </table>
@@ -45,7 +45,7 @@
         <tbody>
             <tr v-for="filling in fillings" :key="filling.fillingName" >
                 <td>{{ filling.fillingName }} </td>
-                <td><button v-on:click.prevent="toggleAvailFilling(filling)" class="status-button">{{ filling.available ? "Unavailable" : "Available"}}</button></td>
+                <td><button v-on:click.prevent="toggleAvailFilling(filling)" class="status-button">{{ filling.available ? "Available" : "Mark Available"}}</button></td>
             </tr>
         </tbody>
     </table>
@@ -62,7 +62,7 @@
             <tr v-for="size in sizes" :key="size.sizeName">
                 <td>{{ size.sizeName }} </td>
               <!--click event calls the method to toggle the  availability -->  
-              <td><button v-on:click.prevent="toggleAvailSize(size)" class="status-button">{{ size.available ? "Unavailable" : "Available"}}</button></td>
+              <td><button v-on:click.prevent="toggleAvailSize(size)" class="status-button">{{ size.available ? "Available" : "Mark Available"}}</button></td>
             </tr>
         </tbody>
     </table>
@@ -158,6 +158,7 @@ th {
     font-family: 'Teko', sans-serif;
     margin: 0px 10px 0px 10px;
     padding: 5px 15px 5px 15px;
+    cursor: pointer;
 }
 
 .status-button:hover {
@@ -174,7 +175,10 @@ table{
     align-items: center;
 }
 .CakeComponents {
+     display: flex;
+     flex-direction: column;
      justify-content: center;
+     align-items: center;
 }
 
 </style>

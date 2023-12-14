@@ -1,32 +1,35 @@
 <template>
+    
     <img src="Order_Summary_Text.png" alt="Order Summary">
-
     <div id="checkout-container">
-        <div class="cake-container">
-            <div v-if="$store.state.customCakeInCart != null">
-                <custom-order-card v-bind:cake="$store.state.customCakeInCart" class="pad-and-margin"></custom-order-card>
-            </div>
-            <div v-else>
-                <std-cake-card v-for="cake in cakes" v-bind:cake="cake" v-bind:key="cake.name"></std-cake-card>
-            </div>
- 
-        </div>
-
-        <div id="form-container">
-            <form v-on:submit.prevent="submitForm" class="add-text-form">
-                <label for="addText">Add Writing to Cake (optional, $5 fee):</label>
-                <br>
-                <input class="input" type="text" placeholder="Custom Message..." id="addedText" v-model="addedText">
-                <br>
-                <router-link :to="{ name: 'home'}"><button class="continue-shopping"> Continue Shopping </button> </router-link><button class="checkout-button">Checkout</button>
-                <br>
-            </form>
-        </div>
+            <div class="cart-item-container" v-if="isSomethingInCart">
+                <div class="cake-container">
+                    <div v-if="$store.state.customCakeInCart != null">
+                        <custom-order-card v-bind:cake="$store.state.customCakeInCart" class="pad-and-margin"></custom-order-card>
+                    </div>
+                    <div v-else>
+                        <std-cake-card v-for="cake in cakes" v-bind:cake="cake" v-bind:key="cake.name"></std-cake-card>
+                    </div>
         
-        <div v-if="($store.state.customCakeInCart == null) && '<!--standard cake in cart is null-->'">
-                <h2> Your Cart Is Empty! </h2>
-                <h3> Please add items to your cart to checkout.</h3>
+                </div>
+
+
+                <div id="form-container">
+                    <form v-on:submit.prevent="submitForm" class="add-text-form">
+                        <label for="addText">Add Writing to Cake (optional, $5 fee):</label>
+                        <br>
+                        <input class="input" type="text" placeholder="Custom Message..." id="addedText" v-model="addedText">
+                        <br>
+                        <router-link :to="{ name: 'home'}"><button class="continue-shopping"> Continue Shopping </button> </router-link><button class="checkout-button">Checkout</button>
+                        <br>
+                    </form>
+                </div>
             </div>
+        <div v-else>
+             <h2> Your Cart Is Empty! </h2>
+             <h3> Please add items to your cart to checkout.</h3>
+             <router-link :to="{ name: 'home'}"><button class="continue-shopping"> Continue Shopping </button> </router-link>
+        </div>
 
     </div>
 
@@ -136,6 +139,12 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.cart-item-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
     
     

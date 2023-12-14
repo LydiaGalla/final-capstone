@@ -38,27 +38,33 @@
     </router-link>
     </div>
     <br>
-    <img class="custom_cake_img" src="HomePageImg_1.jpg" alt="Round Cake with Purple Flowers">
-  </div>
-
-  <br>
-  <br>
-
-  <div id="footer">
-    <div>
-      <h3>Hours</h3>
-        <p>Sunday : 7:00am - 12:00pm</p>
-        <p>Monday - Saturday : 7:00am - 3:00pm</p>
-
-      <img src="Tiny_Cake_Logo.png" alt="Purple Cake Logo">  
-
-      <h3>Contact</h3>
-        <p>901 Pennsylvania Ave #3a</p>
-        <p>Pittsburgh, PA 15233</p>
-        <p>(877) 606-3203</p>
     </div>
+
+   
+    <img id="home-image" src="HomePageImg_1.jpg" alt="Round Cake with Purple Flowers">
     
-  </div>
+
+  
+
+  <br>
+  <br>
+
+  <v-footer>
+    <div id="footer">
+      <div>
+        <h3>Hours</h3>
+          <p>Sunday : 7:00am - 12:00pm</p>
+          <p>Monday - Saturday : 7:00am - 3:00pm</p>
+  
+        <img src="Tiny_Cake_Logo.png" alt="Purple Cake Logo">  
+  
+        <h3>Contact</h3>
+          <p>901 Pennsylvania Ave #3a</p>
+          <p>Pittsburgh, PA 15233</p>
+          <p>(877) 606-3203</p>
+      </div>
+    </div>
+  </v-footer>
 </template>
 
 
@@ -119,7 +125,8 @@ h3 {
 }
 
 .custom-cake-img {
-  max-width: auto;
+  display: flex;
+  max-width: 100%;
 }
 
 .custom-cake-order{

@@ -25,9 +25,8 @@
         </div>
 
     </form>
+
     
-    <div >
-    </div>
 </template>
 
 <script>
@@ -95,4 +94,11 @@ h1 {
     padding: 20px;
     margin: 20px;
 }
+
+#footer {
+  column-count: 3;
+  text-align: center;
+  
+}
+
 </style>

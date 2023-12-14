@@ -1,33 +1,36 @@
 <template>
     <img src="Order_Summary_Text.png" alt="Order Summary">
-    <div class="cake-container">
-        <div v-if="$store.state.customCakeInCart != null">
-            <custom-order-card v-bind:cake="$store.state.customCakeInCart" class="pad-and-margin"></custom-order-card>
-        </div>
-        <div v-else>
-            <std-cake-card v-for="cake in cakes" v-bind:cake="cake" v-bind:key="cake.name"></std-cake-card>
-        </div>
-    </div>
-    <router-link :to="{ name: 'home'}">
-        <button class="continue-shopping"> Continue Shopping </button> 
-    </router-link>
 
-    <div>
-        <br>
-    </div>
-    <form v-on:submit.prevent="submitForm" class="add-text-form">
-        <label for="addText">Add Writing to Cake (optional, $5 fee):</label>
-        <input type="text" id="addedText" v-model="addedText">
+    <div id="checkout-container">
+        <div class="cake-container">
+            <div v-if="$store.state.customCakeInCart != null">
+                <custom-order-card v-bind:cake="$store.state.customCakeInCart" class="pad-and-margin"></custom-order-card>
+            </div>
+            <div v-else>
+                <std-cake-card v-for="cake in cakes" v-bind:cake="cake" v-bind:key="cake.name"></std-cake-card>
+            </div>
+        </div>
         
-        <div>
+        <form v-on:submit.prevent="submitForm" class="add-text-form">
+            <label for="addText">Add Writing to Cake (optional, $5 fee):</label>
             <br>
-            <button class="checkout-button">Checkout</button>
-        </div>
+            <input class="input" type="text" placeholder="Custom Message..." id="addedText" v-model="addedText">
+            <br>
+            
+            <div>
+                <button class="checkout-button">Checkout</button>
+                <br>
+                <router-link :to="{ name: 'home'}">
+                    <button class="continue-shopping"> Continue Shopping </button> 
+                </router-link>
+            </div>
 
-    </form>
+        </form>
     
-    <div >
+    
+        
     </div>
+
 </template>
 
 <script>
@@ -82,7 +85,8 @@ h1 {
     border-radius: 20px;
     font-family: 'Teko', sans-serif;
     font-size: large;
-    width: 200x;
+    width: 200px;
+    display: inline;
     
 }
 
@@ -95,4 +99,16 @@ h1 {
     padding: 20px;
     margin: 20px;
 }
+.input{
+    width: 250px;
+    height: 30px;
+}
+#checkout-container{
+    display: flex;
+    justify-content: center;
+}
+.add-text-form{
+    margin-top: 80px;
+}
+
 </style>

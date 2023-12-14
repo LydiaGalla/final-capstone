@@ -1,25 +1,32 @@
 <template>
-  <div id="register" class="text-center">
-    <form v-on:submit.prevent="register">
-      <img src="Create_Account.png" alt="Create Account">
-      <div role="alert" v-if="registrationErrors">
-        {{ registrationErrorMsg }}
-      </div>
-      <div class="form-input-group">
-        <label for="username">Username</label>
-        <input type="text" id="username" v-model="user.username" required autofocus />
-      </div>
-      <div class="form-input-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" v-model="user.password" required />
-      </div>
-      <div class="form-input-group">
-        <label for="confirmPassword">Confirm Password</label>
-        <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
-      </div>
-      <button class="submit" type="submit">Create Account</button>
-      <p><router-link v-bind:to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
-    </form>
+
+  <div>
+    <img src="Create_Account.png" alt="Create Account">
+        <div role="alert" v-if="registrationErrors">
+          {{ registrationErrorMsg }}
+        </div>
+    <div id="register" class="text-center">
+      <form v-on:submit.prevent="register">
+        
+        <div class="form-input-group">
+          <label for="username">Username</label>
+          <br>
+          <input class="input" type="text" id="username" v-model="user.username" required autofocus />
+        </div>
+        <div class="form-input-group">
+          <label for="password">Password</label>
+          <br>
+          <input class="input" type="password" id="password" v-model="user.password" required />
+        </div>
+        <div class="form-input-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <br>
+          <input class="input" type="password" id="confirmPassword" v-model="user.confirmPassword" required />
+        </div>
+        <button class="submit" type="submit">Create Account</button>
+        <p><router-link v-bind:to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -87,10 +94,20 @@ label {
     font-family: 'Teko', sans-serif;
     font-size: large;
     width: 200x;
+  display: flex;
+  margin: auto;
+  margin-bottom: 30px;
 }
 
 .submit:hover {
   background-color: #ffffff;
     color:#583b66;
+}
+
+#register{
+  display:flex;
+  justify-content: center;
+  margin: auto;
+  padding-top: 50px;
 }
 </style>

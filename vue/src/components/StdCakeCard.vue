@@ -11,7 +11,7 @@
                 <button class="mark-unavailable" v-on:click.prevent="setAvailabilityStatus(false)" v-if="cake.available">Unavailable</button> -->
                 <button v-bind:class="{'mark-unavailable' : cake.available, 'mark-available' : !cake.available}" v-on:click="toggleAvailable(cake)">{{ cake.available === true ? 'Mark Unavailable' : 'Mark Available' }}</button>
             </div>
-            <div v-if="!isAuthenticated">
+            <div class="cartbutton" v-if="!isAuthenticated">
                 <button class="add-to-cart" v-on:click.prevent="setInCart(true)" v-bind:disabled="anyCakesInCart">Add to Cart</button>
             </div>
             <!-- <div v-show="thisCakeInCart">
@@ -113,7 +113,11 @@ export default {
     width: 50x;
     position: absolute;
     bottom: 15px;
-    margin-left: -26px;
+}
+
+.cartbutton {
+    display: flex;
+    justify-content: center;
 }
 
 .mark-available {

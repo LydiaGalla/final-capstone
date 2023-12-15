@@ -152,11 +152,11 @@ h3 {
 }
 
 #home-image{
-  margin-top: 50px;
+  padding-top: 20px;
 }
 
 #logo {
-  padding-top: 100px;
+  padding-top: 20px;
 }
 
 </style>

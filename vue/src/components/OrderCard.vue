@@ -179,7 +179,7 @@ export default{
   text-align: center;
   background-color: white;
   width: 800px;
-  height: 600px;
+  height: 500px;
   margin: 20px;
   padding: 20px;
   border-radius: 10px;

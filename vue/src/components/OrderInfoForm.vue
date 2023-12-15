@@ -61,9 +61,10 @@
                     </select>
                     <br>
                     <br>
-
-                    <button id="placeOrder" type="submit" class="is-primary">Place Order</button>
-                    <button id="cancel" type="button" v-on:click="cancelForm" style="margin-left:20px ;">Cancel</button>
+                    <div class="button-group-order-info">
+                        <button id="placeOrder" type="submit" class="is-primary">Place Order</button>
+                        <button id="cancel" type="button" v-on:click="cancelForm">Cancel</button>
+                    </div>
                 </form>
             </div>
     </div>
@@ -160,6 +161,13 @@ export default {
 </script>
 
 <style>
+
+.button-group-order-info{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    
+}
 .order-info-form-container{
     display: flex;
     flex-direction: column;
@@ -169,8 +177,7 @@ export default {
 }
 
 #placeOrder, #cancel {
-    display: flex;
-    justify-content: center;
+    
     background-color: #583b66;
     color: white;
     border: none;
@@ -178,10 +185,13 @@ export default {
     font-family: 'Teko', sans-serif;
     font-size: large;
     width: 100x;
+    margin: 0 10px 0 10px;
 }
 
 #placeOrder:hover, #cancel:hover {
-    background-color: white;
-    color: #583b66;
+    background-color: #ffffff00;
+    color:#583b66;
+    border: 1px solid #583b66;
+    cursor: pointer;
 }
 </style> 

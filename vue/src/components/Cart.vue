@@ -21,16 +21,15 @@
                     </div>
                     <form v-on:submit.prevent="submitForm" class="add-text-form">
                         <label for="addText">Add Writing to Cake (optional, $5 fee):</label>
-                        <br>
+                            <br>
                         <input class="input" type="text" placeholder="Custom Message..." id="addedText" v-model="addedText">
-                        <br>
+                            <br>
                         <router-link :to="{ name: 'home'}"><button class="continue-shopping"> Continue Shopping </button> </router-link><button class="checkout-button">Checkout</button>
-                        <br>
-                        <br>
+                            <br>
+                            <br>
 
                         <span>Please contact us with specific requests or questions about your order</span>
-                        <br>
-                        
+                            <br>
                         <span>*All orders are Pickup Only</span>
                         
                     </form>

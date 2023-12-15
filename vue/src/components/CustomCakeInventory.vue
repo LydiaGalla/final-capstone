@@ -1,13 +1,11 @@
 <template>
 <div class="CakeComponents">
-    
-    <h3>Ingredients</h3>
 
-    <table>
+    <table class="box">
         <thead>
             <tr>
-                <th>Cake Flavors</th>  
-                <th>Availability</th>
+                <th><h3>Cake Flavors</h3></th>  
+                <th><h3>Availability</h3></th>
             </tr>
         </thead>
         <tbody>
@@ -19,11 +17,11 @@
     </table>
     <br>
 
-    <table>
+    <table class="box">
         <thead>
             <tr>
-                <th>Cake Frostings</th>  
-                <th>Availability</th>
+                <th><h3>Cake Frostings</h3></th>  
+                <th><h3>Availability</h3></th>
             </tr>
         </thead>
         <tbody>
@@ -35,11 +33,11 @@
     </table>
     <br>
 
-    <table>
+    <table class="box">        
         <thead>
             <tr>
-                <th>Cake Filling</th>  
-                <th>Availability</th>
+                <th><h3>Cake Fillings</h3></th>  
+                <th><h3>Availability</h3></th>
             </tr>
         </thead>
         <tbody>
@@ -51,11 +49,11 @@
     </table>
     <br>
 
-    <table>
+    <table class="box">
         <thead>
             <tr>
-                <th>Cake Sizes - </th>  
-                <th> Availability</th>
+                <th><h3>Cake Sizes</h3></th>  
+                <th><h3>Availability</h3></th>
             </tr>
         </thead>
         <tbody>
@@ -149,13 +147,15 @@ th {
     font-family: 'Teko', sans-serif;
     font-size: 1rem;  
     color: #583b66; 
+    padding-bottom: 15px;
 }
 
 .status-button {
-    background-color: white;
+    background-color: rgb(177, 177, 177);
     border: none;
     border-radius: 25px;
     font-family: 'Teko', sans-serif;
+    font-size: 18px;
     margin: 0px 10px 0px 10px;
     padding: 5px 15px 5px 15px;
     cursor: pointer;
@@ -173,6 +173,7 @@ td {
 
 table{
     align-items: center;
+    padding-left: 60px;
 }
 .CakeComponents {
      display: flex;

@@ -21,24 +21,24 @@
                     </div>
                     <form v-on:submit.prevent="submitForm" class="add-text-form">
                         <label for="addText">Add Writing to Cake (optional, $5 fee):</label>
-                            <br>
+                            
                         <input class="input" type="text" placeholder="Custom Message..." id="addedText" v-model="addedText">
                             <br>
                         <router-link :to="{ name: 'home'}"><button class="continue-shopping"> Continue Shopping </button> </router-link><button class="checkout-button">Checkout</button>
                             <br>
-                            <br>
+                            
 
                         <span>Please contact us with specific requests or questions about your order</span>
                             <br>
-                        <span>*All orders are Pickup Only</span>
+                        <span>*All orders are Pickup & Cash Only</span>
                         
                     </form>
                 </div>
             </div>
-        <div v-else>
+        <div v-else class="empty-state-component">
              <h2> Your Cart Is Empty! </h2>
              <h3> Please add items to your cart to checkout.</h3>
-             <router-link :to="{ name: 'home'}"><button class="continue-shopping"> Continue Shopping </button> </router-link>
+             <router-link :to="{ name: 'home'}"><button class="continue-shopping-empty"> Continue Shopping </button> </router-link>
         </div>
 
     </div>
@@ -110,10 +110,18 @@ h1 {
     width: auto;
     padding: 0px 10px;
     margin: 10px;
-    
+    cursor: pointer;
 }
 
+.empty-state-component{
+    margin: 50px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+}
 .continue-shopping {
+    
     background-color: #ffffff;
     color:#583b66;
     border: none;
@@ -121,8 +129,20 @@ h1 {
     font-family: 'Teko', sans-serif;
     font-size: 20px;
     padding: 0px 10px 0px 10px;
-    margin: 10px;
-    margin-left: 0px;
+    cursor: pointer;
+}
+
+.continue-shopping-empty{
+    margin-left: 33%;
+    margin-top: 20px;
+    background-color: #ffffff;
+    color:#583b66;
+    border: none;
+    border-radius: 20px;
+    font-family: 'Teko', sans-serif;
+    font-size: 20px;
+    padding: 0px 10px 0px 10px;
+    cursor: pointer;
 }
 
  .checkout-button:hover {
@@ -131,8 +151,8 @@ h1 {
 }
 
 .continue-shopping:hover {
-    background-color: #583b66;
-    color:#ffffff;
+    background-color: #ffffff;
+    color: #583b66;
 }
 
 .pad-and-margin {

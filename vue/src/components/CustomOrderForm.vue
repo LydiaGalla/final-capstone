@@ -1,17 +1,19 @@
 <template>
     <div>
         <img src="Build_Custom_Cake_Text.png" alt="Build A Custom Cake">
-        <div class="custom-order-form-container">
+        <div class="custom-order-form-container box">
             
             <form v-on:submit.prevent="submitForm" class="custom-order-form">
                 
                 
 
-                <h3> Cake Information</h3>
+                <h3> Select Cake Options</h3>
+                
                 <br>
 
                 <label for="selectCakeFlavor">Select Cake Flavor </label>
-                <select id="selectCakeFlavor" v-model="createdCustomCake.cakeFlavorId">
+                <select class="select" id="selectCakeFlavor" placeholder="Flavor"
+                    v-model="createdCustomCake.cakeFlavorId">
                     <!-- <option value="Almond">Almond Cake</option>
                     <option value="Chocolate">Chocolate Cake</option>
                     <option value="Marble">Marble Cake</option>
@@ -25,7 +27,8 @@
                 <br>
                 <br>
                 <label for="selectFilling">Select Cake Filling </label>
-                <select id="selectFilling" v-model="createdCustomCake.cakeFillingId">
+                <select class="select" id="selectFilling" placeholder="Filling"
+                    v-model="createdCustomCake.cakeFillingId">
                     <!-- <option value="Custard">Custard Filling</option> -->
                     <!-- <option value="Fudge">Chocolate Fudge Filling</option> -->
                     <!-- <option value="Raspberry Jam">Raspberry Jam Filling</option> -->
@@ -35,7 +38,8 @@
                 <br>
                 <br>
                 <label for="selectFrostingFlavor">Select Frosting Flavor </label>
-                <select id="selectFrostingFlavor" v-model="createdCustomCake.cakeFrostingId">
+                <select class="select" id="selectFrostingFlavor" placeholder="Frosting" 
+                    v-model="createdCustomCake.cakeFrostingId">
                     <!-- <option value="Vanilla Buttercream">Vanilla Buttercream</option>
                     <option value="Cream Cheese">Cream Cheese Frosting</option>
                     <option value="Chocolate Buttercream">Chocolate Buttercream</option> -->
@@ -45,7 +49,8 @@
                 <br>
                 <br>
                 <label for="selectStyle">Select Cake Style </label>
-                <select id="selectStyle" v-model="createdCustomCake.cakeStyleId">
+                <select class="select" id="selectStyle" placeholder="Style"
+                    v-model="createdCustomCake.cakeStyleId">
                     <!-- <option value="Round">Round</option>
                     <option value="Square">Square</option>
                     <option value="Cupcake">Cupcake</option> -->
@@ -55,7 +60,8 @@
                 <br>
                 <br>
                 <label for="selectSize">Select Cake Size </label>
-                <select id="selectSize" v-model="createdCustomCake.cakeSizeId">
+                <select class="select" id="selectSize" placeholder="Size"
+                    v-model="createdCustomCake.cakeSizeId">
                     <!-- <option value="Small">Small</option>
                     <option value="Large">Large</option>
                     <option value="Cupcake">Single Cupcake</option>
@@ -215,16 +221,17 @@ import CustomCakeInventoryService from '../services/CustomCakeInventoryService';
 
 <style>
 
- /* .custom-order-form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-} */
+
 
  .custom-order-form-container {
     display: flex;
     justify-content: center;
     align-items: center;
+    max-width: 500px;
+    flex-direction: column;
+    margin: auto;
+    padding-left: 100px;
+    
 }  
 
 .custom-cake-in-cart {
@@ -235,6 +242,7 @@ import CustomCakeInventoryService from '../services/CustomCakeInventoryService';
     font-family: 'Teko', sans-serif;
     font-size: large;
     width: 200px;
+    cursor: pointer;
 }
 
 .custom-cake-in-cart:hover {

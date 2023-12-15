@@ -2,7 +2,7 @@
     <div class="new-standard-cake-form">
         <h3>Enter New Cake Details</h3>
         <form v-on:submit.prevent="addNewCake" class="form box">
-            <br>
+            
             <label for="cakeName">Cake Name: </label>
             <br>
             <input class="input" type="text" id="cakeName" v-model="createdStandardCake.cakeName" placeholder="(must not be an existing standard cake name)">

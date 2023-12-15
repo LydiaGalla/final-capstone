@@ -6,11 +6,13 @@
             <img v-else-if="cake.cakeName" v-bind:src="'/' + cake.cakeName.replace(' ', '') + 'Cake.jpg'">
             <h3 class="cake-price"> $ {{ cake.price }}</h3>
             <p class="description">{{ cake.description }}</p>
+            
             <div class="button-container-employee" v-if="isAuthenticated">
                 <!-- <button class="mark-available" v-on:click.prevent="setAvailabilityStatus(true)" v-if="!cake.available">Available</button>
                 <button class="mark-unavailable" v-on:click.prevent="setAvailabilityStatus(false)" v-if="cake.available">Unavailable</button> -->
                 <button v-bind:class="{'mark-unavailable' : cake.available, 'mark-available' : !cake.available}" v-on:click="toggleAvailable(cake)">{{ cake.available === true ? 'Mark Unavailable' : 'Mark Available' }}</button>
             </div>
+            
             <div class="cartbutton" v-if="!isAuthenticated">
                 <button class="add-to-cart" v-on:click.prevent="setInCart(true)" v-bind:disabled="anyCakesInCart">Add to Cart</button>
             </div>
@@ -73,7 +75,7 @@ export default {
 .card {
   text-align: center;
   width: 300px;
-  height: 420px;
+  height: 450px;
   margin: 20px;
   padding: 20px;
   border-radius: 10px;
@@ -110,9 +112,12 @@ export default {
     border: none;
     border-radius: 20px;
     font-family: 'Teko', sans-serif;
-    width: 50x;
+    width: 150px;
     position: absolute;
     bottom: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    
 }
 
 .cartbutton {

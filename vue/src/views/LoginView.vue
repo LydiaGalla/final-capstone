@@ -4,6 +4,7 @@
       <div role="alert" v-if="invalidCredentials">Invalid username and password!
       </div>
         <div id="form_container">
+          <h3>Employee Login: </h3>
         <form v-on:submit.prevent="login">
           <div role="alert" v-if="this.$route.query.registration">
             Thank you for registering, please sign in.
@@ -65,6 +66,10 @@ export default {
 </script>
 
 <style scoped>
+h3 {
+  display: flex;
+  justify-content: center;
+}
 .form-input-group {
   margin-bottom: 1rem;
 }
@@ -73,10 +78,12 @@ label {
 }
 
 #form_container{
+  max-width: 350px;
   padding-top: 50px;
   display: flex;
   margin: auto;
   justify-content: center;
+  flex-direction: column;
   
 }
 

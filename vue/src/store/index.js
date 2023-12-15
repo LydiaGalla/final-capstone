@@ -142,6 +142,7 @@ export function createStore(currentToken, currentUser) {
         state.cakes.forEach(cake => {
           cake.inCart = false;
         })
+        state.customCakeInCart = null;
       },
       TOGGLE_AVAILABLE(state, cake){
         cake.available = !cake.available;
@@ -158,7 +159,7 @@ export function createStore(currentToken, currentUser) {
       TOGGLE_SIZE(state, size){
         size.available = !size.available;
       },
-      
+
       ADD_STANDARD_CAKE(state, cake) {
         state.cakes.push(cake)
         state.cakes.sort((cake1, cake2) => {

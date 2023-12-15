@@ -167,7 +167,7 @@ th {
 }
 
 td {
-    width: 150px;
+    width: 175px;
     height:40px;
 }
 

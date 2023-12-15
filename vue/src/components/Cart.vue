@@ -14,7 +14,11 @@
                 </div>
 
 
-                <div id="form-container">
+                <div id="form-container" class="box">
+                    <div class="your-cart-info">
+                        <h3> Additional Details:</h3>
+                    
+                    </div>
                     <form v-on:submit.prevent="submitForm" class="add-text-form">
                         <label for="addText">Add Writing to Cake (optional, $5 fee):</label>
                         <br>
@@ -22,6 +26,13 @@
                         <br>
                         <router-link :to="{ name: 'home'}"><button class="continue-shopping"> Continue Shopping </button> </router-link><button class="checkout-button">Checkout</button>
                         <br>
+                        <br>
+
+                        <span>Please contact us with specific requests or questions about your order</span>
+                        <br>
+                        
+                        <span>*All orders are Pickup Only</span>
+                        
                     </form>
                 </div>
             </div>
@@ -77,7 +88,14 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
+.your-cart-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+
+}
+
 h1 {
     text-align: center;
     font-size: 300%;
@@ -105,6 +123,7 @@ h1 {
     font-size: 20px;
     padding: 0px 10px 0px 10px;
     margin: 10px;
+    margin-left: 0px;
 }
 
  .checkout-button:hover {

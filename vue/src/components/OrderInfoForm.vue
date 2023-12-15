@@ -1,70 +1,71 @@
 <template>
-    <img src="Checkout_Text.png" alt="Checkout">
-    <br>
     <div>
-        <form v-on:submit.prevent="submitForm" class="order-info-form">
+        <img src="Checkout_Text.png" alt="Checkout">
 
-            <label for="firstName">First Name:</label>
-            <br>
-            <input class="input" type="text" id="firstName" v-model="createOrder.firstName">
-            <br>
-            <br>
+            <div class="order-info-form-container">
+                <h3> Please Enter Your Contact Information </h3>
+                <form v-on:submit.prevent="submitForm" class="order-info-form box">
 
-            <label for="lastName">Last Name: </label>
-            <br>
-            <input class="input" type="text" id="lastName" v-model="createOrder.lastName">
-            <br>
-            <br>
+                    <label for="firstName">First Name:</label>
+                    <br>
+                    <input class="input" type="text" id="firstName" v-model="createOrder.firstName">
+                    <br>
+                    <br>
 
-            <label for="phone">Phone Number: </label>
-            <br>
-            <input class="input" type="text" id="phone" v-model="createOrder.phone">
-            <br>
-            <br>
+                    <label for="lastName">Last Name: </label>
+                    <br>
+                    <input class="input" type="text" id="lastName" v-model="createOrder.lastName">
+                    <br>
+                    <br>
 
-            <label for="dueDate">Pickup Date: </label>
-            <br>
-            <input type="date" id="dueDate" v-model="createOrder.dueDate" :min="currentDatePlusTwoDays"
-                :max="currentDatePlusMonth">
+                    <label for="phone">Phone Number: </label>
+                    <br>
+                    <input class="input" type="text" id="phone" v-model="createOrder.phone">
+                    <br>
+                    <br>
 
-            <br>
-            <br>
-            <label for="dueTime">Pickup Time: </label>
-            <br>
-            <select id="dueTime" v-if="!isSunday" v-model="createOrder.dueTime">
-                <option value="07:30">7:30 AM</option>
-                <option value="08:00">8:00 AM</option>
-                <option value="08:30">8:30 AM</option>
-                <option value="09:00">9:00 AM</option>
-                <option value="09:30">9:30 AM</option>
-                <option value="10:00">10:00 AM</option>
-                <option value="10:30">10:30 AM</option>
-                <option value="11:00">11:00 AM</option>
-                <option value="11:30">11:30 AM</option>
-                <option value="12:00">12:00 PM</option>
-                <option value="12:30">12:30 PM</option>
-                <option value="13:00">1:00 PM</option>
-                <option value="13:30">1:30 PM</option>
-                <option value="14:00">2:00 PM</option>
-                <option value="14:30">2:30 PM</option>
-            </select>
-            <select id="dueTime" v-if="isSunday" v-model="createOrder.dueTime">
-                <option value="07:30">7:30 AM</option>
-                <option value="08:00">8:00 AM</option>
-                <option value="08:30">8:30 AM</option>
-                <option value="09:00">9:00 AM</option>
-                <option value="09:30">9:30 AM</option>
-                <option value="10:00">10:00 AM</option>
-                <option value="10:30">10:30 AM</option>
-                <option value="11:00">11:00 AM</option>
-                <option value="11:30">11:30 AM</option>
-            </select>
-            <br>
-            <br>
+                    <label for="dueDate"> Pickup Date: </label>
+            
+                    <input type="date" id="dueDate" v-model="createOrder.dueDate" :min="currentDatePlusTwoDays"
+                        :max="currentDatePlusMonth">
 
-            <button id="placeOrder" type="submit" class="is-primary">Place Order</button>
-            <button id="cancel" type="button" v-on:click="cancelForm" style="margin-left:20px ;">Cancel</button>
-        </form>
+                    
+                    <label for="dueTime"> Pickup Time: </label>
+                    <select id="dueTime" v-if="!isSunday" v-model="createOrder.dueTime">
+                        <option value="07:30">7:30 AM</option>
+                        <option value="08:00">8:00 AM</option>
+                        <option value="08:30">8:30 AM</option>
+                        <option value="09:00">9:00 AM</option>
+                        <option value="09:30">9:30 AM</option>
+                        <option value="10:00">10:00 AM</option>
+                        <option value="10:30">10:30 AM</option>
+                        <option value="11:00">11:00 AM</option>
+                        <option value="11:30">11:30 AM</option>
+                        <option value="12:00">12:00 PM</option>
+                        <option value="12:30">12:30 PM</option>
+                        <option value="13:00">1:00 PM</option>
+                        <option value="13:30">1:30 PM</option>
+                        <option value="14:00">2:00 PM</option>
+                        <option value="14:30">2:30 PM</option>
+                    </select>
+                    <select id="dueTime" v-if="isSunday" v-model="createOrder.dueTime">
+                        <option value="07:30">7:30 AM</option>
+                        <option value="08:00">8:00 AM</option>
+                        <option value="08:30">8:30 AM</option>
+                        <option value="09:00">9:00 AM</option>
+                        <option value="09:30">9:30 AM</option>
+                        <option value="10:00">10:00 AM</option>
+                        <option value="10:30">10:30 AM</option>
+                        <option value="11:00">11:00 AM</option>
+                        <option value="11:30">11:30 AM</option>
+                    </select>
+                    <br>
+                    <br>
+
+                    <button id="placeOrder" type="submit" class="is-primary">Place Order</button>
+                    <button id="cancel" type="button" v-on:click="cancelForm" style="margin-left:20px ;">Cancel</button>
+                </form>
+            </div>
     </div>
 </template>
 
@@ -159,8 +160,17 @@ export default {
 </script>
 
 <style>
-#placeOrder,
-#cancel {
+.order-info-form-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+#placeOrder, #cancel {
+    display: flex;
+    justify-content: center;
     background-color: #583b66;
     color: white;
     border: none;
@@ -170,8 +180,7 @@ export default {
     width: 100x;
 }
 
-#placeOrder:hover,
-#cancel:hover {
+#placeOrder:hover, #cancel:hover {
     background-color: white;
     color: #583b66;
 }

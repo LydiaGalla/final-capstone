@@ -14,9 +14,9 @@
             <div class="cartbutton" v-if="!isAuthenticated">
                 <button class="add-to-cart" v-on:click.prevent="setInCart(true)" v-bind:disabled="anyCakesInCart">Add to Cart</button>
             </div>
-            <!-- <div v-show="thisCakeInCart">
-                <p>Hello</p>
-            </div> -->
+            <div class="cartbutton" v-if="this.cake.standardCakeId == thisCakeInCart">
+                <button  v-show="thisCakeInCart" class="add-to-cart" v-on:click.prevent="setInCart(false)">Remove from Cart</button>
+            </div>
             <!-- <div>
                 <button class="add-to-cart" v-if="cake.cakeName === thisCakeInCart.cakeName">Add to Cart</button>
             </div> -->
@@ -50,8 +50,12 @@ export default {
     },
     computed: {
         thisCakeInCart() {
-            const currCakeName = this.$route.params.cakeName;
-            return this.$store.state.cakes.find(cake => cake.cakeName === currCakeName);
+            for (let cake of this.$store.state.cakes) {
+                if (cake.inCart == true) {
+                    return cake.standardCakeId;
+                }
+            }
+            return 0;
         },
         anyCakesInCart() {
             for (let cake of this.$store.state.cakes) {

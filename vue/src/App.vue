@@ -44,9 +44,13 @@ export default {
 
 <style>
 .separator {
-  border-left: 1px solid black;
-  margin-left: 5px;
-  padding-left: 5px;
+  border-left: 1.5px solid #583b66;
+  margin-left: 8px;
+  padding-left: 8px;
+}
+.nav-link {
+  font-size: 20px;
+  font-weight: 500;
 }
 
 </style>

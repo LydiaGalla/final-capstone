@@ -1,23 +1,23 @@
 <template>
     <div id="home">
-     <img id="logo" src="Tragic_Cakes_Logo.png" alt="Tragic Cakes: We bake tragedies, not sins.">
+      <img id="logo" src="Tragic_Cakes_Logo.png" alt="Tragic Cakes: We bake tragedies, not sins.">
     <div>
+      <br>
+      <img id="home-image" src="HomePageImg_3.jpg" alt="Home Page Image of Cake">
+      <br>
+      <br>
 
-    <br>
-
-    <img id="home-image" src="HomePageImg_3.jpg" alt="Home Page Image of Cake">
-
-    <br>
-    <br>
-
-        <img src="Remedies_Text.png" alt="Remedies for your Tragedies">
-        <p>
-            At Tragic Cakes, we're prepared for the worst. We offer a variety of pre-made 
-            tragedies to sweeten up any sour situation, choose from any standard cake below.  
-        </p>
-
-      <std-cakes-list></std-cakes-list>
+          <img src="Remedies_Text.png" alt="Remedies for your Tragedies">
+          <p>
+              At Tragic Cakes, we're prepared for the worst. We offer a variety of pre-made 
+              tragedies to sweeten up any sour situation, choose from any standard cake below.  
+          </p>
     </div>
+
+    <div class="std-cake-list-container">
+        <std-cakes-list></std-cakes-list>
+    </div>
+
   </div>
 
   <br>
@@ -42,9 +42,6 @@
 
    
     <img id="home-image" src="HomePageImg_1.jpg" alt="Round Cake with Purple Flowers">
-    
-
-  
 
   <br>
   <br>
@@ -81,6 +78,10 @@ export default {
 </script>
 
 <style>
+.std-cake-list-container{
+  margin: 75px 0px
+}
+
 a:link {
   text-decoration: none;
   color: #583b66;
@@ -114,11 +115,14 @@ h3 {
   }
 
 #footer {
+  margin-top: 50px;
+  margin-bottom: 50px;
   column-count: 3;
   text-align: center;
 }
 
 #home-image {
+    padding-top: 50px;
     max-width: 100%;
     max-height: auto;
     opacity: 1;
@@ -135,9 +139,9 @@ h3 {
     border: none;
     border-radius: 20px;
     font-family: 'Teko', sans-serif;
-    font-size: large;
-    width: 200x;
-    margin-left: 48%;
+    font-size: 35px;
+    width: 200px;
+    margin-left: 42%;
     
 }
 
@@ -147,6 +151,12 @@ h3 {
 
 }
 
+#home-image{
+  padding-top: 20px;
+}
 
+#logo {
+  padding-top: 20px;
+}
 
 </style>

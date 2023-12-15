@@ -1,68 +1,66 @@
 <template>
 <div class="CakeComponents">
-    
-    <h3>Ingredients</h3>
 
-    <table>
+    <table class="box">
         <thead>
             <tr>
-                <th>Cake Flavors</th>  
-                <th>Availability</th>
+                <th><h3>Cake Flavors</h3></th>  
+                <th><h3>Availability</h3></th>
             </tr>
         </thead>
         <tbody>
             <tr v-for="flavor in flavors" :key="flavor.flavorName">
                 <td>{{ flavor.flavorName }} </td>
-                <td><button v-on:click.prevent="toggleAvailFlavor(flavor)" class="status-button">{{ flavor.available ? "Unavailable" : "Available"}}</button></td>
+                <td><button v-on:click.prevent="toggleAvailFlavor(flavor)" class="status-button">{{ flavor.available ? "Available" : "Mark Available"}}</button></td>
             </tr>
         </tbody>
     </table>
     <br>
 
-    <table>
+    <table class="box">
         <thead>
             <tr>
-                <th>Cake Frostings</th>  
-                <th>Availability</th>
+                <th><h3>Cake Frostings</h3></th>  
+                <th><h3>Availability</h3></th>
             </tr>
         </thead>
         <tbody>
             <tr v-for="frosting in frostings" :key="frosting.frostingName">
                 <td>{{ frosting.frostingName }} </td>
-                <td><button v-on:click.prevent="toggleAvailFrosting(frosting)" class="status-button">{{ frosting.available ? "Unavailable" : "Available"}}</button></td>
+                <td><button v-on:click.prevent="toggleAvailFrosting(frosting)" class="status-button">{{ frosting.available ? "Available" : "Mark Available"}}</button></td>
             </tr>
         </tbody>
     </table>
     <br>
 
-    <table>
+    <table class="box">        
         <thead>
             <tr>
-                <th>Cake Filling</th>  
-                <th>Availability</th>
+                <th><h3>Cake Fillings</h3></th>  
+                <th><h3>Availability</h3></th>
             </tr>
         </thead>
         <tbody>
             <tr v-for="filling in fillings" :key="filling.fillingName" >
                 <td>{{ filling.fillingName }} </td>
-                <td><button v-on:click.prevent="toggleAvailFilling(filling)" class="status-button">{{ filling.available ? "Unavailable" : "Available"}}</button></td>
+                <td><button v-on:click.prevent="toggleAvailFilling(filling)" class="status-button">{{ filling.available ? "Available" : "Mark Available"}}</button></td>
             </tr>
         </tbody>
     </table>
     <br>
 
-    <table>
+    <table class="box">
         <thead>
             <tr>
-                <th>Cake Sizes - </th>  
-                <th> Availability</th>
+                <th><h3>Cake Sizes</h3></th>  
+                <th><h3>Availability</h3></th>
             </tr>
         </thead>
         <tbody>
             <tr v-for="size in sizes" :key="size.sizeName">
                 <td>{{ size.sizeName }} </td>
               <!--click event calls the method to toggle the  availability -->  
-              <td><button v-on:click.prevent="toggleAvailSize(size)" class="status-button">{{ size.available ? "Unavailable" : "Available"}}</button></td>
+              <td><button v-on:click.prevent="toggleAvailSize(size)" class="status-button">{{ size.available ? "Available" : "Mark Available"}}</button></td>
             </tr>
         </tbody>
     </table>
@@ -149,15 +147,18 @@ th {
     font-family: 'Teko', sans-serif;
     font-size: 1rem;  
     color: #583b66; 
+    padding-bottom: 15px;
 }
 
 .status-button {
-    background-color: white;
+    background-color: rgb(177, 177, 177);
     border: none;
     border-radius: 25px;
     font-family: 'Teko', sans-serif;
+    font-size: 18px;
     margin: 0px 10px 0px 10px;
     padding: 5px 15px 5px 15px;
+    cursor: pointer;
 }
 
 .status-button:hover {
@@ -166,15 +167,19 @@ th {
 }
 
 td {
-    width: 150px;
+    width: 175px;
     height:40px;
 }
 
 table{
     align-items: center;
+    padding-left: 60px;
 }
 .CakeComponents {
+     display: flex;
+     flex-direction: column;
      justify-content: center;
+     align-items: center;
 }
 
 </style>

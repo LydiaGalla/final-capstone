@@ -6,6 +6,7 @@
           {{ registrationErrorMsg }}
         </div>
     <div id="register" class="text-center">
+      <h3>For Employees Only</h3>
       <form v-on:submit.prevent="register">
         
         <div class="form-input-group">
@@ -80,6 +81,10 @@ export default {
 </script>
 
 <style scoped>
+h3{
+  display: flex;
+  justify-content: center;
+}
 .form-input-group {
   margin-bottom: 1rem;
 }
@@ -109,5 +114,7 @@ label {
   justify-content: center;
   margin: auto;
   padding-top: 50px;
+  flex-direction: column;
+  max-width: 350px;
 }
 </style>

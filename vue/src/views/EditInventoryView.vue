@@ -5,7 +5,6 @@
 <h3> Employee Home - Edit Inventory</h3>
 <EmployeeNav></EmployeeNav>
 <br>
-<h3>Available Inventory</h3>
 <br>
 <CustomCakeInventory></CustomCakeInventory>
 <br>
